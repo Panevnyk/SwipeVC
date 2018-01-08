@@ -1,0 +1,31 @@
+//
+//  UIViewConstraintExtension.swift
+//  SVCSwipeViewControllerSwift
+//
+//  Created by Panevnyk Vlad on 8/18/17.
+//  Copyright © 2017 user. All rights reserved.
+//
+
+import UIKit
+
+extension UIView {
+    /// add simple constraints to view border
+    func constraint(toView view: UIView) -> [NSLayoutConstraint] {
+        return [
+            leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            view.trailingAnchor.constraint(equalTo: trailingAnchor),
+            topAnchor.constraint(equalTo: view.topAnchor),
+            view.bottomAnchor.constraint(equalTo: bottomAnchor)
+        ]
+    }
+    
+    /// add simple constraints to view border with insets
+    func constraint(toView view: UIView, insets: UIEdgeInsets) -> [NSLayoutConstraint] {
+        return [
+            leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: insets.left),
+            view.trailingAnchor.constraint(equalTo: trailingAnchor, constant: insets.right),
+            topAnchor.constraint(equalTo: view.topAnchor, constant: insets.top),
+            view.bottomAnchor.constraint(equalTo: bottomAnchor, constant: insets.bottom)
+        ]
+    }
+}
