@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
 #
 
 s.name         = "SwipeVC"
-s.version      = "0.0.3"
+s.version      = "0.0.4"
 s.summary      = "SwipeVC"
 s.pod_target_xcconfig = { 'SWIFT_VERSION' => '4.0' }
 
