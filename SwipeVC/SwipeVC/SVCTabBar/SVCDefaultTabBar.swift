@@ -3,7 +3,7 @@
 //  SVCSwipeViewControllerSwift
 //
 //  Created by Panevnyk Vlad on 8/21/17.
-//  Copyright © 2017 user. All rights reserved.
+//  Copyright © 2017 Vlad Panevnyk. All rights reserved.
 //
 
 import UIKit
@@ -11,7 +11,7 @@ import UIKit
 /// SVCDefaultTabBar
 open class SVCDefaultTabBar: UIView, SVCTabBar {
     /// Switch bar items
-    public var items: [UIView] = [] {
+    public var items: [SVCTabItem] = [] {
         willSet {
             clearItems(items)
             addItems(newValue)
@@ -128,12 +128,10 @@ open class SVCDefaultTabBar: UIView, SVCTabBar {
 
 // MARK: - Actions
 extension SVCDefaultTabBar {
-
-    @objc private func itemTap(_ sender: UITapGestureRecognizer) {
-        let index = sender.view?.tag ?? 0
+    @objc private func itemTap(_ sender: UIButton) {
+        let index = sender.tag
         delegate?.select(item: index)
     }
-    
 }
 
 // MARK: - Move methods
@@ -158,20 +156,20 @@ private extension SVCDefaultTabBar {
 
 // MARK: - Constraints
 private extension SVCDefaultTabBar {
-    func clearItems(_ items: [UIView]) {
+    func clearItems(_ items: [SVCTabItem]) {
         items.forEach {
             $0.removeFromSuperview()
         }
     }
     
-    func addItems(_ items: [UIView]) {
+    func addItems(_ items: [SVCTabItem]) {
         let allSpaces = 2 * tabBarSideInnerSpace
         
         for (i, item) in items.enumerated() {
             item.tag = i
-            item.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(itemTap)))
-            items[i].translatesAutoresizingMaskIntoConstraints = false
-            addSubview(items[i])
+            item.addTarget(self, action: #selector(itemTap), for: .touchUpInside)
+            item.translatesAutoresizingMaskIntoConstraints = false
+            addSubview(item)
       
             NSLayoutConstraint.activate([item.leadingAnchor.constraint(equalTo: i == 0 ? leadingAnchor : items[i - 1].trailingAnchor,
                                                                        constant: i == 0 ? tabBarSideInnerSpace : 0),
@@ -191,7 +189,7 @@ private extension SVCDefaultTabBar {
         
         let allSpaces = 2 * tabBarSideInnerSpace
         
-        //
+        ///
         var attachConstraint: NSLayoutConstraint!
         if moveViewAttach == .top {
             attachConstraint = containerMoveView.topAnchor.constraint(equalTo: topAnchor)
@@ -204,7 +202,7 @@ private extension SVCDefaultTabBar {
         let height = containerMoveView.heightAnchor.constraint(equalToConstant: moveViewHeight)
         cnstrMoveViewLeft = containerMoveView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0)
         
-        //
+        ///
         let centerX1 = moveView.centerXAnchor.constraint(equalTo: containerMoveView.centerXAnchor)
         let top1 = moveView.topAnchor.constraint(equalTo: containerMoveView.topAnchor)
         let bottom1 = containerMoveView.bottomAnchor.constraint(equalTo: moveView.bottomAnchor)

@@ -3,14 +3,14 @@
 //  SVCSwipeViewControllerSwift
 //
 //  Created by Panevnyk Vlad on 9/6/17.
-//  Copyright © 2017 user. All rights reserved.
+//  Copyright © 2017 Vlad Panevnyk. All rights reserved.
 //
 
 import UIKit
   
 // MARK: - UI
 extension SVCSwipeViewController {
-    // Create and update UI
+    /// Create and update UI
     func createUI() {
         isViewReadyForUpdate = true
         
@@ -20,12 +20,12 @@ extension SVCSwipeViewController {
         addSwitchContent()
         addScrollView()
         addConteinerView()
-        addSwitchBar()
+        addTabBar()
         
         view.layoutIfNeeded()
     }
     
-    // SVCNavigationBar
+    /// SVCNavigationBar
     func addNavigationBar() {
         guard isViewReadyForUpdate else {
             return
@@ -51,7 +51,7 @@ extension SVCSwipeViewController {
             ])
     }
     
-    // SwitchContent
+    /// SwitchContent
     func addSwitchContent() {
         view.addSubview(swipeContent)
         
@@ -95,7 +95,7 @@ extension SVCSwipeViewController {
         NSLayoutConstraint.activate([cnstrTopSwipeContent])
     }
     
-    // ScrollView
+    /// ScrollView
     func addScrollView() {
         guard isViewReadyForUpdate else {
             return
@@ -122,7 +122,7 @@ extension SVCSwipeViewController {
         NSLayoutConstraint.activate([cnstrTopScrollView, cnstrRightScrollView, cnstrBottomScrollView, cnstrLeftScrollView])
     }
     
-    // ContainerView
+    /// ContainerView
     func addConteinerView() {
         guard isViewReadyForUpdate else {
             return
@@ -137,8 +137,8 @@ extension SVCSwipeViewController {
         updateContainerForViewController()
     }
     
-    // SwitchBar
-    func addSwitchBar() {
+    /// SwitchBar
+    func addTabBar() {
         guard isViewReadyForUpdate else {
             return
         }
@@ -157,6 +157,9 @@ extension SVCSwipeViewController {
         updateSwitchBarTopOrBottomAnchor()
         
         NSLayoutConstraint.activate([cnstrHeightTabBar, cnstrTopOrBottomTabBar, cnstrRightTabBar, cnstrLeftTabBar])
+        
+        /// addTabBarBottomView
+        addTabBarBottomView()
     }
     
     func updateSwitchBarTopOrBottomAnchor() {
@@ -183,7 +186,39 @@ extension SVCSwipeViewController {
         NSLayoutConstraint.activate([cnstrTopOrBottomTabBar])
     }
     
-    // ConteinerView
+    /// tabBarBottomView
+    func addTabBarBottomView() {
+        guard isTabBarBottomViewShow else {
+            return
+        }
+        guard tabBarBottomView == nil else {
+            return
+        }
+        guard let tabBar = tabBar else {
+            return
+        }
+        guard tabBarType == .bottom else {
+            return
+        }
+        
+        if #available(iOS 11.0, *) {
+            tabBarBottomView = UIView()
+            tabBarBottomView?.translatesAutoresizingMaskIntoConstraints = false
+            tabBarBottomView?.backgroundColor = tabBar.backgroundColor
+            
+            if let tabBarBottomView = tabBarBottomView {
+                view.addSubview(tabBarBottomView)
+                NSLayoutConstraint.activate([
+                    tabBarBottomView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+                    view.trailingAnchor.constraint(equalTo: tabBarBottomView.trailingAnchor),
+                    view.bottomAnchor.constraint(equalTo: tabBarBottomView.bottomAnchor),
+                    tabBarBottomView.topAnchor.constraint(equalTo: tabBar.bottomAnchor)
+                    ])
+            }
+        }
+    }
+    
+    /// ConteinerView
     func updateContainerForViewController() {
         guard isViewReadyForUpdate else {
             return
@@ -191,7 +226,7 @@ extension SVCSwipeViewController {
         
         let widthMultiplier = viewControllers.count > 0 ? viewControllers.count : 1
         
-        // Add width constraint to container
+        /// Add width constraint to container
         if let cnstrConteinerViewWidth = cnstrConteinerViewWidth {
             scrollView.removeConstraint(cnstrConteinerViewWidth)
         }
@@ -201,10 +236,10 @@ extension SVCSwipeViewController {
             scrollView.addConstraint(cnstrConteinerViewWidth)
         }
         
-        // Clear views BG
+        /// Clear views BG
         clearViewsBG()
         
-        // Create containerForViewController views
+        /// Create containerForViewController views
         for i in 0 ..< viewControllers.count {
             let v = UIView()
             v.translatesAutoresizingMaskIntoConstraints = false
@@ -299,12 +334,12 @@ extension SVCSwipeViewController {
             return
         }
         
-        // Fix bug create more snapshots than needed
+        /// Fix bug create more snapshots than needed
         if snapShots[selectedItem]?.superview != nil {
             snapShots[selectedItem]?.removeFromSuperview()
         }
         
-        // Create snapshot
+        /// Create snapshot
         if let snapImage = viewControllers[index].view.snapshot {
             snapShots[index] = UIImageView(image: snapImage)
         }
@@ -313,23 +348,23 @@ extension SVCSwipeViewController {
 
 // MARK: - Move element
 extension SVCSwipeViewController {
-    private func SVCNavigationBarDelegate(from viewController: UIViewController) -> SVCNavigationBarDelegate? {
+    private func navigationBarDelegate(from viewController: UIViewController) -> SVCNavigationBarDelegate? {
         if let navigationController = viewController as? UINavigationController {
             return navigationController.viewControllers.first as? SVCNavigationBarDelegate
         }
         return viewController as? SVCNavigationBarDelegate
     }
     
-    // Move SVCNavigationBar
+    /// Move SVCNavigationBar
     func moveNavigationBar(toItem: Int, fromItem: Int, percent: CGFloat, duration: TimeInterval) {
-        navigationBar?.updateBarUsing(delegateFrom: SVCNavigationBarDelegate(from: viewControllers[fromItem]),
-                                      delegateTo: SVCNavigationBarDelegate(from: viewControllers[toItem]),
+        navigationBar?.updateBarUsing(delegateFrom: navigationBarDelegate(from: viewControllers[fromItem]),
+                                      delegateTo: navigationBarDelegate(from: viewControllers[toItem]),
                                       percent: percent,
                                       selectItem: toItem,
                                       duration: duration)
     }
     
-    // Move SwitchBar
+    /// Move SwitchBar
     func moveTabBar(toItem: Int, fromItem: Int, percent: CGFloat, duration: TimeInterval, isTap: Bool) {
         tabBar?.move(toIndex: toItem,
                         fromIndex: fromItem,
@@ -338,7 +373,7 @@ extension SVCSwipeViewController {
                         duration: duration)
     }
     
-    // Move ScrollView
+    /// Move ScrollView
     func moveScrollView(toItem: Int, fromItem: Int, duration: TimeInterval) {
         mover.move(true)
         addViewController(index: toItem)

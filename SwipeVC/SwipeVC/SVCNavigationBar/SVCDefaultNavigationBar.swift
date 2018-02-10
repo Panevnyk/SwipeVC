@@ -3,7 +3,7 @@
 //  SVCSwipeViewControllerSwift
 //
 //  Created by Panevnyk Vlad on 9/5/17.
-//  Copyright © 2017 user. All rights reserved.
+//  Copyright © 2017 Vlad Panevnyk. All rights reserved.
 //
 
 import UIKit
@@ -42,7 +42,7 @@ open class SVCDefaultNavigationBar: UIView, SVCNavigationBar {
     public static let defaultNavigationBGViewForItemsHeight: CGFloat = 44
     private static let itemSpaceInGroupView: CGFloat = 7.5
     
-    // Middle navigation
+    /// Middle navigation
     private lazy var middleView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -81,7 +81,7 @@ open class SVCDefaultNavigationBar: UIView, SVCNavigationBar {
     private var cnstrLeftGroupViewWidth: NSLayoutConstraint?
     private var cnstrRightGroupViewWidth: NSLayoutConstraint?
     
-    // Bottom navigation
+    /// Bottom navigation
     private lazy var bottomContainerView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -94,10 +94,10 @@ open class SVCDefaultNavigationBar: UIView, SVCNavigationBar {
     private var bottomViewToHeight: CGFloat = 0
     private var cnstrBottomContainerViewHeight: NSLayoutConstraint?
     
-    // Adding variable
+    /// Adding variable
     private var selectItem = -1
 
-    // MARK: - Initializer
+    /// Inits
     override init(frame: CGRect) {
         super.init(frame: frame)
         initializer()
@@ -122,52 +122,60 @@ open class SVCDefaultNavigationBar: UIView, SVCNavigationBar {
 
 // MARK: - UI
 extension SVCDefaultNavigationBar {
-    
     func initializeConstraints() {
         initializeMiddleView()
         initializeBottomContainerView()
     }
     
     func initializeMiddleView() {
-        // middleView
+        /// middleView
         addSubview(middleView)
-        let middleLeft = middleView.leadingAnchor.constraint(equalTo: leadingAnchor)
+        
+        let middleLeft: NSLayoutConstraint
+        let middleRight: NSLayoutConstraint
+        if #available(iOS 11.0, *) {
+            middleLeft = middleView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor)
+            middleRight = safeAreaLayoutGuide.trailingAnchor.constraint(equalTo: middleView.trailingAnchor)
+        } else {
+            middleLeft = middleView.leadingAnchor.constraint(equalTo: leadingAnchor)
+            middleRight = trailingAnchor.constraint(equalTo: middleView.trailingAnchor)
+        }
+
         let middleTop = middleView.topAnchor.constraint(equalTo: topAnchor,
                                                         constant: UIApplication.shared.statusBarFrame.height)
         let middleHeight = middleView.heightAnchor.constraint(equalToConstant: SVCDefaultNavigationBar.defaultNavigationBGViewForItemsHeight)
-        let middleRight = trailingAnchor.constraint(equalTo: middleView.trailingAnchor)
         
-        // titleViewFrom
+        /// titleViewFrom
         middleView.addSubview(titleViewFrom)
         let titleViewFromTop = titleViewFrom.topAnchor.constraint(equalTo: middleView.topAnchor)
         let titleViewFromBottom = middleView.bottomAnchor.constraint(equalTo: titleViewFrom.bottomAnchor)
         let titleViewFromCenterX = middleView.centerXAnchor.constraint(equalTo: titleViewFrom.centerXAnchor)
         
-        // titleViewTo
+        /// titleViewTo
         middleView.addSubview(titleViewTo)
         let titleViewToTop = titleViewTo.topAnchor.constraint(equalTo: middleView.topAnchor)
         let titleViewToBottom = middleView.bottomAnchor.constraint(equalTo: titleViewTo.bottomAnchor)
         let titleViewToCenterX = middleView.centerXAnchor.constraint(equalTo: titleViewTo.centerXAnchor)
         
-        // leftGroupView
+        /// leftGroupView
         middleView.addSubview(leftGroupView)
         let leftGroupViewLeft = leftGroupView.leadingAnchor.constraint(equalTo: middleView.leadingAnchor)
         let leftGroupViewTop = leftGroupView.topAnchor.constraint(equalTo: middleView.topAnchor)
         cnstrLeftGroupViewWidth = leftGroupView.widthAnchor.constraint(equalTo: middleView.widthAnchor, multiplier: 0.5)
         let leftGroupViewBottom = middleView.bottomAnchor.constraint(equalTo: leftGroupView.bottomAnchor)
         
-        // rightGroupView
+        /// rightGroupView
         middleView.addSubview(rightGroupView)
+        let rightGroupViewRight = middleView.trailingAnchor.constraint(equalTo: rightGroupView.trailingAnchor)
         let rightGroupViewTop = rightGroupView.topAnchor.constraint(equalTo: middleView.topAnchor)
         cnstrRightGroupViewWidth = rightGroupView.widthAnchor.constraint(equalTo: middleView.widthAnchor, multiplier: 0.5)
-        let rightGroupViewRight = middleView.trailingAnchor.constraint(equalTo: rightGroupView.trailingAnchor)
-        let rightGroupViewBottom = middleView.bottomAnchor.constraint(equalTo: leftGroupView.bottomAnchor)
+        let rightGroupViewBottom = middleView.bottomAnchor.constraint(equalTo: rightGroupView.bottomAnchor)
         
         guard let cnstrLeftGroupViewWidth = cnstrLeftGroupViewWidth,
             let cnstrRightGroupViewWidth = cnstrRightGroupViewWidth else {
             return
         }
-        // Activate
+        /// Activate
         NSLayoutConstraint.activate([middleLeft, middleTop, middleRight, middleHeight,
                                      titleViewFromTop, titleViewFromBottom, titleViewFromCenterX,
                                      titleViewToTop, titleViewToBottom, titleViewToCenterX,
@@ -198,8 +206,8 @@ extension SVCDefaultNavigationBar {
         return addedView
     }
     
-    // if fixToLeftSide = true -> add left constrain
-    // if fixToLeftSide = false -> add right constrain
+    /// if fixToLeftSide = true -> add left constrain
+    /// if fixToLeftSide = false -> add right constrain
     func addSubviews(items: [SVCNavigationItem], superView: UIView, fixToLeftSide: Bool) {
         for i in 0 ..< items.count {
             let item = items[i]
@@ -283,19 +291,19 @@ extension SVCDefaultNavigationBar {
         
         middleView.layoutIfNeeded()
         
-        // To: slow at beginning
+        /// To: slow at beginning
         UIView.animate(withDuration: duration, delay: 0, options: .curveLinear/*.curveEaseIn*/, animations: {
             updateTitle.to()
             updateGroupsItems.to()
             updateBarBottomView.to()
         }, completion: nil)
-        // From: slow at end
+        /// From: slow at end
         UIView.animate(withDuration: duration, delay: 0, options: .curveLinear/*.curveEaseOut*/, animations: {
             updateTitle.from()
             updateGroupsItems.from()
             updateBarBottomView.from()
         }, completion: nil)
-        // linear
+        /// linear
         UIView.animate(withDuration: duration, animations: {
             self.superview?.layoutIfNeeded()
         }, completion: { _ in })
@@ -306,18 +314,18 @@ extension SVCDefaultNavigationBar {
                                   percent: CGFloat,
                                   needReCreate: Bool) -> (from: () -> Void, to: () -> Void) {
         if needReCreate {
-            // From
+            /// From
             let fromString = delegateFrom?.navigationBarTitle() ?? ""
             titleViewFrom.text = fromString
             titleViewFrom.alpha = 1
             
-            // To
+            /// To
             let toString = delegateTo?.navigationBarTitle() ?? ""
             titleViewTo.text = toString
             titleViewTo.alpha = 0
         }
         
-        // update left and right viewGroup
+        /// update left and right viewGroup
         let sizeTo = titleViewTo.sizeThatFits(CGSize(width: middleView.frame.size.width, height: middleView.frame.size.height))
         let sizeFrom = titleViewFrom.sizeThatFits(CGSize(width: middleView.frame.size.width, height: middleView.frame.size.height))
         
@@ -344,19 +352,19 @@ extension SVCDefaultNavigationBar {
             _ = toLeftGroupItems.map({ (item) -> Void in item.removeFromSuperview() })
             _ = toRightGroupItems.map({ (item) -> Void in item.removeFromSuperview() })
             
-            // Left From
+            /// Left From
             fromLeftGroupItems = delegateFrom?.navigationBarLeftGroupItems() ?? []
             addSubviews(items: fromLeftGroupItems, superView: leftGroupView, fixToLeftSide: true)
             
-            // Right From
+            /// Right From
             fromRightGroupItems = delegateFrom?.navigationBarRightGroupItems() ?? []
             addSubviews(items: fromRightGroupItems, superView: rightGroupView, fixToLeftSide: false)
             
-            // Left To
+            /// Left To
             toLeftGroupItems = delegateTo?.navigationBarLeftGroupItems() ?? []
             addSubviews(items: toLeftGroupItems, superView: leftGroupView, fixToLeftSide: true)
             
-            // Right To
+            /// Right To
             toRightGroupItems = delegateTo?.navigationBarRightGroupItems() ?? []
             addSubviews(items: toRightGroupItems, superView: rightGroupView, fixToLeftSide: false)
             
@@ -404,20 +412,20 @@ extension SVCDefaultNavigationBar {
                                   percent: CGFloat,
                                   needReCreate: Bool) -> (from: () -> Void, to: () -> Void) {
         if needReCreate {
-            // From
+            /// From
             bottomViewFrom?.removeFromSuperview()
             let fromView = delegateFrom?.navigationBarBottomView() ?? UIView(frame: CGRect.zero)
             bottomViewFromHeight = fromView.frame.size.height
             bottomViewFrom = addBottomSubView(addedView: fromView)
             
-            // To
+            /// To
             bottomViewTo?.removeFromSuperview()
             let toView = delegateTo?.navigationBarBottomView() ?? UIView(frame: CGRect.zero)
             bottomViewToHeight = toView.frame.size.height
             bottomViewTo = addBottomSubView(addedView: toView)
             bottomViewTo?.alpha = 0
             
-            // layoutIfNeeded All Bottom View
+            /// layoutIfNeeded All Bottom View
             bottomContainerView.layoutIfNeeded()
         }
         

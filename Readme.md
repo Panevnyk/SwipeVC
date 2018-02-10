@@ -1,14 +1,9 @@
-
 # SwipeVC
 
 SwipeVC lib created for helping you manage view controllers simply sliding left and right.
 You can inject tabBar for manage this screens by tap on item ( like UITabBar ).
 NavigationBar give for you possible for cool animation of change tab bar items and titles, that can be simply customize.For added NavigationBar you should simply inject it.
 We added different type of insets for give possible of customizing design as you need(contentInsets, tabBarInsets, viewControllersInsets).
-
-## Project Status
-
-This project is actively under development. We consider it ready for production use.
 
 ## CocoaPods
 
@@ -25,87 +20,111 @@ import the framework with `import SwipeVC`.
 
 ## Usage
 
-For use SwipeViewController, you can simply extend you ViewController from SwipeViewController. And add view controllers to viewControllers property.
+For use SVCSwipeViewController, you can simply extend you ViewController from SVCSwipeViewController. And add view controllers to viewControllers property.
 
 ```swift
-final class ExampleSwipeViewController: SwipeViewController {
+final class ExampleSwipeViewController: SVCSwipeViewController {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        addViewControllers()
+    }
 
-override func viewDidLoad() {
-super.viewDidLoad()
-addViewControllers()
-}
+    private func addViewControllers() {
+        let firstViewController = storyboard!.instantiateViewController(withIdentifier: "FirstViewController") as! FirstViewController
+        let secondViewController = storyboard!.instantiateViewController(withIdentifier: "SecondViewController") as! SecondViewController
 
-private func addViewControllers() {
-let firstViewController = storyboard!.instantiateViewController(withIdentifier: "FirstViewController") as! FirstViewController
-let secondViewController = storyboard!.instantiateViewController(withIdentifier: "SeondViewController") as! SeondViewController
-
-viewControllers = [firstViewController, secondViewController]
-}
-
+        viewControllers = [firstViewController, secondViewController]
+    }
 }
 ```
-For use tabBar, you should inject tabBar property. You can use DefaultTabBar or DefaultCollectionTabBar or your custom realization.
+For use tabBar, you should inject tabBar property. You can use SVCDefaultTabBar or SVCDefaultCollectionTabBar or your custom realization.
 
+#### SVCDefaultTabBar example:
 ```swift
 final class ExampleSwipeViewController: SwipeViewController {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        tabBarInjection()
+    }
 
-override func viewDidLoad() {
-super.viewDidLoad()
-tabBarInjection()
-}
+    private func tabBarInjection() {
+        let defaultTabBar = SVCDefaultTabBar()
+        defaultTabBar.backgroundColor = UIColor.orange
 
-private func tabBarInjection() {
-let DefaultTabBar = DefaultTabBar()
-DefaultTabBar.backgroundColor = UIColor.orange
-tabBar = DefaultTabBar
+        /// Init first item
+        let firstItem = SVCTabItem(title: "First Item",
+        image: UIImage(named: "icFirstItem"))
+        firstItem.titleLabel?.font = UIFont.systemFont(ofSize: 15)
+        /// Init second item
+        let secondItem = SVCTabItem(title: "Second Item",
+        image: UIImage(named: "icSecondItem"))
+        secondItem.titleLabel?.font = UIFont.systemFont(ofSize: 15)
 
-let firstItem = SwitchItem(title: "First Item", image: UIImage(named: "icFirstItem"))
-firstItem.titleLabel?.font = UIFont.systemFont(ofSize: 15)
-let secondItem = SwitchItem(title: "Second Item", image: UIImage(named: "icSecondItem"))
-secondItem.titleLabel?.font = UIFont.systemFont(ofSize: 15)
+        defaultTabBar?.items = [firstItem, secondItem]
 
-tabBar?.items = [firstItem, secondItem]
-}
-
+        /// inject tab bar
+        tabBar = defaultTabBar
+    }
 }
 ```
-For use NavigationBar, you should inject navigationBar property,  and you should realize NavigationBarDelegate in you child view controller. You can use DefaultNavigationBar or your custom realization for navigationBar injection.
 
+#### SVCDefaultCollectionTabBar example:
 ```swift
-final class ExampleSwipeViewController: SwipeViewController {
+final class ExampleSwipeViewController: SVCSwipeViewController {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        tabBarInjection()
+    }
 
-override func viewDidLoad() {
-super.viewDidLoad()
-tabBarInjection()
-navigationBarInjection()
+    private func tabBarInjection() {
+        let defaultCollectionTabBar = SVCDefaultCollectionTabBar()
+        defaultCollectionTabBar.backgroundColor = UIColor.orange
+        defaultCollectionTabBar.textFont = UIFont.systemFont(ofSize: 15)
+        defaultCollectionTabBar.textColor = UIColor.black
+        defaultCollectionTabBar.texts = ["First", "Second", "Third", "Fourth"]
+
+        /// inject tab bar
+        tabBar = defaultCollectionTabBar
+    }
+}
+```
+For use NavigationBar, you should inject navigationBar property,  and you should realize SVCNavigationBarDelegate in you child view controller. You can use SVCDefaultNavigationBar or your custom realization for navigationBar injection.
+
+#### SVCDefaultNavigationBar example:
+```swift
+final class ExampleSwipeViewController: SVCSwipeViewController {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        tabBarInjection()
+        navigationBarInjection()
+    }
+
+    private func navigationBarInjection() {
+        let defaultNavigationBar = SVCDefaultNavigationBar()
+        defaultNavigationBar.backgroundColor = UIColor.blue
+        defaultNavigationBar.titleTextColor = UIColor.white
+        navigationBar = defaultNavigationBar
+    }
 }
 
-private func navigationBarInjection() {
-let defaultNavigationBar = DefaultNavigationBar()
-defaultNavigationBar.backgroundColor = UIColor.blue
-defaultNavigationBar.titleTextColor = UIColor.white
-navigationBar = defaultNavigationBar
-}
+final class FirstViewController: UIViewController, SVCNavigationBarDelegate {
+    func navigationBarRightGroupItems() -> [NavigationItem]? {
+        return[NavigationItem(image: UIImage(named: "icUser"),
+        target: self,
+        action: #selector(buttonAction()))]
+    }
 
-}
+    func navigationBarBottomView() -> UIView? {
+        let bottomView = BottomNavBarView(frame: CGRect(x: 0,
+        y: 0,
+        width: UIScreen.main.bounds.size.width,
+        height: 40))
+        return bottomView
+    }
 
-final class FirstViewController: UIViewController, NavigationBarDelegate {
-
-func navigationBarRightGroupItems() -> [NavigationItem]? {
-return[NavigationItem(image: #imageLiteral(resourceName: "icUser"),
-target: self,
-action: #selector(buttonAction()))]
-}
-
-func navigationBarBottomView() -> UIView? {
-let bottomView = BottomNavBarView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 40))
-return bottomView
-}
-
-func navigationBarTitle() -> String? {
-return "First View Controller"
-}
-
+    func navigationBarTitle() -> String? {
+        return "First View Controller"
+    }
 }
 ```
 
@@ -129,4 +148,3 @@ If any of that sounds cool to you, send a pull request!
 ## License
 
 SwipeVC is released under an MIT license. See [License.txt](License.txt) for more information.
-

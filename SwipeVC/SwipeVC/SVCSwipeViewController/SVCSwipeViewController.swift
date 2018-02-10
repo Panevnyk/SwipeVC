@@ -2,8 +2,8 @@
 //  SVCSwipeViewController.swift
 //  SVCSwipeViewControllerSwift
 //
-//  Created by user on 18.04.16.
-//  Copyright © 2016 user. All rights reserved.
+//  Created by Vlad Panevnyk on 18.04.16.
+//  Copyright © 2016 Vlad Panevnyk. All rights reserved.
 //
 
 import UIKit
@@ -29,12 +29,11 @@ open class SVCSwipeViewController: UIViewController {
     /// SVCTabBar, for add need injection
     public var tabBar: (SVCTabBar & UIView)? {
         willSet {
-            if let tabBar = tabBar {
-                tabBar.removeFromSuperview()
-            }
+            tabBar?.removeFromSuperview()
+            tabBarBottomView?.removeFromSuperview()
         }
         didSet {
-            addSwitchBar()
+            addTabBar()
         }
     }
     /// ViewControllers that will be manage
@@ -47,6 +46,12 @@ open class SVCSwipeViewController: UIViewController {
     public var tabBarType: SVCTabBarType = .bottom {
         didSet {
             updateSwitchBarTopOrBottomAnchor()
+            switch tabBarType {
+            case .top:
+                tabBarBottomView?.removeFromSuperview()
+            case .bottom:
+                addTabBarBottomView()
+            }
         }
     }
     /// Insets of all content (including SwitchBar and ViewControllers)
@@ -106,13 +111,18 @@ open class SVCSwipeViewController: UIViewController {
             scrollView.bounces = scrollViewBounces
         }
     }
+    
+    /// isTabBarBottomViewShow
+    public var isTabBarBottomViewShow = true {
+        didSet {
+            if isViewLoaded {
+                addTabBarBottomView()
+            }
+        }
+    }
 
     // Internal variable
-    lazy var SVCNavigationBarStatusView: UIView? = {
-        
-        
-        return nil
-    }()
+    var tabBarBottomView: UIView?
     
     lazy var swipeContent: UIView = {
         let swipeContent = UIView()

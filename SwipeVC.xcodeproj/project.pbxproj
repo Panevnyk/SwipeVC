@@ -117,7 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				D18C81A02003C945005B176A /* SVCHelpers */,
-				D18C81A42003C945005B176A /* SVCSwitchBar */,
+				D18C81A42003C945005B176A /* SVCTabBar */,
 				D18C81A92003C945005B176A /* SVCNavigationBar */,
 				D18C81AD2003C945005B176A /* SVCSwipeViewController */,
 			);
@@ -134,7 +134,7 @@
 			path = SVCHelpers;
 			sourceTree = "<group>";
 		};
-		D18C81A42003C945005B176A /* SVCSwitchBar */ = {
+		D18C81A42003C945005B176A /* SVCTabBar */ = {
 			isa = PBXGroup;
 			children = (
 				D18C81A52003C945005B176A /* SVCTabItem.swift */,
@@ -142,7 +142,7 @@
 				D18C81A72003C945005B176A /* SVCDefaultTabBar.swift */,
 				D18C81A82003C945005B176A /* SVCTabBar.swift */,
 			);
-			path = SVCSwitchBar;
+			path = SVCTabBar;
 			sourceTree = "<group>";
 		};
 		D18C81A92003C945005B176A /* SVCNavigationBar */ = {
@@ -427,9 +427,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = G6KD9UARPF;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -439,6 +440,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = panevnyk.SwipeVC;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -449,9 +451,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = G6KD9UARPF;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -461,6 +464,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = panevnyk.SwipeVC;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
