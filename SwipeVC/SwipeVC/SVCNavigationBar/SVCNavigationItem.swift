@@ -3,7 +3,7 @@
 //  SVCSwipeViewControllerSwift
 //
 //  Created by Panevnyk Vlad on 05.12.16.
-//  Copyright © 2016 user. All rights reserved.
+//  Copyright © 2016 Vlad Panevnyk. All rights reserved.
 //
 
 import UIKit
@@ -11,12 +11,7 @@ import UIKit
 /// SVCNavigationItem
 open class SVCNavigationItem: UIButton {
     
-    /// init
-    ///
-    /// - Parameters:
-    ///   - image: UIImage?
-    ///   - target: Any?
-    ///   - action: Selector?
+    /// Inits
     public convenience init(image: UIImage?, target: Any?, action: Selector?) {
         self.init()
         setImage(image, for: .normal)
@@ -27,25 +22,16 @@ open class SVCNavigationItem: UIButton {
         initializer()
     }
 
-    /// init
-    ///
-    /// - Parameter title: String
     public convenience init(title: String) {
         self.init(frame: CGRect.zero)
         setTitle(title, for: UIControlState())
     }
     
-    /// init
-    ///
-    /// - Parameter frame: CGRect
     override public init(frame: CGRect) {
         super.init(frame: frame)
         initializer()
     }
     
-    /// init
-    ///
-    /// - Parameter coder: NSCoder
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         initializer()

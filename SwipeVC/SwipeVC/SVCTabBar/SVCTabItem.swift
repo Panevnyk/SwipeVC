@@ -2,8 +2,8 @@
 //  SVCTabItem.swift
 //  SVCSwipeViewControllerSwift
 //
-//  Created by user on 18.04.16.
-//  Copyright © 2016 user. All rights reserved.
+//  Created by Vlad Panevnyk on 18.04.16.
+//  Copyright © 2016 Vlad Panevnyk. All rights reserved.
 //
 
 import UIKit
@@ -13,11 +13,7 @@ open class SVCTabItem: UIButton {
     /// Item index
     public var itemIndex = 0
 
-    /// init
-    ///
-    /// - Parameters:
-    ///   - title: title of button
-    ///   - image: image in button
+    /// Inits
     convenience public init(title: String, image: UIImage?) {
         self.init(frame: CGRect.zero)        
         setTitle(title, for: UIControlState())
@@ -26,9 +22,6 @@ open class SVCTabItem: UIButton {
         titleEdgeInsets = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 0)
     }
     
-    /// init
-    ///
-    /// - Parameter frame: frame of button
     override public init(frame: CGRect) {
         super.init(frame: frame)
         initializer()

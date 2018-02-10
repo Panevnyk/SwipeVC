@@ -3,7 +3,7 @@
 //  SVCSwipeViewControllerSwift
 //
 //  Created by Panevnyk Vlad on 05.12.16.
-//  Copyright © 2016 user. All rights reserved.
+//  Copyright © 2016 Vlad Panevnyk. All rights reserved.
 //
 
 import UIKit
