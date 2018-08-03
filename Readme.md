@@ -41,7 +41,7 @@ For use tabBar, you should inject tabBar property. You can use SVCDefaultTabBar 
 
 #### SVCDefaultTabBar example:
 ```swift
-final class ExampleSwipeViewController: SwipeViewController {
+final class ExampleSwipeViewController: SVCSwipeViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tabBarInjection()
