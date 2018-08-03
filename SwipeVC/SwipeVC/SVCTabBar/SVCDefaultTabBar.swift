@@ -19,10 +19,16 @@ open class SVCDefaultTabBar: UIView, SVCTabBar {
     }
     /// SVCTabBarDelegate
     public weak var delegate: SVCTabBarDelegate?
+    
+    /// SVCTabBarMoveDelegate
+    public weak var moveDelegate: SVCTabBarMoveDelegate?
+    
     /// Height of switch bar
     public var height: CGFloat = 44
+    
     /// Inner space value
     public var tabBarSideInnerSpace: CGFloat = 0
+    
     /// Move view
     public lazy var moveView: UIView = {
         let view = UIView()
@@ -31,8 +37,10 @@ open class SVCDefaultTabBar: UIView, SVCTabBar {
         view.layer.zPosition = 11
         return view
     }()
+    
     /// Move view height
     public var moveViewHeight: CGFloat = 0
+    
     /// Bouncing of moveview
     public var bouncing: CGFloat = 0 {
         didSet {
@@ -43,8 +51,10 @@ open class SVCDefaultTabBar: UIView, SVCTabBar {
             }
         }
     }
+    
     /// Move view width
     public var moveViewWidth: CGFloat = 0
+    
     /// Attaching of move view
     public var moveViewAttach: SVCMoveViewAttach = .bottom
     
@@ -92,7 +102,6 @@ open class SVCDefaultTabBar: UIView, SVCTabBar {
     ///   - isTap: is method called after tap to item
     ///   - duration: duration for animation change
     public func move(toIndex: Int, fromIndex: Int, percent: CGFloat, isTap: Bool, duration: TimeInterval) {
-        
         // animate move view
         if !moveView.isHidden {
             let magicK = CGFloat(abs(toIndex - fromIndex))
@@ -123,6 +132,9 @@ open class SVCDefaultTabBar: UIView, SVCTabBar {
                 }, completion: nil)
             }
         }
+        
+        /// SVCTabBarMoveDelegate
+        moveDelegate?.move(toIndex: toIndex, fromIndex: fromIndex, percent: percent, isTap: isTap, duration: duration)
     }
 }
 

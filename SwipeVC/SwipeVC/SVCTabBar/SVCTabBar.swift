@@ -36,10 +36,27 @@ public protocol SVCTabBarDelegate: class {
     func select(item: Int) -> Bool
 }
 
+/// SVCDefaultTabBarDelegate
+public protocol SVCTabBarMoveDelegate: class {
+    /// move
+    ///
+    /// - Parameters:
+    ///   - toIndex: move to ViewController index
+    ///   - fromIndex: move from ViewController index
+    ///   - percent: from 0 - 1, where 0 - 0%, 1 - 100%
+    ///   - isTap: if true - moving is a result of tap to item, if false - moving is a resultof scroll
+    ///   - duration: duration of animation
+    func move(toIndex: Int, fromIndex: Int, percent: CGFloat, isTap: Bool, duration: TimeInterval)
+}
+
 /// SVCTabBar
 public protocol SVCTabBar: class {
     /// SVCTabBar delegate
-    weak var delegate: SVCTabBarDelegate? { get set }
+    var delegate: SVCTabBarDelegate? { get set }
+    
+    /// SVCTabBarMoveDelegate
+    var moveDelegate: SVCTabBarMoveDelegate? { get set }
+    
     /// tab bar height
     var height: CGFloat { get set }
     

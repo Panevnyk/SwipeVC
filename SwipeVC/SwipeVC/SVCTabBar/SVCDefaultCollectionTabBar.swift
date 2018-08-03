@@ -20,6 +20,9 @@ class SVCDefaultCollectionTabBar: UIView, SVCTabBar {
     /// SVCTabBarDelegate
     public weak var delegate: SVCTabBarDelegate?
     
+    /// SVCTabBarMoveDelegate
+    public weak var moveDelegate: SVCTabBarMoveDelegate?
+    
     /// Height of switch bar
     public var height: CGFloat = 44
     public var heightOfCells: CGFloat = 44
@@ -83,6 +86,9 @@ class SVCDefaultCollectionTabBar: UIView, SVCTabBar {
                 cell.backgroundColor = UIColor.purple
             }
         }
+        
+        /// SVCTabBarMoveDelegate
+        moveDelegate?.move(toIndex: toIndex, fromIndex: fromIndex, percent: percent, isTap: isTap, duration: duration)
     }
 }
 
