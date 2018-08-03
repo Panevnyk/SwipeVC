@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
 #
 
 s.name         = "SwipeVC"
-s.version      = "0.0.6"
+s.version      = "0.0.7"
 s.summary      = "SwipeVC"
 s.pod_target_xcconfig = { 'SWIFT_VERSION' => '4.0' }
 
@@ -51,9 +51,9 @@ s.license      = { :type => "MIT", :file => "LICENSE.txt" }
 #  profile URL.
 #
 
-s.author             = { "panevnyk" => "sieter3008@gmail.com" }
+s.author             = { "panevnyk" => "v.panevnyk@gmail.com" }
 # Or just: s.author    = "panevnyk"
-# s.authors            = { "panevnyk" => "sieter3008@gmail.com" }
+# s.authors            = { "panevnyk" => "v.panevnyk@gmail.com" }
 # s.social_media_url   = "http://twitter.com/panevnyk"
 
 # ――― Platform Specifics ――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
