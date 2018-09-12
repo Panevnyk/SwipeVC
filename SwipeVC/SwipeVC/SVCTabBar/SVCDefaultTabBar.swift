@@ -135,6 +135,10 @@ open class SVCDefaultTabBar: UIView, SVCTabBar {
         
         /// SVCTabBarMoveDelegate
         moveDelegate?.move(toIndex: toIndex, fromIndex: fromIndex, percent: percent, isTap: isTap, duration: duration)
+        
+        /// updateStyle
+        items[toIndex].updateStyle(toIndex: toIndex, fromIndex: fromIndex, percent: percent, isTap: isTap, duration: duration)
+        items[fromIndex].updateStyle(toIndex: toIndex, fromIndex: fromIndex, percent: percent, isTap: isTap, duration: duration)
     }
 }
 
@@ -179,6 +183,7 @@ private extension SVCDefaultTabBar {
         
         for (i, item) in items.enumerated() {
             item.tag = i
+            item.itemIndex = i
             item.addTarget(self, action: #selector(itemTap), for: .touchUpInside)
             item.translatesAutoresizingMaskIntoConstraints = false
             addSubview(item)

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D12CF8A621490EFA007FEA5C /* SVCUIColor+CombineColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D12CF8A521490EFA007FEA5C /* SVCUIColor+CombineColor.swift */; };
 		D18C818F2003C8F4005B176A /* SwipeVC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D18C81852003C8F4005B176A /* SwipeVC.framework */; };
 		D18C81942003C8F4005B176A /* SwipeVCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18C81932003C8F4005B176A /* SwipeVCTests.swift */; };
 		D18C81962003C8F4005B176A /* SwipeVC.h in Headers */ = {isa = PBXBuildFile; fileRef = D18C81882003C8F4005B176A /* SwipeVC.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D12CF8A521490EFA007FEA5C /* SVCUIColor+CombineColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SVCUIColor+CombineColor.swift"; sourceTree = "<group>"; };
 		D18C81852003C8F4005B176A /* SwipeVC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwipeVC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D18C81882003C8F4005B176A /* SwipeVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwipeVC.h; sourceTree = "<group>"; };
 		D18C81892003C8F4005B176A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 				D18C81A12003C945005B176A /* SVCUIView+Constraint.swift */,
 				D18C81A22003C945005B176A /* SVCInterpolateHelper.swift */,
 				D18C81A32003C945005B176A /* SVCUIView+Snapshot.swift */,
+				D12CF8A521490EFA007FEA5C /* SVCUIColor+CombineColor.swift */,
 			);
 			path = SVCHelpers;
 			sourceTree = "<group>";
@@ -287,6 +290,7 @@
 				D18C81B82003C945005B176A /* SVCNavigationItem.swift in Sources */,
 				D18C81B72003C945005B176A /* SVCTabBar.swift in Sources */,
 				D18C81BC2003C945005B176A /* SVCSwipeViewController.swift in Sources */,
+				D12CF8A621490EFA007FEA5C /* SVCUIColor+CombineColor.swift in Sources */,
 				D18C81B32003C945005B176A /* SVCUIView+Snapshot.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
