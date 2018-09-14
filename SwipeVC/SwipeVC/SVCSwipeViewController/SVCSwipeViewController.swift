@@ -39,7 +39,10 @@ open class SVCSwipeViewController: UIViewController {
     /// ViewControllers that will be manage
     public var viewControllers: [UIViewController] = [] {
         didSet {
-            updateContainerForViewController()
+            if isViewLoaded {
+                updateContainerForViewController()
+                addViewController(index: selectedItem)
+            }
         }
     }
     /// SwitchBarType for attaching
