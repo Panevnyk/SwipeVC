@@ -214,8 +214,8 @@ extension SVCDefaultNavigationBar {
             item.translatesAutoresizingMaskIntoConstraints = false
             superView.addSubview(item)
             
-            var fromAttribute: NSLayoutAttribute!
-            var toAttribute: NSLayoutAttribute!
+            var fromAttribute: NSLayoutConstraint.Attribute!
+            var toAttribute: NSLayoutConstraint.Attribute!
             var fromItem: UIView!
             var toItem: UIView!
             

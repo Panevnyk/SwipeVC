@@ -24,7 +24,7 @@ open class SVCNavigationItem: UIButton {
 
     public convenience init(title: String) {
         self.init(frame: CGRect.zero)
-        setTitle(title, for: UIControlState())
+        setTitle(title, for: UIControl.State())
     }
     
     override public init(frame: CGRect) {
@@ -39,7 +39,7 @@ open class SVCNavigationItem: UIButton {
     
     /// initializer
     private func initializer() {
-        setTitleColor(UIColor.white, for: UIControlState())
+        setTitleColor(UIColor.white, for: UIControl.State())
         isExclusiveTouch = true
     }
 }

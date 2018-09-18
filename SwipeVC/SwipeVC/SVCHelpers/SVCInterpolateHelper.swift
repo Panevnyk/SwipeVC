@@ -16,7 +16,7 @@ public final class SVCInterpolateHelper {
     ///   - xPoint: current xPoint
     ///   - curve: UIViewAnimationCurve
     /// - Returns: new xPoint by UIViewAnimationCurve
-    public static func getPointBy(xPoint: CGFloat, curve: UIViewAnimationCurve) -> CGFloat {
+    public static func getPointBy(xPoint: CGFloat, curve: UIView.AnimationCurve) -> CGFloat {
         return getPointBy(xPoint: xPoint, factor: 1.0, curve: curve)
     }
     
@@ -27,7 +27,7 @@ public final class SVCInterpolateHelper {
     ///   - factor: pow factor
     ///   - curve: UIViewAnimationCurve
     /// - Returns: new xPoint by UIViewAnimationCurve
-    public static func getPointBy(xPoint: CGFloat, factor: CGFloat, curve: UIViewAnimationCurve) -> CGFloat {
+    public static func getPointBy(xPoint: CGFloat, factor: CGFloat, curve: UIView.AnimationCurve) -> CGFloat {
         switch curve {
         case .easeIn:
             return pow(xPoint, 2 * factor)

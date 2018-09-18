@@ -284,11 +284,11 @@ extension SVCSwipeViewController {
         
         isShowViewControllers[index] = true
         let viewController = viewControllers[index]
-        addChildViewController(viewController)
+        addChild(viewController)
         viewController.view.translatesAutoresizingMaskIntoConstraints = false
         viewsBG[index].addSubview(viewController.view)
         NSLayoutConstraint.activate(viewController.view.constraint(toView: viewsBG[index]))
-        didMove(toParentViewController: self)
+        didMove(toParent: self)
         
         createSnapshot(index: index)
     }
@@ -302,9 +302,9 @@ extension SVCSwipeViewController {
         }
         
         isShowViewControllers[index] = false
-        willMove(toParentViewController: nil)
+        willMove(toParent: nil)
         viewControllers[index].view.removeFromSuperview()
-        viewControllers[index].removeFromParentViewController()
+        viewControllers[index].removeFromParent()
     }
     
     func removeSnapshot(index: Int) {

@@ -173,7 +173,7 @@ open class SVCSwipeViewController: UIViewController {
     // Static variable
     static let moveVCDuration: TimeInterval = 0.3
     static let moveVCDelay: TimeInterval = 0
-    static let moveVCAnimationOption = UIViewAnimationOptions.curveEaseInOut
+    static let moveVCAnimationOption = UIView.AnimationOptions.curveEaseInOut
 
     // Constraints
     ///      For content insets

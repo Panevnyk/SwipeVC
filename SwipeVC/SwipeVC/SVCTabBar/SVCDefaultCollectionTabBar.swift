@@ -127,7 +127,7 @@ open class DefaultCollectionTabBarCell: UICollectionViewCell {
     }
     
     /// title of item
-    open let titleLabel: UILabel = {
+    public let titleLabel: UILabel = {
         let titleLabel = UILabel()
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.backgroundColor = UIColor.clear
