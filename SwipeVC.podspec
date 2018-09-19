@@ -16,9 +16,9 @@ Pod::Spec.new do |s|
 #
 
 s.name         = "SwipeVC"
-s.version      = "0.2.0"
+s.version      = "0.2.1"
 s.summary      = "SwipeVC"
-# s.pod_target_xcconfig = { 'SWIFT_VERSION' => '4.0' }
+s.pod_target_xcconfig = { 'SWIFT_VERSION' => '4.2' }
 
 
 # This description is used to generate tags and improve search results.
