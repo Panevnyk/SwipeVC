@@ -8,6 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		D12CF8A621490EFA007FEA5C /* SVCUIColor+CombineColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D12CF8A521490EFA007FEA5C /* SVCUIColor+CombineColor.swift */; };
+		D157CE0521B7F5EF002F92E1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D157CE0421B7F5EF002F92E1 /* AppDelegate.swift */; };
+		D157CE0721B7F5EF002F92E1 /* ExampleSwipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D157CE0621B7F5EF002F92E1 /* ExampleSwipeViewController.swift */; };
+		D157CE0A21B7F5EF002F92E1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D157CE0821B7F5EF002F92E1 /* Main.storyboard */; };
+		D157CE0C21B7F5F1002F92E1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D157CE0B21B7F5F1002F92E1 /* Assets.xcassets */; };
+		D157CE0F21B7F5F1002F92E1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D157CE0D21B7F5F1002F92E1 /* LaunchScreen.storyboard */; };
+		D157CE1921B7FA38002F92E1 /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D157CE1821B7FA38002F92E1 /* ThirdViewController.swift */; };
+		D157CE1C21B7FF44002F92E1 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D157CE1B21B7FF44002F92E1 /* FirstViewController.swift */; };
+		D157CE1E21B7FF5B002F92E1 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D157CE1D21B7FF5B002F92E1 /* SecondViewController.swift */; };
 		D18C818F2003C8F4005B176A /* SwipeVC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D18C81852003C8F4005B176A /* SwipeVC.framework */; };
 		D18C81942003C8F4005B176A /* SwipeVCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18C81932003C8F4005B176A /* SwipeVCTests.swift */; };
 		D18C81962003C8F4005B176A /* SwipeVC.h in Headers */ = {isa = PBXBuildFile; fileRef = D18C81882003C8F4005B176A /* SwipeVC.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -24,6 +32,8 @@
 		D18C81BB2003C945005B176A /* SVCMover.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18C81AE2003C945005B176A /* SVCMover.swift */; };
 		D18C81BC2003C945005B176A /* SVCSwipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18C81AF2003C945005B176A /* SVCSwipeViewController.swift */; };
 		D18C81BD2003C945005B176A /* SVCSwipeViewController+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18C81B02003C945005B176A /* SVCSwipeViewController+UI.swift */; };
+		D1A5684D21B97C4E000AAD62 /* SwipeVC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D18C81852003C8F4005B176A /* SwipeVC.framework */; };
+		D1A5684E21B97C4E000AAD62 /* SwipeVC.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D18C81852003C8F4005B176A /* SwipeVC.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,10 +44,41 @@
 			remoteGlobalIDString = D18C81842003C8F4005B176A;
 			remoteInfo = SwipeVC;
 		};
+		D1A5684F21B97C4E000AAD62 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D18C817C2003C8F4005B176A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D18C81842003C8F4005B176A;
+			remoteInfo = SwipeVC;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		D1A5685121B97C4E000AAD62 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				D1A5684E21B97C4E000AAD62 /* SwipeVC.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		D12CF8A521490EFA007FEA5C /* SVCUIColor+CombineColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SVCUIColor+CombineColor.swift"; sourceTree = "<group>"; };
+		D157CE0221B7F5EF002F92E1 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D157CE0421B7F5EF002F92E1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		D157CE0621B7F5EF002F92E1 /* ExampleSwipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleSwipeViewController.swift; sourceTree = "<group>"; };
+		D157CE0921B7F5EF002F92E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		D157CE0B21B7F5F1002F92E1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D157CE0E21B7F5F1002F92E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		D157CE1021B7F5F1002F92E1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D157CE1821B7FA38002F92E1 /* ThirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
+		D157CE1B21B7FF44002F92E1 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
+		D157CE1D21B7FF5B002F92E1 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		D18C81852003C8F4005B176A /* SwipeVC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwipeVC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D18C81882003C8F4005B176A /* SwipeVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwipeVC.h; sourceTree = "<group>"; };
 		D18C81892003C8F4005B176A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -60,6 +101,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		D157CDFF21B7F5EF002F92E1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D1A5684D21B97C4E000AAD62 /* SwipeVC.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D18C81812003C8F4005B176A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -78,10 +127,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D157CE0321B7F5EF002F92E1 /* Example */ = {
+			isa = PBXGroup;
+			children = (
+				D157CE0421B7F5EF002F92E1 /* AppDelegate.swift */,
+				D157CE1A21B7FA3B002F92E1 /* ViewControllers */,
+				D157CE0821B7F5EF002F92E1 /* Main.storyboard */,
+				D157CE0B21B7F5F1002F92E1 /* Assets.xcassets */,
+				D157CE0D21B7F5F1002F92E1 /* LaunchScreen.storyboard */,
+				D157CE1021B7F5F1002F92E1 /* Info.plist */,
+			);
+			path = Example;
+			sourceTree = "<group>";
+		};
+		D157CE1A21B7FA3B002F92E1 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				D157CE0621B7F5EF002F92E1 /* ExampleSwipeViewController.swift */,
+				D157CE1B21B7FF44002F92E1 /* FirstViewController.swift */,
+				D157CE1D21B7FF5B002F92E1 /* SecondViewController.swift */,
+				D157CE1821B7FA38002F92E1 /* ThirdViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
 		D18C817B2003C8F4005B176A = {
 			isa = PBXGroup;
 			children = (
 				D18C81872003C8F4005B176A /* SwipeVC */,
+				D157CE0321B7F5EF002F92E1 /* Example */,
 				D18C81922003C8F4005B176A /* SwipeVCTests */,
 				D18C81862003C8F4005B176A /* Products */,
 			);
@@ -92,6 +166,7 @@
 			children = (
 				D18C81852003C8F4005B176A /* SwipeVC.framework */,
 				D18C818E2003C8F4005B176A /* SwipeVCTests.xctest */,
+				D157CE0221B7F5EF002F92E1 /* Example.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -182,6 +257,25 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		D157CE0121B7F5EF002F92E1 /* Example */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D157CE1321B7F5F1002F92E1 /* Build configuration list for PBXNativeTarget "Example" */;
+			buildPhases = (
+				D157CDFE21B7F5EF002F92E1 /* Sources */,
+				D157CDFF21B7F5EF002F92E1 /* Frameworks */,
+				D157CE0021B7F5EF002F92E1 /* Resources */,
+				D1A5685121B97C4E000AAD62 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D1A5685021B97C4E000AAD62 /* PBXTargetDependency */,
+			);
+			name = Example;
+			productName = Example;
+			productReference = D157CE0221B7F5EF002F92E1 /* Example.app */;
+			productType = "com.apple.product-type.application";
+		};
 		D18C81842003C8F4005B176A /* SwipeVC */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = D18C81992003C8F4005B176A /* Build configuration list for PBXNativeTarget "SwipeVC" */;
@@ -224,10 +318,14 @@
 		D18C817C2003C8F4005B176A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0920;
-				LastUpgradeCheck = 1000;
+				LastSwiftUpdateCheck = 1010;
+				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "Panevnyk Vlad";
 				TargetAttributes = {
+					D157CE0121B7F5EF002F92E1 = {
+						CreatedOnToolsVersion = 10.1;
+						ProvisioningStyle = Automatic;
+					};
 					D18C81842003C8F4005B176A = {
 						CreatedOnToolsVersion = 9.2;
 						LastSwiftMigration = 1000;
@@ -246,6 +344,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = D18C817B2003C8F4005B176A;
 			productRefGroup = D18C81862003C8F4005B176A /* Products */;
@@ -254,11 +353,22 @@
 			targets = (
 				D18C81842003C8F4005B176A /* SwipeVC */,
 				D18C818D2003C8F4005B176A /* SwipeVCTests */,
+				D157CE0121B7F5EF002F92E1 /* Example */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		D157CE0021B7F5EF002F92E1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D157CE0F21B7F5F1002F92E1 /* LaunchScreen.storyboard in Resources */,
+				D157CE0C21B7F5F1002F92E1 /* Assets.xcassets in Resources */,
+				D157CE0A21B7F5EF002F92E1 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D18C81832003C8F4005B176A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -276,6 +386,18 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		D157CDFE21B7F5EF002F92E1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D157CE1921B7FA38002F92E1 /* ThirdViewController.swift in Sources */,
+				D157CE0721B7F5EF002F92E1 /* ExampleSwipeViewController.swift in Sources */,
+				D157CE0521B7F5EF002F92E1 /* AppDelegate.swift in Sources */,
+				D157CE1E21B7FF5B002F92E1 /* SecondViewController.swift in Sources */,
+				D157CE1C21B7FF44002F92E1 /* FirstViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D18C81802003C8F4005B176A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -313,9 +435,72 @@
 			target = D18C81842003C8F4005B176A /* SwipeVC */;
 			targetProxy = D18C81902003C8F4005B176A /* PBXContainerItemProxy */;
 		};
+		D1A5685021B97C4E000AAD62 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D18C81842003C8F4005B176A /* SwipeVC */;
+			targetProxy = D1A5684F21B97C4E000AAD62 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
+/* Begin PBXVariantGroup section */
+		D157CE0821B7F5EF002F92E1 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D157CE0921B7F5EF002F92E1 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		D157CE0D21B7F5F1002F92E1 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D157CE0E21B7F5F1002F92E1 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
+		D157CE1121B7F5F1002F92E1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = G6KD9UARPF;
+				INFOPLIST_FILE = Example/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = panevnyk.Example;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D157CE1221B7F5F1002F92E1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = G6KD9UARPF;
+				INFOPLIST_FILE = Example/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = panevnyk.Example;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		D18C81972003C8F4005B176A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -440,7 +625,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = G6KD9UARPF;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -464,7 +649,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = G6KD9UARPF;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -514,6 +699,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		D157CE1321B7F5F1002F92E1 /* Build configuration list for PBXNativeTarget "Example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D157CE1121B7F5F1002F92E1 /* Debug */,
+				D157CE1221B7F5F1002F92E1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		D18C817F2003C8F4005B176A /* Build configuration list for PBXProject "SwipeVC" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
