@@ -30,6 +30,7 @@ final class ExampleSwipeViewController: SVCSwipeViewController {
     }
 
     private func addViewControllers() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let firstViewController = storyboard!.instantiateViewController(withIdentifier: "FirstViewController") as! FirstViewController
         let secondViewController = storyboard!.instantiateViewController(withIdentifier: "SecondViewController") as! SecondViewController
 
