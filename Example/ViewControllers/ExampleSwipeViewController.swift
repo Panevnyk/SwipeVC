@@ -34,22 +34,21 @@ private extension ExampleSwipeViewController {
     
     func tabBarInjection() {
         let defaultTabBar = SVCDefaultTabBar()
-        defaultTabBar.backgroundColor = UIColor.orange
         
         // Init first item
         let firstItem = SVCTabItem(type: .system)
-        firstItem.setTitle("First Item", for: .normal)
-        firstItem.titleLabel?.font = UIFont.systemFont(ofSize: 15)
+        firstItem.setImage(UIImage(named: "ic_location_menu_normal")?.withRenderingMode(.alwaysOriginal), for: .normal)
+        firstItem.setImage(UIImage(named: "ic_location_menu_selected")?.withRenderingMode(.alwaysOriginal), for: .selected)
         
         // Init second item
         let secondItem = SVCTabItem(type: .system)
-        secondItem.setTitle("Second Item", for: .normal)
-        secondItem.titleLabel?.font = UIFont.systemFont(ofSize: 15)
+        secondItem.setImage(UIImage(named: "ic_users_menu_normal")?.withRenderingMode(.alwaysOriginal), for: .normal)
+        secondItem.setImage(UIImage(named: "ic_users_menu_selected")?.withRenderingMode(.alwaysOriginal), for: .selected)
         
         // Init third item
         let thirdItem = SVCTabItem(type: .system)
-        thirdItem.setTitle("Third Item", for: .normal)
-        secondItem.titleLabel?.font = UIFont.systemFont(ofSize: 15)
+        thirdItem.setImage(UIImage(named: "ic_media_menu_normal")?.withRenderingMode(.alwaysOriginal), for: .normal)
+        thirdItem.setImage(UIImage(named: "ic_media_menu_selected")?.withRenderingMode(.alwaysOriginal), for: .selected)
         
         defaultTabBar.items = [firstItem, secondItem, thirdItem]
         
