@@ -10,6 +10,10 @@ import UIKit
 
 /// SVCDefaultTabBar
 open class SVCDefaultTabBar: UIView, SVCTabBar {
+    // MARK: - Properties
+    /// DefaultBackgroundColor
+    public static let defaultBackgroundColor = UIColor(red: 0.980, green: 0.980, blue: 0.980, alpha: 1.0)
+    
     /// Switch bar items
     public var items: [SVCTabItem] = [] {
         willSet {
@@ -77,6 +81,7 @@ open class SVCDefaultTabBar: UIView, SVCTabBar {
     /// width constraint
     private var cnstrMoveViewWidth: NSLayoutConstraint?
     
+    // MARK: - Inits
     public override init(frame: CGRect) {
         super.init(frame: frame)
         initializer()
@@ -89,10 +94,12 @@ open class SVCDefaultTabBar: UIView, SVCTabBar {
     
     private func initializer() {
         translatesAutoresizingMaskIntoConstraints = false
+        backgroundColor = SVCDefaultTabBar.defaultBackgroundColor
         addSubview(containerMoveView)
         containerMoveView.addSubview(moveView)
     }
-    
+
+    // MARK: - Move
     /// move
     ///
     /// - Parameters:

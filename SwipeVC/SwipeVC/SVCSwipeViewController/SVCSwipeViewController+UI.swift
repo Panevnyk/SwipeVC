@@ -7,7 +7,7 @@
 //
 
 import UIKit
-  
+
 // MARK: - UI
 extension SVCSwipeViewController {
     /// Create and update UI
@@ -62,10 +62,10 @@ extension SVCSwipeViewController {
         cnstrRightSwipeContent = view.trailingAnchor.constraint(equalTo: swipeContent.trailingAnchor, constant: contentInsets.right)
         if #available(iOS 11.0, *) {
             cnstrBottomSwipeContent = view.safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: swipeContent.bottomAnchor,
-                                                                                    constant: contentInsets.bottom)
+                                                                                       constant: contentInsets.bottom)
         } else {
             cnstrBottomSwipeContent = bottomLayoutGuide.topAnchor.constraint(equalTo: swipeContent.bottomAnchor,
-                                                                            constant: contentInsets.bottom)
+                                                                             constant: contentInsets.bottom)
         }
         
         NSLayoutConstraint.activate([cnstrRightSwipeContent, cnstrBottomSwipeContent, cnstrTopSwipeContent, cnstrLeftSwipeContent])
@@ -85,10 +85,10 @@ extension SVCSwipeViewController {
         } else {
             if #available(iOS 11.0, *) {
                 cnstrTopSwipeContent = swipeContent.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor,
-                                                                        constant: contentInsets.top)
+                                                                         constant: contentInsets.top)
             } else {
                 cnstrTopSwipeContent = swipeContent.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor,
-                                                                        constant: contentInsets.top)
+                                                                         constant: contentInsets.top)
             }
         }
         
@@ -105,18 +105,18 @@ extension SVCSwipeViewController {
         cnstrLeftScrollView = scrollView.leadingAnchor.constraint(equalTo: swipeContent.leadingAnchor,
                                                                   constant: viewControllersInsets.left)
         cnstrRightScrollView = swipeContent.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor,
-                                                                       constant: viewControllersInsets.right)
+                                                                      constant: viewControllersInsets.right)
         switch tabBarType {
         case .bottom:
             cnstrTopScrollView = scrollView.topAnchor.constraint(equalTo: swipeContent.topAnchor,
                                                                  constant: viewControllersInsets.top)
             cnstrBottomScrollView = swipeContent.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor,
-                                                                          constant: (tabBar?.height ?? 0) + viewControllersInsets.bottom)
+                                                                         constant: (tabBar?.height ?? 0) + viewControllersInsets.bottom)
         case .top:
             cnstrTopScrollView = scrollView.topAnchor.constraint(equalTo: swipeContent.topAnchor,
                                                                  constant: (tabBar?.height ?? 0) + viewControllersInsets.top)
             cnstrBottomScrollView = swipeContent.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor,
-                                                                          constant: viewControllersInsets.bottom)
+                                                                         constant: viewControllersInsets.bottom)
         }
         
         NSLayoutConstraint.activate([cnstrTopScrollView, cnstrRightScrollView, cnstrBottomScrollView, cnstrLeftScrollView])
@@ -177,10 +177,10 @@ extension SVCSwipeViewController {
         switch tabBarType {
         case .bottom:
             cnstrTopOrBottomTabBar = swipeContent.bottomAnchor.constraint(equalTo: tabBar.bottomAnchor,
-                                                                              constant: tabBarInsets.bottom)
+                                                                          constant: tabBarInsets.bottom)
         case .top:
             cnstrTopOrBottomTabBar = tabBar.topAnchor.constraint(equalTo: swipeContent.topAnchor,
-                                                                       constant: tabBarInsets.top)
+                                                                 constant: tabBarInsets.top)
         }
         
         NSLayoutConstraint.activate([cnstrTopOrBottomTabBar])
@@ -327,22 +327,22 @@ extension SVCSwipeViewController {
     }
     
     func createSnapshot(index: Int) {
-        guard isViewWillAppear else {
-            return
-        }
-        guard viewControllers[index].view.superview != nil else {
-            return
-        }
-        
-        /// Fix bug create more snapshots than needed
-        if snapShots[selectedItem]?.superview != nil {
-            snapShots[selectedItem]?.removeFromSuperview()
-        }
-        
-        /// Create snapshot
-        if let snapImage = viewControllers[index].view.snapshot {
-            snapShots[index] = UIImageView(image: snapImage)
-        }
+//        guard isViewWillAppear else {
+//            return
+//        }
+//        guard viewControllers[index].view.superview != nil else {
+//            return
+//        }
+//
+//        /// Fix bug create more snapshots than needed
+//        if snapShots[selectedItem]?.superview != nil {
+//            snapShots[selectedItem]?.removeFromSuperview()
+//        }
+//
+//        /// Create snapshot
+//        if let snapImage = self.viewControllers[index].view.snapshot {
+//            self.snapShots[index] = UIImageView(image: snapImage)
+//        }
     }
 }
 
@@ -367,10 +367,10 @@ extension SVCSwipeViewController {
     /// Move SwitchBar
     func moveTabBar(toItem: Int, fromItem: Int, percent: CGFloat, duration: TimeInterval, isTap: Bool) {
         tabBar?.move(toIndex: toItem,
-                        fromIndex: fromItem,
-                        percent: percent,
-                        isTap: isTap,
-                        duration: duration)
+                     fromIndex: fromItem,
+                     percent: percent,
+                     isTap: isTap,
+                     duration: duration)
     }
     
     /// Move ScrollView
@@ -391,10 +391,10 @@ extension SVCSwipeViewController {
                            animations: { [unowned self] in
                             
                             self.scrollView.contentOffset = CGPoint(x: self.scrollView.bounds.width * CGFloat(toItem), y: 0)
-            }, completion: { [weak self] _ in
-                
-                self?.mover.move(false)
-                self?.removeAllControllers()
+                }, completion: { [weak self] _ in
+                    
+                    self?.mover.move(false)
+                    self?.removeAllControllers()
             })
             
         }
@@ -473,10 +473,10 @@ extension SVCSwipeViewController: UIScrollViewDelegate {
             addViewController(index: toItem)
         }
         moveTabBar(toItem: toItem,
-                      fromItem: selectedItem,
-                      percent: percent,
-                      duration: 0.01,
-                      isTap: false)
+                   fromItem: selectedItem,
+                   percent: percent,
+                   duration: 0.01,
+                   isTap: false)
         moveNavigationBar(toItem: toItem,
                           fromItem: selectedItem,
                           percent: percent,
@@ -510,8 +510,8 @@ extension SVCSwipeViewController {
                             percent: 1,
                             duration: 0,
                             isTap: false)
-        }, completion: { [unowned self] _ -> Void in
-            self.mover.move(false)
+            }, completion: { [unowned self] _ -> Void in
+                self.mover.move(false)
         })
     }
 }

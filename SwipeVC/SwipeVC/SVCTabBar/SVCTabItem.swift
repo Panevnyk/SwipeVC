@@ -50,18 +50,18 @@ open class SVCTabItem: UIButton {
     ///   - isTap: if true - moving is a result of tap to item, if false - moving is a resultof scroll
     ///   - duration: duration of animation
     open func updateTitleColorStyle(toIndex: Int, fromIndex: Int, percent: CGFloat, isTap: Bool, duration: TimeInterval) {
-        UIView.animate(withDuration: duration, animations: { [weak self] in
-            let selectedColor = self?.titleColor(for: .selected) ?? .black
-            let normalColor = self?.titleColor(for: .normal) ?? .black
-            let realPercent = toIndex == self?.itemIndex ? 1 - percent : percent
+        UIView.animate(withDuration: duration, animations: {
+            let selectedColor = self.titleColor(for: .selected) ?? .black
+            let normalColor = self.titleColor(for: .normal) ?? .black
+            let realPercent = toIndex == self.itemIndex ? 1 - percent : percent
             
-            self?.titleLabel?.textColor = selectedColor.getCombineColor(percent: realPercent,
+            self.titleLabel?.textColor = selectedColor.getCombineColor(percent: realPercent,
                                                                         toColor: normalColor)
-        }) { [weak self] _ in
+        }) { _ in
             if percent == 0 || percent == 1 {
-                let realPercent = toIndex == self?.itemIndex ? 1 - percent : percent
+                let realPercent = toIndex == self.itemIndex ? 1 - percent : percent
                 
-                self?.isSelected = realPercent == 0
+                self.isSelected = realPercent == 0
             }
         }
     }
