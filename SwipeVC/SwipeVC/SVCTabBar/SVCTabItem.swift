@@ -7,7 +7,7 @@
 //
 
 import UIKit
- 
+
 /// SVCTabItem
 open class SVCTabItem: UIButton {
     
@@ -54,36 +54,29 @@ extension SVCTabItem {
     /// updateStyle
     ///
     /// - Parameters:
-    ///   - toIndex: move to ViewController index
-    ///   - fromIndex: move from ViewController index
-    ///   - percent: from 0 to 1, where 0 - 0%, 1 - 100%
-    ///   - isTap: if true - moving is a result of tap to item, if false - moving is a resultof scroll
+    ///   - percent: from 0 to 1, where 0 - unselected, 1 - selected
+    ///   - isTap: if true - moving is a result of tap to item, if false - moving is a result of scroll
     ///   - duration: duration of animation
-    open func updateStyle(toIndex: Int, fromIndex: Int, percent: CGFloat, isTap: Bool, duration: TimeInterval) {
-        updateTitleColorStyle(toIndex: toIndex, fromIndex: fromIndex, percent: percent, isTap: isTap, duration: duration)
+    func updateStyle(percent: CGFloat, isTap: Bool, duration: TimeInterval) {
+        updateTitleColorStyle(percent: percent, isTap: isTap, duration: duration)
     }
     
     /// updateTitleColorStyle
     ///
     /// - Parameters:
-    ///   - toIndex: move to ViewController index
-    ///   - fromIndex: move from ViewController index
-    ///   - percent: from 0 to 1, where 0 - 0%, 1 - 100%
+    ///   - percent: from 0 to 1, where 0 - unselected, 1 - selected
     ///   - isTap: if true - moving is a result of tap to item, if false - moving is a resultof scroll
     ///   - duration: duration of animation
-    open func updateTitleColorStyle(toIndex: Int, fromIndex: Int, percent: CGFloat, isTap: Bool, duration: TimeInterval) {
+    open func updateTitleColorStyle(percent: CGFloat, isTap: Bool, duration: TimeInterval) {
         UIView.animate(withDuration: duration, animations: {
             let selectedColor = self.titleColor(for: .selected) ?? .black
             let normalColor = self.titleColor(for: .normal) ?? .black
-            let realPercent = toIndex == self.itemIndex ? 1 - percent : percent
             
-            self.titleLabel?.textColor = selectedColor.getCombineColor(percent: realPercent,
-                                                                        toColor: normalColor)
+            self.titleLabel?.textColor = selectedColor.getCombineColor(percent: percent,
+                                                                       toColor: normalColor)
         }) { _ in
             if percent == 0 || percent == 1 {
-                let realPercent = toIndex == self.itemIndex ? 1 - percent : percent
-                
-                self.isSelected = realPercent == 0
+                self.isSelected = percent == 1
             }
         }
     }

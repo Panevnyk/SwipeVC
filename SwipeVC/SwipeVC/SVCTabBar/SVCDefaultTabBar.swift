@@ -118,7 +118,10 @@ open class SVCDefaultTabBar: UIView, SVCTabBar {
         containerMoveView.addSubview(moveView)
     }
 
+    // ---------------------------------------------------------------------
     // MARK: - Move
+    // ---------------------------------------------------------------------
+    
     /// move
     ///
     /// - Parameters:
@@ -127,7 +130,22 @@ open class SVCDefaultTabBar: UIView, SVCTabBar {
     ///   - percent: percent of change
     ///   - isTap: is method called after tap to item
     ///   - duration: duration for animation change
-    public func move(toIndex: Int, fromIndex: Int, percent: CGFloat, isTap: Bool, duration: TimeInterval) {
+    open func move(toIndex: Int, fromIndex: Int, percent: CGFloat, isTap: Bool, duration: TimeInterval) {
+        // animate move view
+        animateMoveView(toIndex: toIndex, fromIndex: fromIndex, percent: percent, isTap: isTap, duration: duration)
+        
+        // SVCTabBarMoveDelegate
+        moveDelegate?.move(toIndex: toIndex, fromIndex: fromIndex, percent: percent, isTap: isTap, duration: duration)
+        
+        // updateStyle
+        items[toIndex].updateStyle(percent: percent, isTap: isTap, duration: duration)
+        items[fromIndex].updateStyle(percent: 1 - percent, isTap: isTap, duration: duration)
+    }
+}
+
+// MARK: - Animate MoveView
+extension SVCDefaultTabBar {
+    open func animateMoveView(toIndex: Int, fromIndex: Int, percent: CGFloat, isTap: Bool, duration: TimeInterval) {
         // animate move view
         if !moveView.isHidden {
             let magicK = CGFloat(abs(toIndex - fromIndex))
@@ -158,13 +176,6 @@ open class SVCDefaultTabBar: UIView, SVCTabBar {
                 }, completion: nil)
             }
         }
-        
-        // SVCTabBarMoveDelegate
-        moveDelegate?.move(toIndex: toIndex, fromIndex: fromIndex, percent: percent, isTap: isTap, duration: duration)
-        
-        // updateStyle
-        items[toIndex].updateStyle(toIndex: toIndex, fromIndex: fromIndex, percent: percent, isTap: isTap, duration: duration)
-        items[fromIndex].updateStyle(toIndex: toIndex, fromIndex: fromIndex, percent: percent, isTap: isTap, duration: duration)
     }
 }
 
