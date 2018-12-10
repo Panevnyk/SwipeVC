@@ -33,6 +33,7 @@
 		D18C81BD2003C945005B176A /* SVCSwipeViewController+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18C81B02003C945005B176A /* SVCSwipeViewController+UI.swift */; };
 		D1A5684D21B97C4E000AAD62 /* SwipeVC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D18C81852003C8F4005B176A /* SwipeVC.framework */; };
 		D1A5684E21B97C4E000AAD62 /* SwipeVC.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D18C81852003C8F4005B176A /* SwipeVC.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D1B1062521BEC45000215AD5 /* SVCItemAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B1062421BEC45000215AD5 /* SVCItemAnimator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,6 +97,7 @@
 		D18C81AE2003C945005B176A /* SVCMover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SVCMover.swift; sourceTree = "<group>"; };
 		D18C81AF2003C945005B176A /* SVCSwipeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SVCSwipeViewController.swift; sourceTree = "<group>"; };
 		D18C81B02003C945005B176A /* SVCSwipeViewController+UI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SVCSwipeViewController+UI.swift"; sourceTree = "<group>"; };
+		D1B1062421BEC45000215AD5 /* SVCItemAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SVCItemAnimator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,6 +192,7 @@
 		D18C819F2003C945005B176A /* SwipeVC */ = {
 			isa = PBXGroup;
 			children = (
+				D1B1062321BEC42000215AD5 /* SVCAnimators */,
 				D18C81A02003C945005B176A /* SVCHelpers */,
 				D18C81A42003C945005B176A /* SVCTabBar */,
 				D18C81A92003C945005B176A /* SVCNavigationBar */,
@@ -246,6 +249,14 @@
 				D157CE0D21B7F5F1002F92E1 /* LaunchScreen.storyboard */,
 			);
 			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		D1B1062321BEC42000215AD5 /* SVCAnimators */ = {
+			isa = PBXGroup;
+			children = (
+				D1B1062421BEC45000215AD5 /* SVCItemAnimator.swift */,
+			);
+			path = SVCAnimators;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -417,6 +428,7 @@
 				D18C81B42003C945005B176A /* SVCTabItem.swift in Sources */,
 				D18C81B12003C945005B176A /* SVCUIView+Constraint.swift in Sources */,
 				D18C81B82003C945005B176A /* SVCNavigationItem.swift in Sources */,
+				D1B1062521BEC45000215AD5 /* SVCItemAnimator.swift in Sources */,
 				D18C81B72003C945005B176A /* SVCTabBar.swift in Sources */,
 				D18C81BC2003C945005B176A /* SVCSwipeViewController.swift in Sources */,
 				D12CF8A621490EFA007FEA5C /* SVCUIColor+CombineColor.swift in Sources */,

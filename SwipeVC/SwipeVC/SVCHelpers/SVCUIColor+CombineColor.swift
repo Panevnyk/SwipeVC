@@ -16,7 +16,7 @@ extension UIColor {
     ///   - percent: CGFloat, from 0 to 1
     ///   - toColor: UIColor
     /// - Returns: UIColor
-    func getCombineColor(percent: CGFloat, toColor: UIColor) -> UIColor {
+    public func getCombineColor(percent: CGFloat, toColor: UIColor) -> UIColor {
         var red: CGFloat = 0
         var green: CGFloat = 0
         var blue: CGFloat = 0
