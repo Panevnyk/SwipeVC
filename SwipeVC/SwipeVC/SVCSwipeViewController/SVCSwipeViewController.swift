@@ -49,6 +49,9 @@ open class SVCSwipeViewController: UIViewController {
         }
     }
     
+    /// tabBarBottomView
+    public var tabBarBottomView: UIView?
+    
     /// ViewControllers that will be manage
     public var viewControllers: [UIViewController] = [] {
         didSet {
@@ -152,10 +155,7 @@ open class SVCSwipeViewController: UIViewController {
     // ---------------------------------------------------------------------
     // MARK: - Internal variable
     // ---------------------------------------------------------------------
-    
-    /// tabBarBottomView
-    var tabBarBottomView: UIView?
-    
+
     /// swipeContent
     lazy var swipeContent: UIView = {
         let swipeContent = UIView()
@@ -216,11 +216,13 @@ open class SVCSwipeViewController: UIViewController {
     var cnstrBottomSwipeContent: NSLayoutConstraint!
     var cnstrLeftSwipeContent: NSLayoutConstraint!
     var cnstrRightSwipeContent: NSLayoutConstraint!
+    
     // For tabBar insets
     var cnstrTopOrBottomTabBar: NSLayoutConstraint!
     var cnstrLeftTabBar: NSLayoutConstraint!
     var cnstrRightTabBar: NSLayoutConstraint!
     var cnstrHeightTabBar: NSLayoutConstraint!
+    
     // For scroll insets
     var cnstrTopScrollView: NSLayoutConstraint!
     var cnstrLeftScrollView: NSLayoutConstraint!

@@ -247,13 +247,14 @@ extension SVCSwipeViewController {
             v.translatesAutoresizingMaskIntoConstraints = false
             containerView.addSubview(v)
             
-            NSLayoutConstraint.activate([v.leadingAnchor.constraint(equalTo: i == 0 ?
-                containerView.leadingAnchor :
-                viewsBG[i - 1].trailingAnchor),
-                                         v.topAnchor.constraint(equalTo: containerView.topAnchor),
-                                         v.widthAnchor.constraint(equalTo: containerView.widthAnchor,
-                                                                  multiplier: 1.0 / CGFloat(widthMultiplier)),
-                                         v.heightAnchor.constraint(equalTo: containerView.heightAnchor)])
+            NSLayoutConstraint.activate([
+                v.leadingAnchor.constraint(equalTo: i == 0
+                    ? containerView.leadingAnchor
+                    : viewsBG[i - 1].trailingAnchor),
+                v.topAnchor.constraint(equalTo: containerView.topAnchor),
+                v.widthAnchor.constraint(equalTo: containerView.widthAnchor,
+                                         multiplier: 1.0 / CGFloat(widthMultiplier)),
+                v.heightAnchor.constraint(equalTo: containerView.heightAnchor)])
             viewsBG.append(v)
         }
     }
@@ -348,7 +349,7 @@ extension SVCSwipeViewController {
             mover.move(false)
         } else {
             
-            addControllers(fromIndex: fromItem, toIndex: toItem)
+            addViewControllers(fromIndex: fromItem, toIndex: toItem)
             
             UIView.animate(withDuration: duration,
                            delay: SVCSwipeViewController.moveVCDelay,
@@ -359,7 +360,7 @@ extension SVCSwipeViewController {
                 }, completion: { [weak self] _ in
                     
                     self?.mover.move(false)
-                    self?.removeAllControllersWithoutSelected()
+                    self?.removeAllViewControllersWithoutSelected()
             })
             
         }
@@ -373,7 +374,7 @@ extension SVCSwipeViewController {
     /// - Parameters:
     ///   - fromIndex: Int
     ///   - toIndex: Int
-    func addControllers(fromIndex: Int, toIndex: Int) {
+    func addViewControllers(fromIndex: Int, toIndex: Int) {
         guard fromIndex != toIndex else {
             return
         }
@@ -398,8 +399,8 @@ extension SVCSwipeViewController {
         }
     }
     
-    /// removeAllControllersWithoutSelected
-    func removeAllControllersWithoutSelected() {
+    /// removeAllViewControllersWithoutSelected
+    func removeAllViewControllersWithoutSelected() {
         guard !mover.isMoving else {
             return
         }
@@ -489,7 +490,7 @@ extension SVCSwipeViewController: UIScrollViewDelegate {
     ///
     /// - Parameter scrollView: that was scroll
     public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        removeAllControllersWithoutSelected()
+        removeAllViewControllersWithoutSelected()
     }
 }
 
