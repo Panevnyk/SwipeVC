@@ -8,7 +8,14 @@
 
 import UIKit
 
+/// CombineColor(
 extension UIColor {
+    /// getCombineColor
+    ///
+    /// - Parameters:
+    ///   - percent: CGFloat, from 0 to 1
+    ///   - toColor: UIColor
+    /// - Returns: UIColor
     func getCombineColor(percent: CGFloat, toColor: UIColor) -> UIColor {
         var red: CGFloat = 0
         var green: CGFloat = 0

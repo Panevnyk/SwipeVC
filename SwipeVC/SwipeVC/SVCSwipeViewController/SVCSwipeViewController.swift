@@ -10,10 +10,21 @@ import UIKit
 
 /// SVCSwipeViewController
 open class SVCSwipeViewController: UIViewController {
+    
+    // ---------------------------------------------------------------------
+    // MARK: - Constants
+    // ---------------------------------------------------------------------
+    
     /// BG view items top space
     public static let defaultNavigationBGViewForItemsTopSpace: CGFloat = 20
+    public static let moveVCDuration: TimeInterval = 0.3
+    public static let moveVCDelay: TimeInterval = 0
+    public static let moveVCAnimationOption = UIView.AnimationOptions.curveEaseInOut
     
-    // Public variable
+    // ---------------------------------------------------------------------
+    // MARK: - Public variable
+    // ---------------------------------------------------------------------
+    
     /// SVCNavigationBar, for add need injection
     public var navigationBar: (SVCNavigationBar & UIView)? {
         willSet {
@@ -26,6 +37,7 @@ open class SVCSwipeViewController: UIViewController {
             updateSwitchContentTopAnchor()
         }
     }
+    
     /// SVCTabBar, for add need injection
     public var tabBar: (SVCTabBar & UIView)? {
         willSet {
@@ -36,6 +48,7 @@ open class SVCSwipeViewController: UIViewController {
             addTabBar()
         }
     }
+    
     /// ViewControllers that will be manage
     public var viewControllers: [UIViewController] = [] {
         didSet {
@@ -45,6 +58,7 @@ open class SVCSwipeViewController: UIViewController {
             }
         }
     }
+    
     /// SwitchBarType for attaching
     public var tabBarType: SVCTabBarType = .bottom {
         didSet {
@@ -57,6 +71,7 @@ open class SVCSwipeViewController: UIViewController {
             }
         }
     }
+    
     /// Insets of all content (including SwitchBar and ViewControllers)
     public var contentInsets = UIEdgeInsets.zero {
         didSet {
@@ -70,6 +85,7 @@ open class SVCSwipeViewController: UIViewController {
             }
         }
     }
+    
     /// Insets of SwitchBar
     public var tabBarInsets = UIEdgeInsets.zero {
         didSet {
@@ -88,6 +104,7 @@ open class SVCSwipeViewController: UIViewController {
             }
         }
     }
+    
     /// Insets of ViewControllers
     public var viewControllersInsets = UIEdgeInsets.zero {
         didSet {
@@ -108,6 +125,7 @@ open class SVCSwipeViewController: UIViewController {
             }
         }
     }
+    
     /// scrollViewBounces
     public var scrollViewBounces: Bool = false {
         didSet {
@@ -123,10 +141,22 @@ open class SVCSwipeViewController: UIViewController {
             }
         }
     }
-
-    // Internal variable
+    
+    /// selectedItem
+    public var selectedItem = 0 {
+        willSet {
+            previousSelectedItem = selectedItem
+        }
+    }
+    
+    // ---------------------------------------------------------------------
+    // MARK: - Internal variable
+    // ---------------------------------------------------------------------
+    
+    /// tabBarBottomView
     var tabBarBottomView: UIView?
     
+    /// swipeContent
     lazy var swipeContent: UIView = {
         let swipeContent = UIView()
         swipeContent.backgroundColor = UIColor.clear
@@ -134,6 +164,7 @@ open class SVCSwipeViewController: UIViewController {
         return swipeContent
     }()
     
+    /// scrollView
     lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.delegate = self
@@ -145,55 +176,59 @@ open class SVCSwipeViewController: UIViewController {
         return scrollView
     }()
     
+    /// containerView
     lazy var containerView: UIView = {
         let containerView = UIView()
         containerView.translatesAutoresizingMaskIntoConstraints = false
         return containerView
     }()
     
+    /// isShowViewControllers
     var isShowViewControllers: [Int: Bool] = [:]
     
+    /// viewsBG
     var viewsBG: [UIView] = []
-    var snapShots: [Int: UIImageView] = [:]
+    
+    /// mover
     let mover = SVCMover()
+    
+    /// scrolling
     var scrolling = false
     
+    /// isViewReadyForUpdate
     var isViewReadyForUpdate = false
+    
+    /// isViewWillAppear
     var isViewWillAppear = false
     
+    /// cnstrConteinerViewWidth
     var cnstrConteinerViewWidth: NSLayoutConstraint?
     
-    var selectedItem = 0 {
-        willSet {
-            previousSelectedItem = selectedItem
-        }
-    }
+    /// previousSelectedItem
     var previousSelectedItem = 0
     
-    // Static variable
-    static let moveVCDuration: TimeInterval = 0.3
-    static let moveVCDelay: TimeInterval = 0
-    static let moveVCAnimationOption = UIView.AnimationOptions.curveEaseInOut
-
-    // Constraints
-    ///      For content insets
+    // ---------------------------------------------------------------------
+    // MARK: - Constraints
+    // ---------------------------------------------------------------------
+    
+    // For content insets
     var cnstrTopSwipeContent: NSLayoutConstraint!
     var cnstrBottomSwipeContent: NSLayoutConstraint!
     var cnstrLeftSwipeContent: NSLayoutConstraint!
     var cnstrRightSwipeContent: NSLayoutConstraint!
-    ///      For tabBar insets
+    // For tabBar insets
     var cnstrTopOrBottomTabBar: NSLayoutConstraint!
     var cnstrLeftTabBar: NSLayoutConstraint!
     var cnstrRightTabBar: NSLayoutConstraint!
     var cnstrHeightTabBar: NSLayoutConstraint!
-    ///      For scroll insets
+    // For scroll insets
     var cnstrTopScrollView: NSLayoutConstraint!
     var cnstrLeftScrollView: NSLayoutConstraint!
     var cnstrRightScrollView: NSLayoutConstraint!
     var cnstrBottomScrollView: NSLayoutConstraint!
 }
 
-// MARK: - Life circle methods
+// MARK: - Life cycle
 extension SVCSwipeViewController {
     override open func viewDidLoad() {
         super.viewDidLoad()

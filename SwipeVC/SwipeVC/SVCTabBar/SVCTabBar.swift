@@ -43,7 +43,7 @@ public protocol SVCTabBarMoveDelegate: class {
     /// - Parameters:
     ///   - toIndex: move to ViewController index
     ///   - fromIndex: move from ViewController index
-    ///   - percent: from 0 - 1, where 0 - 0%, 1 - 100%
+    ///   - percent: from 0 to 1, where 0 - 0%, 1 - 100%
     ///   - isTap: if true - moving is a result of tap to item, if false - moving is a resultof scroll
     ///   - duration: duration of animation
     func move(toIndex: Int, fromIndex: Int, percent: CGFloat, isTap: Bool, duration: TimeInterval)
@@ -65,7 +65,7 @@ public protocol SVCTabBar: class {
     /// - Parameters:
     ///   - toIndex: move to ViewController index
     ///   - fromIndex: move from ViewController index
-    ///   - percent: from 0 - 1, where 0 - 0%, 1 - 100%
+    ///   - percent: from 0 to 1, where 0 - 0%, 1 - 100%
     ///   - isTap: if true - moving is a result of tap to item, if false - moving is a resultof scroll
     ///   - duration: duration of animation
     func move(toIndex: Int, fromIndex: Int, percent: CGFloat, isTap: Bool, duration: TimeInterval)

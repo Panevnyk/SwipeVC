@@ -11,7 +11,16 @@ import UIKit
 /// SVCNavigationItem
 open class SVCNavigationItem: UIButton {
     
-    /// Inits
+    // ---------------------------------------------------------------------
+    // MARK: - Inits
+    // ---------------------------------------------------------------------
+    
+    /// init
+    ///
+    /// - Parameters:
+    ///   - image: UIImage?
+    ///   - target: Any?
+    ///   - action: Selector?
     public convenience init(image: UIImage?, target: Any?, action: Selector?) {
         self.init()
         setImage(image, for: .normal)
@@ -22,20 +31,33 @@ open class SVCNavigationItem: UIButton {
         initializer()
     }
 
+    /// init
+    ///
+    /// - Parameter title: String
     public convenience init(title: String) {
         self.init(frame: CGRect.zero)
         setTitle(title, for: UIControl.State())
     }
     
+    /// init
+    ///
+    /// - Parameter frame: CGRect
     override public init(frame: CGRect) {
         super.init(frame: frame)
         initializer()
     }
     
+    /// init
+    ///
+    /// - Parameter aDecoder: NSCoder
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         initializer()
     }
+    
+    // ---------------------------------------------------------------------
+    // MARK: - Methods
+    // ---------------------------------------------------------------------
     
     /// initializer
     private func initializer() {

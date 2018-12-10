@@ -10,7 +10,7 @@ import UIKit
 
 // MARK: - UI
 extension SVCSwipeViewController {
-    /// Create and update UI
+    /// createUI
     func createUI() {
         isViewReadyForUpdate = true
         
@@ -25,7 +25,7 @@ extension SVCSwipeViewController {
         view.layoutIfNeeded()
     }
     
-    /// SVCNavigationBar
+    /// addNavigationBar
     func addNavigationBar() {
         guard isViewReadyForUpdate else {
             return
@@ -51,7 +51,7 @@ extension SVCSwipeViewController {
             ])
     }
     
-    /// SwitchContent
+    /// addSwitchContent
     func addSwitchContent() {
         view.addSubview(swipeContent)
         
@@ -71,6 +71,7 @@ extension SVCSwipeViewController {
         NSLayoutConstraint.activate([cnstrRightSwipeContent, cnstrBottomSwipeContent, cnstrTopSwipeContent, cnstrLeftSwipeContent])
     }
     
+    /// updateSwitchContentTopAnchor
     func updateSwitchContentTopAnchor() {
         guard isViewReadyForUpdate else {
             return
@@ -95,7 +96,7 @@ extension SVCSwipeViewController {
         NSLayoutConstraint.activate([cnstrTopSwipeContent])
     }
     
-    /// ScrollView
+    /// addScrollView
     func addScrollView() {
         guard isViewReadyForUpdate else {
             return
@@ -122,7 +123,7 @@ extension SVCSwipeViewController {
         NSLayoutConstraint.activate([cnstrTopScrollView, cnstrRightScrollView, cnstrBottomScrollView, cnstrLeftScrollView])
     }
     
-    /// ContainerView
+    /// addConteinerView
     func addConteinerView() {
         guard isViewReadyForUpdate else {
             return
@@ -137,7 +138,7 @@ extension SVCSwipeViewController {
         updateContainerForViewController()
     }
     
-    /// SwitchBar
+    /// addTabBar
     func addTabBar() {
         guard isViewReadyForUpdate else {
             return
@@ -158,10 +159,11 @@ extension SVCSwipeViewController {
         
         NSLayoutConstraint.activate([cnstrHeightTabBar, cnstrTopOrBottomTabBar, cnstrRightTabBar, cnstrLeftTabBar])
         
-        /// addTabBarBottomView
+        // addTabBarBottomView
         addTabBarBottomView()
     }
     
+    /// updateSwitchBarTopOrBottomAnchor
     func updateSwitchBarTopOrBottomAnchor() {
         guard isViewReadyForUpdate else {
             return
@@ -186,7 +188,7 @@ extension SVCSwipeViewController {
         NSLayoutConstraint.activate([cnstrTopOrBottomTabBar])
     }
     
-    /// tabBarBottomView
+    /// addTabBarBottomView
     func addTabBarBottomView() {
         guard isTabBarBottomViewShow else {
             return
@@ -218,7 +220,7 @@ extension SVCSwipeViewController {
         }
     }
     
-    /// ConteinerView
+    /// updateContainerForViewController
     func updateContainerForViewController() {
         guard isViewReadyForUpdate else {
             return
@@ -226,7 +228,7 @@ extension SVCSwipeViewController {
         
         let widthMultiplier = viewControllers.count > 0 ? viewControllers.count : 1
         
-        /// Add width constraint to container
+        // Add width constraint to container
         if let cnstrConteinerViewWidth = cnstrConteinerViewWidth {
             scrollView.removeConstraint(cnstrConteinerViewWidth)
         }
@@ -236,10 +238,10 @@ extension SVCSwipeViewController {
             scrollView.addConstraint(cnstrConteinerViewWidth)
         }
         
-        /// Clear views BG
+        // Clear views BG
         clearViewsBG()
         
-        /// Create containerForViewController views
+        // Create containerForViewController views
         for i in 0 ..< viewControllers.count {
             let v = UIView()
             v.translatesAutoresizingMaskIntoConstraints = false
@@ -256,106 +258,57 @@ extension SVCSwipeViewController {
         }
     }
     
+    /// clearViewsBG
     func clearViewsBG() {
         viewsBG.forEach {
             $0.removeFromSuperview()
         }
         viewsBG.removeAll()
     }
-    
-    func addSnapshot(index: Int, snapshot: UIView) {
-        guard snapshot.superview == nil else {
-            return
-        }
-        
-        snapshot.translatesAutoresizingMaskIntoConstraints = false
-        viewsBG[index].addSubview(snapshot)
-        NSLayoutConstraint.activate(snapshot.constraint(toView: viewsBG[index]))
-    }
-    
-    func addViewController(index: Int) {
-        guard index < viewControllers.count else {
-            return
-        }
-        
-        if viewControllers[index].view.superview != nil {
-            removeViewController(index: index)
-        }
-        
-        isShowViewControllers[index] = true
-        let viewController = viewControllers[index]
-        addChild(viewController)
-        viewController.view.translatesAutoresizingMaskIntoConstraints = false
-        viewsBG[index].addSubview(viewController.view)
-        NSLayoutConstraint.activate(viewController.view.constraint(toView: viewsBG[index]))
-        didMove(toParent: self)
-        
-        createSnapshot(index: index)
-    }
-    
-    func removeViewController(index: Int) {
-        guard isShowViewControllers[index] ?? false else {
-            return
-        }
-        guard viewControllers[index].view.superview != nil else {
-            return
-        }
-        
-        isShowViewControllers[index] = false
-        willMove(toParent: nil)
-        viewControllers[index].view.removeFromSuperview()
-        viewControllers[index].removeFromParent()
-    }
-    
-    func removeSnapshot(index: Int) {
-        guard snapShots[index]?.superview != nil else {
-            return
-        }
-        guard !mover.isMoving else {
-            return
-        }
-        
-        snapShots[index]?.removeFromSuperview()
-    }
-    
+}
+
+// MARK: - work with scroll view offset
+extension SVCSwipeViewController {
+    /// updateScrollViewOffset
+    ///
+    /// - Parameter animated: Bool, default value - false
     func updateScrollViewOffset(animated: Bool = false) {
         updateScrollViewOffset(contentWidth: view.frame.width, animated: animated)
     }
     
+    /// updateScrollViewOffset
+    ///
+    /// - Parameters:
+    ///   - contentWidth: contentWidth descriptionCGFloat
+    ///   - animated: Bool, default value - false
     func updateScrollViewOffset(contentWidth: CGFloat, animated: Bool = false) {
         scrollView.setContentOffset(CGPoint(x: contentWidth * CGFloat(selectedItem), y: 0), animated: animated)
     }
-    
-    func createSnapshot(index: Int) {
-//        guard isViewWillAppear else {
-//            return
-//        }
-//        guard viewControllers[index].view.superview != nil else {
-//            return
-//        }
-//
-//        /// Fix bug create more snapshots than needed
-//        if snapShots[selectedItem]?.superview != nil {
-//            snapShots[selectedItem]?.removeFromSuperview()
-//        }
-//
-//        /// Create snapshot
-//        if let snapImage = self.viewControllers[index].view.snapshot {
-//            self.snapShots[index] = UIImageView(image: snapImage)
-//        }
-    }
 }
 
-// MARK: - Move element
-extension SVCSwipeViewController {
-    private func navigationBarDelegate(from viewController: UIViewController) -> SVCNavigationBarDelegate? {
+// MARK: - get navigationBarDelegate
+private extension SVCSwipeViewController {
+    /// navigationBarDelegate
+    ///
+    /// - Parameter viewController: from viewController
+    /// - Returns: SVCNavigationBarDelegate?
+    func navigationBarDelegate(from viewController: UIViewController) -> SVCNavigationBarDelegate? {
         if let navigationController = viewController as? UINavigationController {
             return navigationController.viewControllers.first as? SVCNavigationBarDelegate
         }
         return viewController as? SVCNavigationBarDelegate
     }
-    
-    /// Move SVCNavigationBar
+}
+
+// MARK: - Move element
+extension SVCSwipeViewController {
+    /// move navigation bar
+    ///
+    /// - Parameters:
+    ///   - toItem: Int
+    ///   - fromItem: Int
+    ///   - percent: CGFloat, percent of change from 0 to 1
+    ///   - duration: TimeInterval
     func moveNavigationBar(toItem: Int, fromItem: Int, percent: CGFloat, duration: TimeInterval) {
         navigationBar?.updateBarUsing(delegateFrom: navigationBarDelegate(from: viewControllers[fromItem]),
                                       delegateTo: navigationBarDelegate(from: viewControllers[toItem]),
@@ -364,7 +317,14 @@ extension SVCSwipeViewController {
                                       duration: duration)
     }
     
-    /// Move SwitchBar
+    /// move tab bar
+    ///
+    /// - Parameters:
+    ///   - toItem: Int
+    ///   - fromItem: Int
+    ///   - percent: CGFloat, percent of change from 0 to 1
+    ///   - duration: TimeInterval
+    ///   - isTap: Bool, tap to item or swipe scroll
     func moveTabBar(toItem: Int, fromItem: Int, percent: CGFloat, duration: TimeInterval, isTap: Bool) {
         tabBar?.move(toIndex: toItem,
                      fromIndex: fromItem,
@@ -373,7 +333,12 @@ extension SVCSwipeViewController {
                      duration: duration)
     }
     
-    /// Move ScrollView
+    /// Move scroll view between special items
+    ///
+    /// - Parameters:
+    ///   - toItem: Int
+    ///   - fromItem: Int
+    ///   - duration: TimeInterval
     func moveScrollView(toItem: Int, fromItem: Int, duration: TimeInterval) {
         mover.move(true)
         addViewController(index: toItem)
@@ -394,58 +359,92 @@ extension SVCSwipeViewController {
                 }, completion: { [weak self] _ in
                     
                     self?.mover.move(false)
-                    self?.removeAllControllers()
+                    self?.removeAllControllersWithoutSelected()
             })
             
         }
     }
 }
 
-// MARK: - SnapShot
+// MARK: - Work with ViewController
 extension SVCSwipeViewController {
+    /// addControllers between indexes
+    ///
+    /// - Parameters:
+    ///   - fromIndex: Int
+    ///   - toIndex: Int
     func addControllers(fromIndex: Int, toIndex: Int) {
         guard fromIndex != toIndex else {
             return
         }
         
         for i in min(fromIndex, toIndex) + 1 ..< max(fromIndex, toIndex) {
-            if let img = snapShots[i] {
-                addSnapshot(index: i, snapshot: img)
-            } else {
-                addViewController(index: i)
-            }
+            addViewController(index: i)
         }
     }
     
+    /// removeControllers between indexes
+    ///
+    /// - Parameters:
+    ///   - fromIndex: Int
+    ///   - toIndex: Int
     func removeControllers(fromIndex: Int, toIndex: Int) {
         guard fromIndex != toIndex else {
             return
         }
         
         for i in min(fromIndex, toIndex) + 1 ..< max(fromIndex, toIndex) {
-            if snapShots[i] != nil {
-                removeSnapshot(index: i)
-            } else {
-                removeViewController(index: i)
-            }
+            removeViewController(index: i)
         }
     }
     
-    func removeAllControllers() {
+    /// removeAllControllersWithoutSelected
+    func removeAllControllersWithoutSelected() {
         guard !mover.isMoving else {
             return
         }
         
-        for i in 0 ..< viewControllers.count {
-            
-            removeSnapshot(index: i)
-            
-            if i == selectedItem {
-                continue
-            }
-            
+        for i in 0 ..< viewControllers.count where i != selectedItem {
             removeViewController(index: i)
         }
+    }
+    
+    /// Add view controller to special index
+    ///
+    /// - Parameter index: Int
+    func addViewController(index: Int) {
+        guard index < viewControllers.count else {
+            return
+        }
+        
+        if viewControllers[index].view.superview != nil {
+            removeViewController(index: index)
+        }
+        
+        isShowViewControllers[index] = true
+        let viewController = viewControllers[index]
+        addChild(viewController)
+        viewController.view.translatesAutoresizingMaskIntoConstraints = false
+        viewsBG[index].addSubview(viewController.view)
+        NSLayoutConstraint.activate(viewController.view.constraint(toView: viewsBG[index]))
+        didMove(toParent: self)
+    }
+    
+    /// Remove view controller from special index
+    ///
+    /// - Parameter index: Int
+    func removeViewController(index: Int) {
+        guard isShowViewControllers[index] ?? false else {
+            return
+        }
+        guard viewControllers[index].view.superview != nil else {
+            return
+        }
+        
+        isShowViewControllers[index] = false
+        willMove(toParent: nil)
+        viewControllers[index].view.removeFromSuperview()
+        viewControllers[index].removeFromParent()
     }
 }
 
@@ -490,7 +489,7 @@ extension SVCSwipeViewController: UIScrollViewDelegate {
     ///
     /// - Parameter scrollView: that was scroll
     public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        removeAllControllers()
+        removeAllControllersWithoutSelected()
     }
 }
 

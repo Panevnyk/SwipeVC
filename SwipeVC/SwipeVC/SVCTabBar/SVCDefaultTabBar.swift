@@ -10,7 +10,11 @@ import UIKit
 
 /// SVCDefaultTabBar
 open class SVCDefaultTabBar: UIView, SVCTabBar {
+    
+    // ---------------------------------------------------------------------
     // MARK: - Properties
+    // ---------------------------------------------------------------------
+    
     /// DefaultBackgroundColor
     public static let defaultBackgroundColor = UIColor(red: 0.980, green: 0.980, blue: 0.980, alpha: 1.0)
     
@@ -21,6 +25,7 @@ open class SVCDefaultTabBar: UIView, SVCTabBar {
             addItems(newValue)
         }
     }
+    
     /// SVCTabBarDelegate
     public weak var delegate: SVCTabBarDelegate?
     
@@ -66,7 +71,10 @@ open class SVCDefaultTabBar: UIView, SVCTabBar {
     /// Default switch bar height
     public static let defaultSwitchBarHeight: CGFloat = 44
     
-    // Private variable
+    // ---------------------------------------------------------------------
+    // MARK: - Private variable
+    // ---------------------------------------------------------------------
+    
     /// view that containt moveView
     private lazy var containerMoveView: UIView = {
         let view = UIView()
@@ -78,20 +86,31 @@ open class SVCDefaultTabBar: UIView, SVCTabBar {
     
     /// left constraint
     private var cnstrMoveViewLeft: NSLayoutConstraint?
+    
     /// width constraint
     private var cnstrMoveViewWidth: NSLayoutConstraint?
     
+    // ---------------------------------------------------------------------
     // MARK: - Inits
+    // ---------------------------------------------------------------------
+    
+    /// init
+    ///
+    /// - Parameter frame: CGRect
     public override init(frame: CGRect) {
         super.init(frame: frame)
         initializer()
     }
     
+    /// init
+    ///
+    /// - Parameter aDecoder: NSCoder
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         initializer()
     }
     
+    /// initializer
     private func initializer() {
         translatesAutoresizingMaskIntoConstraints = false
         backgroundColor = SVCDefaultTabBar.defaultBackgroundColor
@@ -140,10 +159,10 @@ open class SVCDefaultTabBar: UIView, SVCTabBar {
             }
         }
         
-        /// SVCTabBarMoveDelegate
+        // SVCTabBarMoveDelegate
         moveDelegate?.move(toIndex: toIndex, fromIndex: fromIndex, percent: percent, isTap: isTap, duration: duration)
         
-        /// updateStyle
+        // updateStyle
         items[toIndex].updateStyle(toIndex: toIndex, fromIndex: fromIndex, percent: percent, isTap: isTap, duration: duration)
         items[fromIndex].updateStyle(toIndex: toIndex, fromIndex: fromIndex, percent: percent, isTap: isTap, duration: duration)
     }
@@ -213,7 +232,7 @@ private extension SVCDefaultTabBar {
         
         let allSpaces = 2 * tabBarSideInnerSpace
         
-        ///
+        //
         var attachConstraint: NSLayoutConstraint!
         if moveViewAttach == .top {
             attachConstraint = containerMoveView.topAnchor.constraint(equalTo: topAnchor)
@@ -226,7 +245,7 @@ private extension SVCDefaultTabBar {
         let height = containerMoveView.heightAnchor.constraint(equalToConstant: moveViewHeight)
         cnstrMoveViewLeft = containerMoveView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0)
         
-        ///
+        //
         let centerX1 = moveView.centerXAnchor.constraint(equalTo: containerMoveView.centerXAnchor)
         let top1 = moveView.topAnchor.constraint(equalTo: containerMoveView.topAnchor)
         let bottom1 = containerMoveView.bottomAnchor.constraint(equalTo: moveView.bottomAnchor)

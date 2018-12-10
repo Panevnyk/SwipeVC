@@ -8,13 +8,25 @@
 
 import UIKit
 
+/// SVCDefaultCollectionTabBar
 class SVCDefaultCollectionTabBar: UIView, SVCTabBar {
-    /// Constants
+    
+    // ---------------------------------------------------------------------
+    // MARK: - Constants
+    // ---------------------------------------------------------------------
     private static let identifier = "DefaultCollectionTabBarCell"
 
+    // ---------------------------------------------------------------------
+    // MARK: - Public variables
+    // ---------------------------------------------------------------------
+    
     /// Switch bar text
     public var texts: [String] = []
+    
+    /// Switch bar textColor
     public var textColor: UIColor = UIColor.black
+    
+    /// Switch bar textFont
     public var textFont: UIFont = UIFont.systemFont(ofSize: 15)
     
     /// SVCTabBarDelegate
@@ -25,26 +37,40 @@ class SVCDefaultCollectionTabBar: UIView, SVCTabBar {
     
     /// Height of switch bar
     public var height: CGFloat = 44
+    
+    /// Height of Cells
     public var heightOfCells: CGFloat = 44
     
     /// SelectedIndex
     public var selectedIndex: Int?
     
-    /// UICollectionView that contain items for manage screens
+    /// UICollectionViewFlowLayout
     public let collectionViewLayout = UICollectionViewFlowLayout()
+    
+    /// UICollectionView that contain items for manage screens
     public var collectionView: UICollectionView?
     
-    /// Inits
+    // ---------------------------------------------------------------------
+    // MARK: - Inits
+    // ---------------------------------------------------------------------
+    
+    /// init
+    ///
+    /// - Parameter frame: CGRect
     override public init(frame: CGRect) {
         super.init(frame: frame)
         initializer()
     }
     
+    /// init
+    ///
+    /// - Parameter aDecoder: NSCoder
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         initializer()
     }
     
+    /// initializer
     private func initializer() {
         translatesAutoresizingMaskIntoConstraints = false
         
@@ -87,7 +113,7 @@ class SVCDefaultCollectionTabBar: UIView, SVCTabBar {
             }
         }
         
-        /// SVCTabBarMoveDelegate
+        // SVCTabBarMoveDelegate
         moveDelegate?.move(toIndex: toIndex, fromIndex: fromIndex, percent: percent, isTap: isTap, duration: duration)
     }
 }
@@ -138,17 +164,27 @@ open class DefaultCollectionTabBarCell: UICollectionViewCell {
     /// cnstr
     var cnstrTitleLabelHeight: NSLayoutConstraint?
     
-    /// Inits
+    // ---------------------------------------------------------------------
+    // MARK: - Inits
+    // ---------------------------------------------------------------------
+    
+    /// init
+    ///
+    /// - Parameter frame: CGRect
     override public init(frame: CGRect) {
         super.init(frame: frame)
         initializer()
     }
     
+    /// init
+    ///
+    /// - Parameter aDecoder: NSCoder
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         initializer()
     }
     
+    /// initializer
     private func initializer() {
         addSubview(titleLabel)
         cnstrTitleLabelHeight = titleLabel.heightAnchor.constraint(equalToConstant: height)

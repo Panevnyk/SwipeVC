@@ -10,7 +10,27 @@ import UIKit
 
 /// SVCDefaultNavigationBar
 open class SVCDefaultNavigationBar: UIView, SVCNavigationBar {
-    // Public variable
+    
+    // ---------------------------------------------------------------------
+    // MARK: - Static variable
+    // ---------------------------------------------------------------------
+    
+    /// BG view for items top space
+    public static let defaultNavigationBGViewForItemsTopSpace: CGFloat = 0
+    
+    /// Default navigation bar height
+    public static let defaultNavigationBarHeight: CGFloat = 644
+    
+    /// BG view for items height
+    public static let defaultNavigationBGViewForItemsHeight: CGFloat = 44
+    
+    /// Item space in group view
+    private static let itemSpaceInGroupView: CGFloat = 7.5
+    
+    // ---------------------------------------------------------------------
+    // MARK: - Public variable
+    // ---------------------------------------------------------------------
+    
     /// Font
     public var titleFont: UIFont = UIFont.systemFont(ofSize: 17) {
         didSet {
@@ -18,6 +38,7 @@ open class SVCDefaultNavigationBar: UIView, SVCNavigationBar {
             titleViewTo.font = titleFont
         }
     }
+    
     /// TitleColor
     public var titleTextColor: UIColor = UIColor.black {
         didSet {
@@ -25,6 +46,7 @@ open class SVCDefaultNavigationBar: UIView, SVCNavigationBar {
             titleViewTo.textColor = titleTextColor
         }
     }
+    
     /// Number of lines
     public var titleNumberOfLines: Int = 1 {
         didSet {
@@ -33,14 +55,9 @@ open class SVCDefaultNavigationBar: UIView, SVCNavigationBar {
         }
     }
     
-    // Static variable
-    /// BG view for items top space
-    public static let defaultNavigationBGViewForItemsTopSpace: CGFloat = 0
-    /// Default navigation bar height
-    public static let defaultNavigationBarHeight: CGFloat = 644
-    /// BG view for items height
-    public static let defaultNavigationBGViewForItemsHeight: CGFloat = 44
-    private static let itemSpaceInGroupView: CGFloat = 7.5
+    // ---------------------------------------------------------------------
+    // MARK: - Private variable
+    // ---------------------------------------------------------------------
     
     /// Middle navigation
     private lazy var middleView: UIView = {
@@ -48,6 +65,7 @@ open class SVCDefaultNavigationBar: UIView, SVCNavigationBar {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
+    
     private lazy var titleViewFrom: UILabel = {
         let lbl = UILabel()
         lbl.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
@@ -55,6 +73,7 @@ open class SVCDefaultNavigationBar: UIView, SVCNavigationBar {
         lbl.textAlignment = .center
         return lbl
     }()
+    
     private lazy var titleViewTo: UILabel = {
         let lbl = UILabel()
         lbl.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
@@ -62,18 +81,21 @@ open class SVCDefaultNavigationBar: UIView, SVCNavigationBar {
         lbl.textAlignment = .center
         return lbl
     }()
+    
     private var leftGroupView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.clipsToBounds = true
         return view
     }()
+    
     private lazy var rightGroupView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.clipsToBounds = true
         return view
     }()
+    
     private var fromLeftGroupItems: [SVCNavigationItem] = []
     private var fromRightGroupItems: [SVCNavigationItem] = []
     private var toLeftGroupItems: [SVCNavigationItem] = []
@@ -88,6 +110,7 @@ open class SVCDefaultNavigationBar: UIView, SVCNavigationBar {
         view.backgroundColor = UIColor.clear
         return view
     }()
+    
     private var bottomViewFrom: UIView?
     private var bottomViewTo: UIView?
     private var bottomViewFromHeight: CGFloat = 0
@@ -97,17 +120,29 @@ open class SVCDefaultNavigationBar: UIView, SVCNavigationBar {
     /// Adding variable
     private var selectItem = -1
 
-    /// Inits
+    // ---------------------------------------------------------------------
+    // MARK: - Inits
+    // ---------------------------------------------------------------------
+    
+    /// init
+    ///
+    /// - Parameter frame: CGRect
     override init(frame: CGRect) {
         super.init(frame: frame)
         initializer()
     }
     
+    /// init
+    ///
+    /// - Parameter aDecoder: NSCoder
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         initializer()
     }
-    
+}
+
+// MARK: - UI
+extension SVCDefaultNavigationBar {
     func initializer() {
         layer.shadowColor = UIColor.black.withAlphaComponent(0.3).cgColor
         layer.shadowOpacity = 1
@@ -116,19 +151,17 @@ open class SVCDefaultNavigationBar: UIView, SVCNavigationBar {
         
         translatesAutoresizingMaskIntoConstraints = false
         clipsToBounds = false
+        
         initializeConstraints()
     }
-}
-
-// MARK: - UI
-extension SVCDefaultNavigationBar {
+    
     func initializeConstraints() {
         initializeMiddleView()
         initializeBottomContainerView()
     }
     
     func initializeMiddleView() {
-        /// middleView
+        // middleView
         addSubview(middleView)
         
         let middleLeft: NSLayoutConstraint
@@ -145,26 +178,26 @@ extension SVCDefaultNavigationBar {
                                                         constant: UIApplication.shared.statusBarFrame.height)
         let middleHeight = middleView.heightAnchor.constraint(equalToConstant: SVCDefaultNavigationBar.defaultNavigationBGViewForItemsHeight)
         
-        /// titleViewFrom
+        // titleViewFrom
         middleView.addSubview(titleViewFrom)
         let titleViewFromTop = titleViewFrom.topAnchor.constraint(equalTo: middleView.topAnchor)
         let titleViewFromBottom = middleView.bottomAnchor.constraint(equalTo: titleViewFrom.bottomAnchor)
         let titleViewFromCenterX = middleView.centerXAnchor.constraint(equalTo: titleViewFrom.centerXAnchor)
         
-        /// titleViewTo
+        // titleViewTo
         middleView.addSubview(titleViewTo)
         let titleViewToTop = titleViewTo.topAnchor.constraint(equalTo: middleView.topAnchor)
         let titleViewToBottom = middleView.bottomAnchor.constraint(equalTo: titleViewTo.bottomAnchor)
         let titleViewToCenterX = middleView.centerXAnchor.constraint(equalTo: titleViewTo.centerXAnchor)
         
-        /// leftGroupView
+        // leftGroupView
         middleView.addSubview(leftGroupView)
         let leftGroupViewLeft = leftGroupView.leadingAnchor.constraint(equalTo: middleView.leadingAnchor)
         let leftGroupViewTop = leftGroupView.topAnchor.constraint(equalTo: middleView.topAnchor)
         cnstrLeftGroupViewWidth = leftGroupView.widthAnchor.constraint(equalTo: middleView.widthAnchor, multiplier: 0.5)
         let leftGroupViewBottom = middleView.bottomAnchor.constraint(equalTo: leftGroupView.bottomAnchor)
         
-        /// rightGroupView
+        // rightGroupView
         middleView.addSubview(rightGroupView)
         let rightGroupViewRight = middleView.trailingAnchor.constraint(equalTo: rightGroupView.trailingAnchor)
         let rightGroupViewTop = rightGroupView.topAnchor.constraint(equalTo: middleView.topAnchor)
@@ -175,7 +208,8 @@ extension SVCDefaultNavigationBar {
             let cnstrRightGroupViewWidth = cnstrRightGroupViewWidth else {
             return
         }
-        /// Activate
+        
+        // Activate
         NSLayoutConstraint.activate([middleLeft, middleTop, middleRight, middleHeight,
                                      titleViewFromTop, titleViewFromBottom, titleViewFromCenterX,
                                      titleViewToTop, titleViewToBottom, titleViewToCenterX,
@@ -194,6 +228,7 @@ extension SVCDefaultNavigationBar {
         guard let cnstrBottomContainerViewHeight = cnstrBottomContainerViewHeight else {
            return
         }
+        
         NSLayoutConstraint.activate([left, top, right, bottom, cnstrBottomContainerViewHeight])
     }
     
@@ -206,8 +241,8 @@ extension SVCDefaultNavigationBar {
         return addedView
     }
     
-    /// if fixToLeftSide = true -> add left constrain
-    /// if fixToLeftSide = false -> add right constrain
+    // if fixToLeftSide = true -> add left constrain
+    // if fixToLeftSide = false -> add right constrain
     func addSubviews(items: [SVCNavigationItem], superView: UIView, fixToLeftSide: Bool) {
         for i in 0 ..< items.count {
             let item = items[i]
@@ -291,19 +326,21 @@ extension SVCDefaultNavigationBar {
         
         middleView.layoutIfNeeded()
         
-        /// To: slow at beginning
+        // To: slow at beginning
         UIView.animate(withDuration: duration, delay: 0, options: .curveLinear/*.curveEaseIn*/, animations: {
             updateTitle.to()
             updateGroupsItems.to()
             updateBarBottomView.to()
         }, completion: nil)
-        /// From: slow at end
+        
+        // From: slow at end
         UIView.animate(withDuration: duration, delay: 0, options: .curveLinear/*.curveEaseOut*/, animations: {
             updateTitle.from()
             updateGroupsItems.from()
             updateBarBottomView.from()
         }, completion: nil)
-        /// linear
+        
+        // linear
         UIView.animate(withDuration: duration, animations: {
             self.superview?.layoutIfNeeded()
         }, completion: { _ in })
@@ -314,18 +351,18 @@ extension SVCDefaultNavigationBar {
                                   percent: CGFloat,
                                   needReCreate: Bool) -> (from: () -> Void, to: () -> Void) {
         if needReCreate {
-            /// From
+            // From
             let fromString = delegateFrom?.navigationBarTitle() ?? ""
             titleViewFrom.text = fromString
             titleViewFrom.alpha = 1
             
-            /// To
+            // To
             let toString = delegateTo?.navigationBarTitle() ?? ""
             titleViewTo.text = toString
             titleViewTo.alpha = 0
         }
         
-        /// update left and right viewGroup
+        // update left and right viewGroup
         let sizeTo = titleViewTo.sizeThatFits(CGSize(width: middleView.frame.size.width, height: middleView.frame.size.height))
         let sizeFrom = titleViewFrom.sizeThatFits(CGSize(width: middleView.frame.size.width, height: middleView.frame.size.height))
         
@@ -352,19 +389,19 @@ extension SVCDefaultNavigationBar {
             _ = toLeftGroupItems.map({ (item) -> Void in item.removeFromSuperview() })
             _ = toRightGroupItems.map({ (item) -> Void in item.removeFromSuperview() })
             
-            /// Left From
+            // Left From
             fromLeftGroupItems = delegateFrom?.navigationBarLeftGroupItems() ?? []
             addSubviews(items: fromLeftGroupItems, superView: leftGroupView, fixToLeftSide: true)
             
-            /// Right From
+            // Right From
             fromRightGroupItems = delegateFrom?.navigationBarRightGroupItems() ?? []
             addSubviews(items: fromRightGroupItems, superView: rightGroupView, fixToLeftSide: false)
             
-            /// Left To
+            // Left To
             toLeftGroupItems = delegateTo?.navigationBarLeftGroupItems() ?? []
             addSubviews(items: toLeftGroupItems, superView: leftGroupView, fixToLeftSide: true)
             
-            /// Right To
+            // Right To
             toRightGroupItems = delegateTo?.navigationBarRightGroupItems() ?? []
             addSubviews(items: toRightGroupItems, superView: rightGroupView, fixToLeftSide: false)
             
@@ -412,20 +449,20 @@ extension SVCDefaultNavigationBar {
                                   percent: CGFloat,
                                   needReCreate: Bool) -> (from: () -> Void, to: () -> Void) {
         if needReCreate {
-            /// From
+            // From
             bottomViewFrom?.removeFromSuperview()
             let fromView = delegateFrom?.navigationBarBottomView() ?? UIView(frame: CGRect.zero)
             bottomViewFromHeight = fromView.frame.size.height
             bottomViewFrom = addBottomSubView(addedView: fromView)
             
-            /// To
+            // To
             bottomViewTo?.removeFromSuperview()
             let toView = delegateTo?.navigationBarBottomView() ?? UIView(frame: CGRect.zero)
             bottomViewToHeight = toView.frame.size.height
             bottomViewTo = addBottomSubView(addedView: toView)
             bottomViewTo?.alpha = 0
             
-            /// layoutIfNeeded All Bottom View
+            // layoutIfNeeded All Bottom View
             bottomContainerView.layoutIfNeeded()
         }
         

@@ -14,20 +14,24 @@ public protocol SVCNavigationBarDelegate: class {
     ///
     /// - Returns: SVCNavigationItem for left group
     func navigationBarLeftGroupItems() -> [SVCNavigationItem]?
+    
     /// navigationBarRightGroupItems
     ///
     /// - Returns: SVCNavigationItem for right group
     func navigationBarRightGroupItems() -> [SVCNavigationItem]?
+    
     /// navigationBarTitle
     ///
     /// - Returns: String for bar title
     func navigationBarTitle() -> String?
+    
     /// navigationBarBottomView
     ///
     /// - Returns: UIView for bottom bar view
     func navigationBarBottomView() -> UIView?
 }
 
+// MARK: - Optional realization of SVCNavigationBarDelegate
 extension SVCNavigationBarDelegate {
     func navigationBarLeftGroupItems() -> [SVCNavigationItem]? { return nil }
     func navigationBarRightGroupItems() -> [SVCNavigationItem]? { return nil }

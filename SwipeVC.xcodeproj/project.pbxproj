@@ -21,7 +21,6 @@
 		D18C81962003C8F4005B176A /* SwipeVC.h in Headers */ = {isa = PBXBuildFile; fileRef = D18C81882003C8F4005B176A /* SwipeVC.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D18C81B12003C945005B176A /* SVCUIView+Constraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18C81A12003C945005B176A /* SVCUIView+Constraint.swift */; };
 		D18C81B22003C945005B176A /* SVCInterpolateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18C81A22003C945005B176A /* SVCInterpolateHelper.swift */; };
-		D18C81B32003C945005B176A /* SVCUIView+Snapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18C81A32003C945005B176A /* SVCUIView+Snapshot.swift */; };
 		D18C81B42003C945005B176A /* SVCTabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18C81A52003C945005B176A /* SVCTabItem.swift */; };
 		D18C81B52003C945005B176A /* SVCDefaultCollectionTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18C81A62003C945005B176A /* SVCDefaultCollectionTabBar.swift */; };
 		D18C81B62003C945005B176A /* SVCDefaultTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18C81A72003C945005B176A /* SVCDefaultTabBar.swift */; };
@@ -87,7 +86,6 @@
 		D18C81952003C8F4005B176A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D18C81A12003C945005B176A /* SVCUIView+Constraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SVCUIView+Constraint.swift"; sourceTree = "<group>"; };
 		D18C81A22003C945005B176A /* SVCInterpolateHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SVCInterpolateHelper.swift; sourceTree = "<group>"; };
-		D18C81A32003C945005B176A /* SVCUIView+Snapshot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SVCUIView+Snapshot.swift"; sourceTree = "<group>"; };
 		D18C81A52003C945005B176A /* SVCTabItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SVCTabItem.swift; sourceTree = "<group>"; };
 		D18C81A62003C945005B176A /* SVCDefaultCollectionTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SVCDefaultCollectionTabBar.swift; sourceTree = "<group>"; };
 		D18C81A72003C945005B176A /* SVCDefaultTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SVCDefaultTabBar.swift; sourceTree = "<group>"; };
@@ -206,7 +204,6 @@
 			children = (
 				D18C81A12003C945005B176A /* SVCUIView+Constraint.swift */,
 				D18C81A22003C945005B176A /* SVCInterpolateHelper.swift */,
-				D18C81A32003C945005B176A /* SVCUIView+Snapshot.swift */,
 				D12CF8A521490EFA007FEA5C /* SVCUIColor+CombineColor.swift */,
 			);
 			path = SVCHelpers;
@@ -415,7 +412,6 @@
 				D18C81B72003C945005B176A /* SVCTabBar.swift in Sources */,
 				D18C81BC2003C945005B176A /* SVCSwipeViewController.swift in Sources */,
 				D12CF8A621490EFA007FEA5C /* SVCUIColor+CombineColor.swift in Sources */,
-				D18C81B32003C945005B176A /* SVCUIView+Snapshot.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

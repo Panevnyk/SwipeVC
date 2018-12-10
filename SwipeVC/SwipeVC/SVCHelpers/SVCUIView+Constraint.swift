@@ -8,8 +8,12 @@
 
 import UIKit
 
+/// constraint
 extension UIView {
     /// add simple constraints to view border
+    ///
+    /// - Parameter view: UIView
+    /// - Returns: [NSLayoutConstraint]
     func constraint(toView view: UIView) -> [NSLayoutConstraint] {
         return [
             leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -20,6 +24,11 @@ extension UIView {
     }
     
     /// add simple constraints to view border with insets
+    ///
+    /// - Parameters:
+    ///   - view: UIView
+    ///   - insets: UIEdgeInsets
+    /// - Returns: [NSLayoutConstraint]
     func constraint(toView view: UIView, insets: UIEdgeInsets) -> [NSLayoutConstraint] {
         return [
             leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: insets.left),
