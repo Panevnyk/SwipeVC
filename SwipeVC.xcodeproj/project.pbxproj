@@ -130,9 +130,8 @@
 			children = (
 				D157CE0421B7F5EF002F92E1 /* AppDelegate.swift */,
 				D157CE1A21B7FA3B002F92E1 /* ViewControllers */,
-				D157CE0821B7F5EF002F92E1 /* Main.storyboard */,
+				D1B1062221BEB61200215AD5 /* Storyboards */,
 				D157CE0B21B7F5F1002F92E1 /* Assets.xcassets */,
-				D157CE0D21B7F5F1002F92E1 /* LaunchScreen.storyboard */,
 				D157CE1021B7F5F1002F92E1 /* Info.plist */,
 			);
 			path = Example;
@@ -238,6 +237,15 @@
 				D18C81B02003C945005B176A /* SVCSwipeViewController+UI.swift */,
 			);
 			path = SVCSwipeViewController;
+			sourceTree = "<group>";
+		};
+		D1B1062221BEB61200215AD5 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				D157CE0821B7F5EF002F92E1 /* Main.storyboard */,
+				D157CE0D21B7F5F1002F92E1 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
