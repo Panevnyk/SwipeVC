@@ -36,7 +36,7 @@ public protocol SVCTabBarDelegate: class {
     func select(item: Int) -> Bool
 }
 
-/// SVCDefaultTabBarDelegate
+/// SVCTabBarDelegate
 public protocol SVCTabBarMoveDelegate: class {
     /// move
     ///
@@ -49,8 +49,14 @@ public protocol SVCTabBarMoveDelegate: class {
     func move(toIndex: Int, fromIndex: Int, percent: CGFloat, isTap: Bool, duration: TimeInterval)
 }
 
+/// Type that merge SVCTabItemProtocol and UIView
+public typealias SVCTabItemViewProtocol = (SVCTabItemProtocol & UIView)
+
 /// SVCTabBar
-public protocol SVCTabBar: class {
+public protocol SVCTabBarProtocol: class {
+    /// items
+    var items: [SVCTabItemViewProtocol] { get set }
+    
     /// SVCTabBar delegate
     var delegate: SVCTabBarDelegate? { get set }
     

@@ -1,5 +1,5 @@
 //
-//  SVCDefaultTabBar.swift
+//  SVCTabBar.swift
 //  SVCSwipeViewControllerSwift
 //
 //  Created by Panevnyk Vlad on 8/21/17.
@@ -8,8 +8,8 @@
 
 import UIKit
 
-/// SVCDefaultTabBar
-open class SVCDefaultTabBar: UIView, SVCTabBar {
+/// SVCTabBar
+open class SVCTabBar: UIView, SVCTabBarProtocol {
     
     // ---------------------------------------------------------------------
     // MARK: - Properties
@@ -19,7 +19,7 @@ open class SVCDefaultTabBar: UIView, SVCTabBar {
     public static let defaultBackgroundColor = UIColor(red: 0.980, green: 0.980, blue: 0.980, alpha: 1.0)
     
     /// Switch bar items
-    public var items: [SVCTabItem] = [] {
+    public var items: [SVCTabItemViewProtocol] = [] {
         willSet {
             clearItems(items)
             addItems(newValue)
@@ -113,7 +113,7 @@ open class SVCDefaultTabBar: UIView, SVCTabBar {
     /// initializer
     private func initializer() {
         translatesAutoresizingMaskIntoConstraints = false
-        backgroundColor = SVCDefaultTabBar.defaultBackgroundColor
+        backgroundColor = SVCTabBar.defaultBackgroundColor
         addSubview(containerMoveView)
         containerMoveView.addSubview(moveView)
     }
@@ -138,13 +138,15 @@ open class SVCDefaultTabBar: UIView, SVCTabBar {
         moveDelegate?.move(toIndex: toIndex, fromIndex: fromIndex, percent: percent, isTap: isTap, duration: duration)
         
         // updateStyle
-        items[toIndex].updateStyle(percent: percent, isTap: isTap, duration: duration)
-        items[fromIndex].updateStyle(percent: 1 - percent, isTap: isTap, duration: duration)
+        items[toIndex].updateStyle(percent: percent)
+        if toIndex != fromIndex {
+            items[fromIndex].updateStyle(percent: 1 - percent)
+        }
     }
 }
 
 // MARK: - Animate MoveView
-extension SVCDefaultTabBar {
+extension SVCTabBar {
     open func animateMoveView(toIndex: Int, fromIndex: Int, percent: CGFloat, isTap: Bool, duration: TimeInterval) {
         // animate move view
         if !moveView.isHidden {
@@ -179,16 +181,8 @@ extension SVCDefaultTabBar {
     }
 }
 
-// MARK: - Actions
-extension SVCDefaultTabBar {
-    @objc private func itemTap(_ sender: UIButton) {
-        let index = sender.tag
-        delegate?.select(item: index)
-    }
-}
-
 // MARK: - Move methods
-private extension SVCDefaultTabBar {
+private extension SVCTabBar {
     func moveViewUpdate(proportionalLeftOffset: CGFloat) {
         cnstrMoveViewLeft?.constant = containerMoveView.bounds.width * proportionalLeftOffset + tabBarSideInnerSpace
     }
@@ -208,20 +202,18 @@ private extension SVCDefaultTabBar {
 }
 
 // MARK: - Constraints
-private extension SVCDefaultTabBar {
-    func clearItems(_ items: [SVCTabItem]) {
-        items.forEach {
-            $0.removeFromSuperview()
-        }
+private extension SVCTabBar {
+    func clearItems(_ items: [SVCTabItemViewProtocol]) {
+        items.forEach { $0.removeFromSuperview() }
     }
     
-    func addItems(_ items: [SVCTabItem]) {
+    func addItems(_ items: [SVCTabItemViewProtocol]) {
         let allSpaces = 2 * tabBarSideInnerSpace
         
         for (i, item) in items.enumerated() {
             item.tag = i
             item.itemIndex = i
-            item.addTarget(self, action: #selector(itemTap), for: .touchUpInside)
+            item.delegate = self
             item.translatesAutoresizingMaskIntoConstraints = false
             addSubview(item)
       
@@ -270,5 +262,12 @@ private extension SVCDefaultTabBar {
             return
         }
         NSLayoutConstraint.activate([cnstrMoveViewLeft, attachConstraint, height, width, centerX1, top1, bottom1, cnstrMoveViewWidth])
+    }
+}
+
+// MARK: - SVCTabItemDelegate
+extension SVCTabBar: SVCTabItemDelegate {
+    public func didSelect(item: Int) {
+        delegate?.select(item: item)
     }
 }
