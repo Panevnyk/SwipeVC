@@ -39,7 +39,7 @@ open class SVCSwipeViewController: UIViewController {
     }
     
     /// SVCTabBar, for add need injection
-    public var tabBar: (SVCTabBar & UIView)? {
+    public var tabBar: (SVCTabBarProtocol & UIView)? {
         willSet {
             tabBar?.removeFromSuperview()
             tabBarBottomView?.removeFromSuperview()

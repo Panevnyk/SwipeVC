@@ -22,9 +22,8 @@
 		D18C81B12003C945005B176A /* SVCUIView+Constraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18C81A12003C945005B176A /* SVCUIView+Constraint.swift */; };
 		D18C81B22003C945005B176A /* SVCInterpolateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18C81A22003C945005B176A /* SVCInterpolateHelper.swift */; };
 		D18C81B42003C945005B176A /* SVCTabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18C81A52003C945005B176A /* SVCTabItem.swift */; };
-		D18C81B52003C945005B176A /* SVCDefaultCollectionTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18C81A62003C945005B176A /* SVCDefaultCollectionTabBar.swift */; };
-		D18C81B62003C945005B176A /* SVCDefaultTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18C81A72003C945005B176A /* SVCDefaultTabBar.swift */; };
-		D18C81B72003C945005B176A /* SVCTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18C81A82003C945005B176A /* SVCTabBar.swift */; };
+		D18C81B62003C945005B176A /* SVCTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18C81A72003C945005B176A /* SVCTabBar.swift */; };
+		D18C81B72003C945005B176A /* SVCTabBarProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18C81A82003C945005B176A /* SVCTabBarProtocol.swift */; };
 		D18C81B82003C945005B176A /* SVCNavigationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18C81AA2003C945005B176A /* SVCNavigationItem.swift */; };
 		D18C81B92003C945005B176A /* SVCNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18C81AB2003C945005B176A /* SVCNavigationBar.swift */; };
 		D18C81BA2003C945005B176A /* SVCDefaultNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18C81AC2003C945005B176A /* SVCDefaultNavigationBar.swift */; };
@@ -33,7 +32,11 @@
 		D18C81BD2003C945005B176A /* SVCSwipeViewController+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18C81B02003C945005B176A /* SVCSwipeViewController+UI.swift */; };
 		D1A5684D21B97C4E000AAD62 /* SwipeVC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D18C81852003C8F4005B176A /* SwipeVC.framework */; };
 		D1A5684E21B97C4E000AAD62 /* SwipeVC.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D18C81852003C8F4005B176A /* SwipeVC.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		D1B1062521BEC45000215AD5 /* SVCItemAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B1062421BEC45000215AD5 /* SVCItemAnimator.swift */; };
+		D1AF347221C1483E00C75E31 /* SVCBounceAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1AF347121C1483E00C75E31 /* SVCBounceAnimator.swift */; };
+		D1AF347421C148FB00C75E31 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1AF347321C148FB00C75E31 /* Constants.swift */; };
+		D1AF347721C15D8B00C75E31 /* SVCTabItemProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1AF347621C15D8B00C75E31 /* SVCTabItemProtocol.swift */; };
+		D1AF347A21C1642700C75E31 /* SVCMovableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1AF347921C1642700C75E31 /* SVCMovableView.swift */; };
+		D1B1062521BEC45000215AD5 /* SVCAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B1062421BEC45000215AD5 /* SVCAnimator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,16 +91,19 @@
 		D18C81A12003C945005B176A /* SVCUIView+Constraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SVCUIView+Constraint.swift"; sourceTree = "<group>"; };
 		D18C81A22003C945005B176A /* SVCInterpolateHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SVCInterpolateHelper.swift; sourceTree = "<group>"; };
 		D18C81A52003C945005B176A /* SVCTabItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SVCTabItem.swift; sourceTree = "<group>"; };
-		D18C81A62003C945005B176A /* SVCDefaultCollectionTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SVCDefaultCollectionTabBar.swift; sourceTree = "<group>"; };
-		D18C81A72003C945005B176A /* SVCDefaultTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SVCDefaultTabBar.swift; sourceTree = "<group>"; };
-		D18C81A82003C945005B176A /* SVCTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SVCTabBar.swift; sourceTree = "<group>"; };
+		D18C81A72003C945005B176A /* SVCTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SVCTabBar.swift; sourceTree = "<group>"; };
+		D18C81A82003C945005B176A /* SVCTabBarProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SVCTabBarProtocol.swift; sourceTree = "<group>"; };
 		D18C81AA2003C945005B176A /* SVCNavigationItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SVCNavigationItem.swift; sourceTree = "<group>"; };
 		D18C81AB2003C945005B176A /* SVCNavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SVCNavigationBar.swift; sourceTree = "<group>"; };
 		D18C81AC2003C945005B176A /* SVCDefaultNavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SVCDefaultNavigationBar.swift; sourceTree = "<group>"; };
 		D18C81AE2003C945005B176A /* SVCMover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SVCMover.swift; sourceTree = "<group>"; };
 		D18C81AF2003C945005B176A /* SVCSwipeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SVCSwipeViewController.swift; sourceTree = "<group>"; };
 		D18C81B02003C945005B176A /* SVCSwipeViewController+UI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SVCSwipeViewController+UI.swift"; sourceTree = "<group>"; };
-		D1B1062421BEC45000215AD5 /* SVCItemAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SVCItemAnimator.swift; sourceTree = "<group>"; };
+		D1AF347121C1483E00C75E31 /* SVCBounceAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SVCBounceAnimator.swift; sourceTree = "<group>"; };
+		D1AF347321C148FB00C75E31 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		D1AF347621C15D8B00C75E31 /* SVCTabItemProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SVCTabItemProtocol.swift; sourceTree = "<group>"; };
+		D1AF347921C1642700C75E31 /* SVCMovableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SVCMovableView.swift; sourceTree = "<group>"; };
+		D1B1062421BEC45000215AD5 /* SVCAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SVCAnimator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -207,6 +213,7 @@
 				D18C81A12003C945005B176A /* SVCUIView+Constraint.swift */,
 				D18C81A22003C945005B176A /* SVCInterpolateHelper.swift */,
 				D12CF8A521490EFA007FEA5C /* SVCUIColor+CombineColor.swift */,
+				D1AF347321C148FB00C75E31 /* Constants.swift */,
 			);
 			path = SVCHelpers;
 			sourceTree = "<group>";
@@ -214,10 +221,8 @@
 		D18C81A42003C945005B176A /* SVCTabBar */ = {
 			isa = PBXGroup;
 			children = (
-				D18C81A52003C945005B176A /* SVCTabItem.swift */,
-				D18C81A62003C945005B176A /* SVCDefaultCollectionTabBar.swift */,
-				D18C81A72003C945005B176A /* SVCDefaultTabBar.swift */,
-				D18C81A82003C945005B176A /* SVCTabBar.swift */,
+				D1AF347521C15D2200C75E31 /* SVCTabItem */,
+				D1AF347821C1639100C75E31 /* SVCTabBar */,
 			);
 			path = SVCTabBar;
 			sourceTree = "<group>";
@@ -242,6 +247,25 @@
 			path = SVCSwipeViewController;
 			sourceTree = "<group>";
 		};
+		D1AF347521C15D2200C75E31 /* SVCTabItem */ = {
+			isa = PBXGroup;
+			children = (
+				D1AF347621C15D8B00C75E31 /* SVCTabItemProtocol.swift */,
+				D18C81A52003C945005B176A /* SVCTabItem.swift */,
+			);
+			path = SVCTabItem;
+			sourceTree = "<group>";
+		};
+		D1AF347821C1639100C75E31 /* SVCTabBar */ = {
+			isa = PBXGroup;
+			children = (
+				D18C81A82003C945005B176A /* SVCTabBarProtocol.swift */,
+				D18C81A72003C945005B176A /* SVCTabBar.swift */,
+				D1AF347921C1642700C75E31 /* SVCMovableView.swift */,
+			);
+			path = SVCTabBar;
+			sourceTree = "<group>";
+		};
 		D1B1062221BEB61200215AD5 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
@@ -254,7 +278,8 @@
 		D1B1062321BEC42000215AD5 /* SVCAnimators */ = {
 			isa = PBXGroup;
 			children = (
-				D1B1062421BEC45000215AD5 /* SVCItemAnimator.swift */,
+				D1B1062421BEC45000215AD5 /* SVCAnimator.swift */,
+				D1AF347121C1483E00C75E31 /* SVCBounceAnimator.swift */,
 			);
 			path = SVCAnimators;
 			sourceTree = "<group>";
@@ -419,18 +444,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				D18C81BA2003C945005B176A /* SVCDefaultNavigationBar.swift in Sources */,
-				D18C81B52003C945005B176A /* SVCDefaultCollectionTabBar.swift in Sources */,
 				D18C81BD2003C945005B176A /* SVCSwipeViewController+UI.swift in Sources */,
+				D1AF347721C15D8B00C75E31 /* SVCTabItemProtocol.swift in Sources */,
 				D18C81B22003C945005B176A /* SVCInterpolateHelper.swift in Sources */,
 				D18C81B92003C945005B176A /* SVCNavigationBar.swift in Sources */,
-				D18C81B62003C945005B176A /* SVCDefaultTabBar.swift in Sources */,
+				D18C81B62003C945005B176A /* SVCTabBar.swift in Sources */,
 				D18C81BB2003C945005B176A /* SVCMover.swift in Sources */,
+				D1AF347421C148FB00C75E31 /* Constants.swift in Sources */,
 				D18C81B42003C945005B176A /* SVCTabItem.swift in Sources */,
+				D1AF347A21C1642700C75E31 /* SVCMovableView.swift in Sources */,
 				D18C81B12003C945005B176A /* SVCUIView+Constraint.swift in Sources */,
 				D18C81B82003C945005B176A /* SVCNavigationItem.swift in Sources */,
-				D1B1062521BEC45000215AD5 /* SVCItemAnimator.swift in Sources */,
-				D18C81B72003C945005B176A /* SVCTabBar.swift in Sources */,
+				D1B1062521BEC45000215AD5 /* SVCAnimator.swift in Sources */,
+				D18C81B72003C945005B176A /* SVCTabBarProtocol.swift in Sources */,
 				D18C81BC2003C945005B176A /* SVCSwipeViewController.swift in Sources */,
+				D1AF347221C1483E00C75E31 /* SVCBounceAnimator.swift in Sources */,
 				D12CF8A621490EFA007FEA5C /* SVCUIColor+CombineColor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

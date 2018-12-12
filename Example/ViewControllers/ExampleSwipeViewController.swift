@@ -33,7 +33,7 @@ private extension ExampleSwipeViewController {
     }
     
     func tabBarInjection() {
-        let defaultTabBar = SVCDefaultTabBar()
+        let defaultTabBar = SVCTabBar()
         
         // Init first item
         let firstItem = SVCTabItem(type: .system)
