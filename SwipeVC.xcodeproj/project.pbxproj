@@ -37,7 +37,7 @@
 		D1AF347721C15D8B00C75E31 /* SVCTabItemProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1AF347621C15D8B00C75E31 /* SVCTabItemProtocol.swift */; };
 		D1AF347A21C1642700C75E31 /* SVCMovableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1AF347921C1642700C75E31 /* SVCMovableView.swift */; };
 		D1B1062521BEC45000215AD5 /* SVCAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B1062421BEC45000215AD5 /* SVCAnimator.swift */; };
-		D1C5DD7521C8FB200032A42B /* SVCValuesAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C5DD7421C8FB200032A42B /* SVCValuesAnimator.swift */; };
+		D1C5DD7521C8FB200032A42B /* SVCImagesAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C5DD7421C8FB200032A42B /* SVCImagesAnimator.swift */; };
 		D1C5DD7721C8FC420032A42B /* SVCRotationAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C5DD7621C8FC420032A42B /* SVCRotationAnimator.swift */; };
 		D1C5DD7921C8FEDD0032A42B /* SVCTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C5DD7821C8FEDD0032A42B /* SVCTransitionAnimator.swift */; };
 /* End PBXBuildFile section */
@@ -107,7 +107,7 @@
 		D1AF347621C15D8B00C75E31 /* SVCTabItemProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SVCTabItemProtocol.swift; sourceTree = "<group>"; };
 		D1AF347921C1642700C75E31 /* SVCMovableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SVCMovableView.swift; sourceTree = "<group>"; };
 		D1B1062421BEC45000215AD5 /* SVCAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SVCAnimator.swift; sourceTree = "<group>"; };
-		D1C5DD7421C8FB200032A42B /* SVCValuesAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SVCValuesAnimator.swift; sourceTree = "<group>"; };
+		D1C5DD7421C8FB200032A42B /* SVCImagesAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SVCImagesAnimator.swift; sourceTree = "<group>"; };
 		D1C5DD7621C8FC420032A42B /* SVCRotationAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SVCRotationAnimator.swift; sourceTree = "<group>"; };
 		D1C5DD7821C8FEDD0032A42B /* SVCTransitionAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SVCTransitionAnimator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -286,7 +286,7 @@
 			children = (
 				D1B1062421BEC45000215AD5 /* SVCAnimator.swift */,
 				D1AF347121C1483E00C75E31 /* SVCBounceAnimator.swift */,
-				D1C5DD7421C8FB200032A42B /* SVCValuesAnimator.swift */,
+				D1C5DD7421C8FB200032A42B /* SVCImagesAnimator.swift */,
 				D1C5DD7621C8FC420032A42B /* SVCRotationAnimator.swift */,
 				D1C5DD7821C8FEDD0032A42B /* SVCTransitionAnimator.swift */,
 			);
@@ -453,7 +453,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D18C81BA2003C945005B176A /* SVCDefaultNavigationBar.swift in Sources */,
-				D1C5DD7521C8FB200032A42B /* SVCValuesAnimator.swift in Sources */,
+				D1C5DD7521C8FB200032A42B /* SVCImagesAnimator.swift in Sources */,
 				D18C81BD2003C945005B176A /* SVCSwipeViewController+UI.swift in Sources */,
 				D1AF347721C15D8B00C75E31 /* SVCTabItemProtocol.swift in Sources */,
 				D1C5DD7721C8FC420032A42B /* SVCRotationAnimator.swift in Sources */,

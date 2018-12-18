@@ -8,26 +8,26 @@
 
 import UIKit
 
-/// SVCValuesAnimator
-open class SVCValuesAnimator: SVCAnimator {
+/// SVCImagesAnimator
+open class SVCImagesAnimator: SVCAnimator {
     /// duration
     public static let duration = 0.5
     
-    /// values
-    public let values: [Any]
+    /// images
+    public let images: [CGImage]
     
-    /// values
+    /// images
     ///
-    /// - Parameter values: [Any]
-    init(values: [Any]) {
-        self.values = values
+    /// - Parameter images: [CGImage]
+    init(images: [CGImage]) {
+        self.images = images
     }
     
     open func select(onView view: UIView) {
         let frameAnimation = CAKeyframeAnimation(keyPath: Constants.AnimationKeys.keyFrame)
         frameAnimation.calculationMode = CAAnimationCalculationMode.discrete
-        frameAnimation.duration = TimeInterval(SVCValuesAnimator.duration)
-        frameAnimation.values = values
+        frameAnimation.duration = TimeInterval(SVCImagesAnimator.duration)
+        frameAnimation.values = images
         frameAnimation.repeatCount = 1
         frameAnimation.isRemovedOnCompletion = false
         frameAnimation.fillMode = CAMediaTimingFillMode.forwards
