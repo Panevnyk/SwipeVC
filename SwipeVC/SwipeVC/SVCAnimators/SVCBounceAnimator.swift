@@ -11,7 +11,7 @@ import UIKit
 /// SVCBounceAnimator
 open class SVCBounceAnimator: SVCAnimator {
     /// duration
-    public static let duration = 0.25
+    public static let duration = 0.5
     
     open func select(onView view: UIView) {
         let bounceAnimation = CAKeyframeAnimation(keyPath: Constants.AnimationKeys.scale)
