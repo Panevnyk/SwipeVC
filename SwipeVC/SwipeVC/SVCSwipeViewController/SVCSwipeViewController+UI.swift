@@ -16,39 +16,12 @@ extension SVCSwipeViewController {
         
         automaticallyAdjustsScrollViewInsets = false
         
-        addNavigationBar()
         addSwitchContent()
         addScrollView()
         addConteinerView()
         addTabBar()
         
         view.layoutIfNeeded()
-    }
-    
-    /// addNavigationBar
-    func addNavigationBar() {
-        guard isViewReadyForUpdate else {
-            return
-        }
-        guard let navigationBar = navigationBar else {
-            return
-        }
-        
-        view.addSubview(navigationBar)
-        
-        let topConstraint: NSLayoutConstraint
-        if #available(iOS 11.0, *) {
-            topConstraint = navigationBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor,
-                                                               constant: -UIApplication.shared.statusBarFrame.height)
-        } else {
-            topConstraint = navigationBar.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor,
-                                                               constant: -UIApplication.shared.statusBarFrame.height)
-        }
-        NSLayoutConstraint.activate([
-            navigationBar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            navigationBar.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            topConstraint
-            ])
     }
     
     /// addSwitchContent
@@ -81,16 +54,12 @@ extension SVCSwipeViewController {
             NSLayoutConstraint.deactivate([cnstrTopSwipeContent])
         }
         
-        if let navigationBar = navigationBar {
-            cnstrTopSwipeContent = swipeContent.topAnchor.constraint(equalTo: navigationBar.bottomAnchor, constant: contentInsets.top)
+        if #available(iOS 11.0, *) {
+            cnstrTopSwipeContent = swipeContent.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor,
+                                                                     constant: contentInsets.top)
         } else {
-            if #available(iOS 11.0, *) {
-                cnstrTopSwipeContent = swipeContent.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor,
-                                                                         constant: contentInsets.top)
-            } else {
-                cnstrTopSwipeContent = swipeContent.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor,
-                                                                         constant: contentInsets.top)
-            }
+            cnstrTopSwipeContent = swipeContent.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor,
+                                                                     constant: contentInsets.top)
         }
         
         NSLayoutConstraint.activate([cnstrTopSwipeContent])
@@ -287,37 +256,8 @@ extension SVCSwipeViewController {
     }
 }
 
-// MARK: - get navigationBarDelegate
-private extension SVCSwipeViewController {
-    /// navigationBarDelegate
-    ///
-    /// - Parameter viewController: from viewController
-    /// - Returns: SVCNavigationBarDelegate?
-    func navigationBarDelegate(from viewController: UIViewController) -> SVCNavigationBarDelegate? {
-        if let navigationController = viewController as? UINavigationController {
-            return navigationController.viewControllers.first as? SVCNavigationBarDelegate
-        }
-        return viewController as? SVCNavigationBarDelegate
-    }
-}
-
 // MARK: - Move element
 extension SVCSwipeViewController {
-    /// move navigation bar
-    ///
-    /// - Parameters:
-    ///   - toItem: Int
-    ///   - fromItem: Int
-    ///   - percent: CGFloat, percent of change from 0 to 1
-    ///   - duration: TimeInterval
-    func moveNavigationBar(toItem: Int, fromItem: Int, percent: CGFloat, duration: TimeInterval) {
-        navigationBar?.updateBarUsing(delegateFrom: navigationBarDelegate(from: viewControllers[fromItem]),
-                                      delegateTo: navigationBarDelegate(from: viewControllers[toItem]),
-                                      percent: percent,
-                                      selectItem: toItem,
-                                      duration: duration)
-    }
-    
     /// move tab bar
     ///
     /// - Parameters:
@@ -477,10 +417,6 @@ extension SVCSwipeViewController: UIScrollViewDelegate {
                    percent: percent,
                    duration: 0.01,
                    isTap: false)
-        moveNavigationBar(toItem: toItem,
-                          fromItem: selectedItem,
-                          percent: percent,
-                          duration: 0.01)
         if percent == 1 {
             selectedItem = toItem
         }
@@ -501,10 +437,7 @@ extension SVCSwipeViewController {
         mover.move(true)
         coordinator.animate(alongsideTransition: { [unowned self] _ -> Void in
             self.updateScrollViewOffset(contentWidth: size.width)
-            self.moveNavigationBar(toItem: self.selectedItem,
-                                   fromItem: self.previousSelectedItem,
-                                   percent: 1,
-                                   duration: 0)
+            
             self.moveTabBar(toItem: self.selectedItem,
                             fromItem: self.previousSelectedItem,
                             percent: 1,

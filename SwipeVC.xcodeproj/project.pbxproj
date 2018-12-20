@@ -24,9 +24,6 @@
 		D18C81B42003C945005B176A /* SVCTabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18C81A52003C945005B176A /* SVCTabItem.swift */; };
 		D18C81B62003C945005B176A /* SVCTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18C81A72003C945005B176A /* SVCTabBar.swift */; };
 		D18C81B72003C945005B176A /* SVCTabBarProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18C81A82003C945005B176A /* SVCTabBarProtocol.swift */; };
-		D18C81B82003C945005B176A /* SVCNavigationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18C81AA2003C945005B176A /* SVCNavigationItem.swift */; };
-		D18C81B92003C945005B176A /* SVCNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18C81AB2003C945005B176A /* SVCNavigationBar.swift */; };
-		D18C81BA2003C945005B176A /* SVCDefaultNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18C81AC2003C945005B176A /* SVCDefaultNavigationBar.swift */; };
 		D18C81BB2003C945005B176A /* SVCMover.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18C81AE2003C945005B176A /* SVCMover.swift */; };
 		D18C81BC2003C945005B176A /* SVCSwipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18C81AF2003C945005B176A /* SVCSwipeViewController.swift */; };
 		D18C81BD2003C945005B176A /* SVCSwipeViewController+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18C81B02003C945005B176A /* SVCSwipeViewController+UI.swift */; };
@@ -96,9 +93,6 @@
 		D18C81A52003C945005B176A /* SVCTabItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SVCTabItem.swift; sourceTree = "<group>"; };
 		D18C81A72003C945005B176A /* SVCTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SVCTabBar.swift; sourceTree = "<group>"; };
 		D18C81A82003C945005B176A /* SVCTabBarProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SVCTabBarProtocol.swift; sourceTree = "<group>"; };
-		D18C81AA2003C945005B176A /* SVCNavigationItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SVCNavigationItem.swift; sourceTree = "<group>"; };
-		D18C81AB2003C945005B176A /* SVCNavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SVCNavigationBar.swift; sourceTree = "<group>"; };
-		D18C81AC2003C945005B176A /* SVCDefaultNavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SVCDefaultNavigationBar.swift; sourceTree = "<group>"; };
 		D18C81AE2003C945005B176A /* SVCMover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SVCMover.swift; sourceTree = "<group>"; };
 		D18C81AF2003C945005B176A /* SVCSwipeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SVCSwipeViewController.swift; sourceTree = "<group>"; };
 		D18C81B02003C945005B176A /* SVCSwipeViewController+UI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SVCSwipeViewController+UI.swift"; sourceTree = "<group>"; };
@@ -207,7 +201,6 @@
 				D1B1062321BEC42000215AD5 /* SVCAnimators */,
 				D18C81A02003C945005B176A /* SVCHelpers */,
 				D18C81A42003C945005B176A /* SVCTabBar */,
-				D18C81A92003C945005B176A /* SVCNavigationBar */,
 				D18C81AD2003C945005B176A /* SVCSwipeViewController */,
 			);
 			path = SwipeVC;
@@ -231,16 +224,6 @@
 				D1AF347821C1639100C75E31 /* SVCTabBar */,
 			);
 			path = SVCTabBar;
-			sourceTree = "<group>";
-		};
-		D18C81A92003C945005B176A /* SVCNavigationBar */ = {
-			isa = PBXGroup;
-			children = (
-				D18C81AA2003C945005B176A /* SVCNavigationItem.swift */,
-				D18C81AB2003C945005B176A /* SVCNavigationBar.swift */,
-				D18C81AC2003C945005B176A /* SVCDefaultNavigationBar.swift */,
-			);
-			path = SVCNavigationBar;
 			sourceTree = "<group>";
 		};
 		D18C81AD2003C945005B176A /* SVCSwipeViewController */ = {
@@ -452,13 +435,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D18C81BA2003C945005B176A /* SVCDefaultNavigationBar.swift in Sources */,
 				D1C5DD7521C8FB200032A42B /* SVCImagesAnimator.swift in Sources */,
 				D18C81BD2003C945005B176A /* SVCSwipeViewController+UI.swift in Sources */,
 				D1AF347721C15D8B00C75E31 /* SVCTabItemProtocol.swift in Sources */,
 				D1C5DD7721C8FC420032A42B /* SVCRotationAnimator.swift in Sources */,
 				D18C81B22003C945005B176A /* SVCInterpolateHelper.swift in Sources */,
-				D18C81B92003C945005B176A /* SVCNavigationBar.swift in Sources */,
 				D18C81B62003C945005B176A /* SVCTabBar.swift in Sources */,
 				D1C5DD7921C8FEDD0032A42B /* SVCTransitionAnimator.swift in Sources */,
 				D18C81BB2003C945005B176A /* SVCMover.swift in Sources */,
@@ -466,7 +447,6 @@
 				D18C81B42003C945005B176A /* SVCTabItem.swift in Sources */,
 				D1AF347A21C1642700C75E31 /* SVCMovableView.swift in Sources */,
 				D18C81B12003C945005B176A /* SVCUIView+Constraint.swift in Sources */,
-				D18C81B82003C945005B176A /* SVCNavigationItem.swift in Sources */,
 				D1B1062521BEC45000215AD5 /* SVCAnimator.swift in Sources */,
 				D18C81B72003C945005B176A /* SVCTabBarProtocol.swift in Sources */,
 				D18C81BC2003C945005B176A /* SVCSwipeViewController.swift in Sources */,

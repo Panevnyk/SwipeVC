@@ -25,19 +25,6 @@ open class SVCSwipeViewController: UIViewController {
     // MARK: - Public variable
     // ---------------------------------------------------------------------
     
-    /// SVCNavigationBar, for add need injection
-    public var navigationBar: (SVCNavigationBar & UIView)? {
-        willSet {
-            if let navigationBar = navigationBar {
-                navigationBar.removeFromSuperview()
-            }
-        }
-        didSet {
-            addNavigationBar()
-            updateSwitchContentTopAnchor()
-        }
-    }
-    
     /// SVCTabBar, for add need injection
     public var tabBar: (SVCTabBarProtocol & UIView)? {
         willSet {
@@ -293,7 +280,6 @@ extension SVCSwipeViewController: SVCTabBarDelegate {
         selectedItem = item
         let duration = animated ? SVCSwipeViewController.moveVCDuration : 0.0
         
-        moveNavigationBar(toItem: selectedItem, fromItem: previousSelectedItem, percent: 1, duration: duration)
         moveTabBar(toItem: selectedItem, fromItem: previousSelectedItem, percent: 1, duration: duration, isTap: true)
         moveScrollView(toItem: selectedItem, fromItem: previousSelectedItem, duration: duration)
         
