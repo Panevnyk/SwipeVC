@@ -10,6 +10,8 @@ import UIKit
 import SwipeVC
 
 final class ExampleSwipeViewController: SVCSwipeViewController {
+    private static let defaultStyleColor = UIColor(red: 30.0/255.0, green: 83.0/255.0, blue: 106.0/255.0, alpha: 1.0)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupSwipeVC()
@@ -33,7 +35,14 @@ private extension ExampleSwipeViewController {
     }
     
     func tabBarInjection() {
+        tabBarType = .bottom
+        
         let defaultTabBar = SVCTabBar()
+        
+        defaultTabBar.movableView.isHidden = false
+        defaultTabBar.movableView.backgroundColor = ExampleSwipeViewController.defaultStyleColor
+        defaultTabBar.movableView.bouncing = 0.5
+        defaultTabBar.movableView.attach = .top
         
         // Init first item
         let firstItem = SVCTabItem(type: .system)
