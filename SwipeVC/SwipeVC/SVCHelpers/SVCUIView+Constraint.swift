@@ -8,7 +8,7 @@
 
 import UIKit
 
-/// constraint
+/// Constraints
 extension UIView {
     /// add simple constraints to view border
     ///

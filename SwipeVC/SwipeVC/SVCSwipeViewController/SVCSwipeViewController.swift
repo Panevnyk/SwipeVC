@@ -26,7 +26,7 @@ open class SVCSwipeViewController: UIViewController {
     // ---------------------------------------------------------------------
     
     /// SVCTabBar, for add need injection
-    public var tabBar: (SVCTabBarProtocol & UIView)? {
+    open var tabBar: (SVCTabBarProtocol & UIView)? {
         willSet {
             tabBar?.removeFromSuperview()
             tabBarBottomView?.removeFromSuperview()
@@ -37,10 +37,10 @@ open class SVCSwipeViewController: UIViewController {
     }
     
     /// tabBarBottomView
-    public var tabBarBottomView: UIView?
+    open var tabBarBottomView: UIView?
     
     /// ViewControllers that will be manage
-    public var viewControllers: [UIViewController] = [] {
+    open var viewControllers: [UIViewController] = [] {
         didSet {
             if isViewLoaded {
                 updateContainerForViewController()
@@ -50,7 +50,7 @@ open class SVCSwipeViewController: UIViewController {
     }
     
     /// SwitchBarType for attaching
-    public var tabBarType: SVCTabBarType = .bottom {
+    open var tabBarType: SVCTabBarType = .bottom {
         didSet {
             updateSwitchBarTopOrBottomAnchor()
             switch tabBarType {
@@ -63,7 +63,7 @@ open class SVCSwipeViewController: UIViewController {
     }
     
     /// Insets of all content (including SwitchBar and ViewControllers)
-    public var contentInsets = UIEdgeInsets.zero {
+    open var contentInsets = UIEdgeInsets.zero {
         didSet {
             if isViewLoaded {
                 cnstrTopSwipeContent.constant = contentInsets.top
@@ -77,7 +77,7 @@ open class SVCSwipeViewController: UIViewController {
     }
     
     /// Insets of SwitchBar
-    public var tabBarInsets = UIEdgeInsets.zero {
+    open var tabBarInsets = UIEdgeInsets.zero {
         didSet {
             if isViewLoaded {
                 switch tabBarType {
@@ -96,7 +96,7 @@ open class SVCSwipeViewController: UIViewController {
     }
     
     /// Insets of ViewControllers
-    public var viewControllersInsets = UIEdgeInsets.zero {
+    open var viewControllersInsets = UIEdgeInsets.zero {
         didSet {
             if isViewLoaded {
                 switch tabBarType {
@@ -117,14 +117,14 @@ open class SVCSwipeViewController: UIViewController {
     }
     
     /// scrollViewBounces
-    public var scrollViewBounces: Bool = false {
+    open var scrollViewBounces: Bool = false {
         didSet {
             scrollView.bounces = scrollViewBounces
         }
     }
     
     /// isTabBarBottomViewShow
-    public var isTabBarBottomViewShow = true {
+    open var isTabBarBottomViewShow = true {
         didSet {
             if isViewLoaded {
                 addTabBarBottomView()
@@ -243,7 +243,7 @@ extension SVCSwipeViewController: SVCTabBarDelegate {
     /// - Parameter item: for selection
     /// - Returns: did item select
     @discardableResult
-    public func select(item: Int) -> Bool {
+    open func select(item: Int) -> Bool {
         guard selectedItem != item else {
             return false
         }
@@ -257,7 +257,7 @@ extension SVCSwipeViewController: SVCTabBarDelegate {
     ///   - animated: is animated
     /// - Returns: did item select
     @discardableResult
-    public func setSelectedItem(_ item: Int, animated: Bool) -> Bool {
+    open func setSelectedItem(_ item: Int, animated: Bool) -> Bool {
         if isViewWillAppear {
             return update(selectedItem: item, animated: animated)
         }
@@ -272,7 +272,7 @@ extension SVCSwipeViewController: SVCTabBarDelegate {
     ///   - animated: is animated update UI
     /// - Returns: did UI update
     @discardableResult
-    public func update(selectedItem item: Int, animated: Bool) -> Bool {
+    open func update(selectedItem item: Int, animated: Bool) -> Bool {
         guard item > -1 && item < viewControllers.count else {
             return false
         }

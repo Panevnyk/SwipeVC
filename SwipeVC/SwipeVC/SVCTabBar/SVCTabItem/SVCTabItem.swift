@@ -15,7 +15,7 @@ open class SVCTabItem: UIButton, SVCTabItemProtocol {
     // MARK: - Constants
     // ---------------------------------------------------------------------
     
-    public static let percentChangeForSelection: CGFloat = 0.5
+    open var percentChangeForSelection: CGFloat = 0.5
     
     // ---------------------------------------------------------------------
     // MARK: - Public variables
@@ -104,7 +104,7 @@ extension SVCTabItem {
     /// - Parameters:
     ///   - percent: from 0 to 1, where 0 - unselected, 1 - selected
     open func updateStyle(percent: CGFloat) {
-        isSelected = percent > SVCTabItem.percentChangeForSelection
+        isSelected = percent > percentChangeForSelection
     }
     
     /// update imageView and titleLabel using Animators

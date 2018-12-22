@@ -60,7 +60,7 @@ open class SVCTabBar: UIView, SVCTabBarProtocol {
     /// - Parameter frame: CGRect
     public override init(frame: CGRect) {
         super.init(frame: frame)
-        initializer()
+        initialize()
     }
     
     /// init
@@ -68,11 +68,11 @@ open class SVCTabBar: UIView, SVCTabBarProtocol {
     /// - Parameter aDecoder: NSCoder
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        initializer()
+        initialize()
     }
     
-    /// initializer
-    private func initializer() {
+    /// initialize
+    open func initialize() {
         translatesAutoresizingMaskIntoConstraints = false
         backgroundColor = SVCTabBar.defaultBackgroundColor
         addSubview(movableView)

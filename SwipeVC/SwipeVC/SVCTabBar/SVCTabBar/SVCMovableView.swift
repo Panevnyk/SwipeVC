@@ -25,19 +25,19 @@ open class SVCMovableView: UIView {
     }()
     
     /// Move view height
-    public var height: CGFloat = 1
+    open var height: CGFloat = 1
     
     /// Move view width
-    public var width: CGFloat = 0
+    open var width: CGFloat = 0
     
     /// Attaching of move view
-    public var attach: SVCMoveViewAttach = .bottom
+    open var attach: SVCMoveViewAttach = .bottom
     
     /// tabBarSideInnerSpace
     var tabBarSideInnerSpace: CGFloat = 0
     
     /// Bouncing of moveview
-    public var bouncing: CGFloat = 0 {
+    open var bouncing: CGFloat = 0 {
         didSet {
             if bouncing > 2 {
                 bouncing = 2
@@ -83,10 +83,7 @@ open class SVCMovableView: UIView {
         initialize()
     }
     
-    // ---------------------------------------------------------------------
-    // MARK: - initialize
-    // ---------------------------------------------------------------------
-    
+    /// initialize
     open func initialize() {
         super.backgroundColor = UIColor.clear
         translatesAutoresizingMaskIntoConstraints = false

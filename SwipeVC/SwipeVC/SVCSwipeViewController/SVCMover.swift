@@ -9,12 +9,12 @@
 import Foundation
 
 // SVCMover
-final class SVCMover {
+open class SVCMover {
     /// movingCounter
     private var movingCounter = 0
     
     /// isMoving
-    var isMoving: Bool {
+    open var isMoving: Bool {
         return movingCounter > 0
     }
     
@@ -23,7 +23,7 @@ final class SVCMover {
     /// - Parameter move: Bool
     /// - Returns: Bool
     @discardableResult
-    func move(_ move: Bool) -> Bool {
+    open func move(_ move: Bool) -> Bool {
         movingCounter += move ? 1 : -1
         return isMoving
     }
