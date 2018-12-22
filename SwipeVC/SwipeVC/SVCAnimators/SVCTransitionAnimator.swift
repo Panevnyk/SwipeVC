@@ -10,11 +10,11 @@ import UIKit
 
 /// SVCTransitionAnimator
 open class SVCTransitionAnimator: SVCAnimator {
-    /// duration
-    public static let duration = 0.5
-    
     /// transitionOptions
     public let transitionOptions: UIView.AnimationOptions
+    
+    /// duration
+    open var duration: TimeInterval = 0.5
     
     /// init
     ///
@@ -23,11 +23,19 @@ open class SVCTransitionAnimator: SVCAnimator {
         self.transitionOptions = transitionOptions
     }
     
+    /// select onView method describe selection view animation
+    ///
+    /// - Parameter view: View that will be animated
     open func select(onView view: UIView) {
-        UIView.transition(with: view, duration: TimeInterval(SVCTransitionAnimator.duration), options: transitionOptions, animations: {
-        }, completion: { _ in
-        })
+        UIView.transition(with: view,
+                          duration: duration,
+                          options: transitionOptions,
+                          animations: {},
+                          completion: { _ in })
     }
     
+    /// deselect onView method describe deselection view animation
+    ///
+    /// - Parameter view: View that will be animated
     open func deselect(onView view: UIView) {}
 }

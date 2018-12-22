@@ -10,11 +10,14 @@ import UIKit
 
 /// SVCRotationAnimator
 open class SVCRotationAnimator: SVCAnimator {
-    /// duration
-    public static let duration = 0.5
+    /// rotateAnimation
+    public let rotateAnimation = CABasicAnimation(keyPath: Constants.AnimationKeys.rotation)
     
     /// rotationDirection
     public let rotationDirection: SVCRotationDirection
+    
+    /// duration
+    open var duration: TimeInterval = 0.5
     
     /// init
     ///
@@ -33,8 +36,10 @@ open class SVCRotationAnimator: SVCAnimator {
         case right
     }
     
+    /// select onView method describe selection view animation
+    ///
+    /// - Parameter view: View that will be animated
     open func select(onView view: UIView) {
-        let rotateAnimation = CABasicAnimation(keyPath: Constants.AnimationKeys.rotation)
         rotateAnimation.fromValue = 0.0
         
         let toValue: CGFloat
@@ -46,10 +51,13 @@ open class SVCRotationAnimator: SVCAnimator {
         }
         
         rotateAnimation.toValue = toValue
-        rotateAnimation.duration = TimeInterval(SVCRotationAnimator.duration)
+        rotateAnimation.duration = duration
         
         view.layer.add(rotateAnimation, forKey: nil)
     }
     
+    /// deselect onView method describe deselection view animation
+    ///
+    /// - Parameter view: View that will be animated
     open func deselect(onView view: UIView) {}
 }

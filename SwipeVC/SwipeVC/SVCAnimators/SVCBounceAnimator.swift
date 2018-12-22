@@ -10,17 +10,31 @@ import UIKit
 
 /// SVCBounceAnimator
 open class SVCBounceAnimator: SVCAnimator {
-    /// duration
-    public static let duration = 0.5
+    /// bounceAnimation
+    public let bounceAnimation = CAKeyframeAnimation(keyPath: Constants.AnimationKeys.scale)
     
+    /// duration
+    open var duration: TimeInterval = 0.5
+    
+    // bounceValues
+    open var bounceValues = [1.0, 1.4, 0.9, 1.15, 0.95, 1.02, 1.0]
+    
+    /// calculationMode
+    open var calculationMode = CAAnimationCalculationMode.cubic
+    
+    /// select onView method describe selection view animation
+    ///
+    /// - Parameter view: View that will be animated
     open func select(onView view: UIView) {
-        let bounceAnimation = CAKeyframeAnimation(keyPath: Constants.AnimationKeys.scale)
-        bounceAnimation.values = [1.0, 1.4, 0.9, 1.15, 0.95, 1.02, 1.0]
-        bounceAnimation.duration = TimeInterval(SVCBounceAnimator.duration)
-        bounceAnimation.calculationMode = CAAnimationCalculationMode.cubic
+        bounceAnimation.values = bounceValues
+        bounceAnimation.duration = duration
+        bounceAnimation.calculationMode = calculationMode
         
         view.layer.add(bounceAnimation, forKey: nil)
     }
     
+    /// deselect onView method describe deselection view animation
+    ///
+    /// - Parameter view: View that will be animated
     open func deselect(onView view: UIView) {}
 }

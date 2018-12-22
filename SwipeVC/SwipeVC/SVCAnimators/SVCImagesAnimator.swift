@@ -10,11 +10,20 @@ import UIKit
 
 /// SVCImagesAnimator
 open class SVCImagesAnimator: SVCAnimator {
-    /// duration
-    public static let duration = 0.5
+    /// frameAnimation
+    public let frameAnimation = CAKeyframeAnimation(keyPath: Constants.AnimationKeys.keyFrame)
     
     /// images
     public let images: [CGImage]
+    
+    /// duration
+    open var duration: TimeInterval = 0.5
+    
+    /// calculationMode
+    open var calculationMode = CAAnimationCalculationMode.discrete
+    
+    /// fillMode
+    open var fillMode = CAMediaTimingFillMode.forwards
     
     /// images
     ///
@@ -23,17 +32,22 @@ open class SVCImagesAnimator: SVCAnimator {
         self.images = images
     }
     
+    /// select onView method describe selection view animation
+    ///
+    /// - Parameter view: View that will be animated
     open func select(onView view: UIView) {
-        let frameAnimation = CAKeyframeAnimation(keyPath: Constants.AnimationKeys.keyFrame)
-        frameAnimation.calculationMode = CAAnimationCalculationMode.discrete
-        frameAnimation.duration = TimeInterval(SVCImagesAnimator.duration)
+        frameAnimation.calculationMode = calculationMode
+        frameAnimation.duration = duration
         frameAnimation.values = images
         frameAnimation.repeatCount = 1
         frameAnimation.isRemovedOnCompletion = false
-        frameAnimation.fillMode = CAMediaTimingFillMode.forwards
+        frameAnimation.fillMode = fillMode
         
         view.layer.add(frameAnimation, forKey: nil)
     }
     
+    /// deselect onView method describe deselection view animation
+    ///
+    /// - Parameter view: View that will be animated
     open func deselect(onView view: UIView) {}
 }
