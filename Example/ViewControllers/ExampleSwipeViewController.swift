@@ -38,11 +38,7 @@ private extension ExampleSwipeViewController {
         tabBarType = .bottom
         
         let defaultTabBar = SVCTabBar()
-        
-        defaultTabBar.movableView.isHidden = false
-        defaultTabBar.movableView.backgroundColor = ExampleSwipeViewController.defaultStyleColor
-        defaultTabBar.movableView.bouncing = 0.5
-        defaultTabBar.movableView.attach = .top
+        showMovableView(onDefaultTabBar: defaultTabBar)
         
         // Init first item
         let firstItem = SVCTabItem(type: .system)
@@ -63,5 +59,12 @@ private extension ExampleSwipeViewController {
         
         // inject tab bar
         tabBar = defaultTabBar
+    }
+    
+    func showMovableView(onDefaultTabBar defaultTabBar: SVCTabBar) {
+        defaultTabBar.movableView.isHidden = false
+        defaultTabBar.movableView.backgroundColor = ExampleSwipeViewController.defaultStyleColor
+        defaultTabBar.movableView.bouncing = 0.5
+        defaultTabBar.movableView.attach = .top
     }
 }
