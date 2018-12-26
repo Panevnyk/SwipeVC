@@ -16,11 +16,14 @@ open class SVCBounceAnimator: SVCAnimator {
     /// duration
     open var duration: TimeInterval = 0.5
     
-    // bounceValues
+    /// bounceValues
     open var bounceValues = [1.0, 1.4, 0.9, 1.15, 0.95, 1.02, 1.0]
     
     /// calculationMode
     open var calculationMode = CAAnimationCalculationMode.cubic
+    
+    /// init
+    public init() {}
     
     /// select onView method describe selection view animation
     ///

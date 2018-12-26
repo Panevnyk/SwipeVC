@@ -28,7 +28,7 @@ open class SVCImagesAnimator: SVCAnimator {
     /// images
     ///
     /// - Parameter images: [CGImage]
-    init(images: [CGImage]) {
+    public init(images: [CGImage]) {
         self.images = images
     }
     

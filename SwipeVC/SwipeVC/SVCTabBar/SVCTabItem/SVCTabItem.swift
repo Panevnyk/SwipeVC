@@ -28,7 +28,7 @@ open class SVCTabItem: UIButton, SVCTabItemProtocol {
     open var itemIndex = 0
     
     /// Item imageView animators
-    open var imageViewAnimators: [SVCAnimator] = [SVCBounceAnimator()]
+    open var imageViewAnimators: [SVCAnimator] = []
     
     /// Item titleLabel animators
     open var titleLabelAnimators: [SVCAnimator] = []

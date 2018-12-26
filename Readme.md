@@ -1,5 +1,11 @@
 # SwipeVC
 
+<p>  
+<img src="https://github.com/Panevnyk/RestApiManager/blob/master/Images/Bounce_animator.gif" width="180"> 
+<img src="https://github.com/Panevnyk/RestApiManager/blob/master/Images/Bounce_animator.gif" width="180">
+<img src="https://github.com/Panevnyk/RestApiManager/blob/master/Images/Bounce_animator.gif" width="180">
+</p>
+
 SwipeVC lib created for helping you manage view controllers simply sliding left and right.
 You can inject tabBar for manage this screens by tap on item ( like UITabBar ).
 NavigationBar give for you possible for cool animation of change tab bar items and titles, that can be simply customize.For added NavigationBar you should simply inject it.
