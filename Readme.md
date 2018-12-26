@@ -1,11 +1,11 @@
 # SwipeVC
 
-<p>  
+<p align="center">  
 <img src="https://github.com/Panevnyk/SwipeVC/blob/master/Images/Combine_three_animators.gif" width="200"> 
 <img src="https://github.com/Panevnyk/SwipeVC/blob/master/Images/Combine_three_animators_top.gif" width="200">
 </p>
 
-<p>
+<p align="center">  
 <img src="https://github.com/Panevnyk/SwipeVC/blob/master/Images/Combine_three_animators2.gif" width="200">
 <img src="https://github.com/Panevnyk/SwipeVC/blob/master/Images/Combine_three_animators2_top.gif" width="200">
 </p>
@@ -50,7 +50,7 @@ final class ExampleSwipeViewController: SVCSwipeViewController {
 }
 ```
 
-For use tabBar, you should inject tabBar property. You can use SVCDefaultTabBar or SVCDefaultCollectionTabBar or your custom realization.
+For use tabBar, you should inject tabBar property. You can use SVCTabBar or your custom realization.
 
 #### SVCTabBar example:
 ```swift
