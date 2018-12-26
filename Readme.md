@@ -1,11 +1,9 @@
 # SwipeVC
 
-![](https://github.com/Panevnyk/SwipeVC/blob/master/Images/Bounce_animator.gif)
-
 <p>  
-<img src="https://github.com/Panevnyk/SwipeVC/blob/master/Images/Bounce_animator.gif" width="180"> 
-<img src="https://github.com/Panevnyk/SwipeVC/blob/master/Images/Bounce_animator.gif" width="180">
-<img src="https://github.com/Panevnyk/SwipeVC/blob/master/Images/Bounce_animator.gif" width="180">
+<img src="https://github.com/Panevnyk/SwipeVC/blob/master/Images/Bounce_animator.gif" width="200"> 
+<img src="https://github.com/Panevnyk/SwipeVC/blob/master/Images/Bounce_animator.gif" width="200">
+<img src="https://github.com/Panevnyk/SwipeVC/blob/master/Images/Bounce_animator.gif" width="200">
 </p>
 
 SwipeVC lib created for helping you manage view controllers simply sliding left and right.
