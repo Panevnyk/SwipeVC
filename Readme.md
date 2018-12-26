@@ -1,9 +1,9 @@
 # SwipeVC
 
 <p>  
-<img src="https://github.com/Panevnyk/SwipeVC/blob/master/Images/Bounce_animator.gif" width="200"> 
+<img src="https://github.com/Panevnyk/SwipeVC/blob/master/Images/Combine_three_animators.gif" width="200"> 
 <img src="https://github.com/Panevnyk/SwipeVC/blob/master/Images/Bounce_animator.gif" width="200">
-<img src="https://github.com/Panevnyk/SwipeVC/blob/master/Images/Bounce_animator.gif" width="200">
+<img src="https://github.com/Panevnyk/SwipeVC/blob/master/Images/Rotate_animator.gif" width="200">
 </p>
 
 SwipeVC lib created for helping you manage view controllers simply sliding left and right.
