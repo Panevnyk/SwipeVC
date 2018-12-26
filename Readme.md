@@ -3,6 +3,9 @@
 <p>  
 <img src="https://github.com/Panevnyk/SwipeVC/blob/master/Images/Combine_three_animators.gif" width="200"> 
 <img src="https://github.com/Panevnyk/SwipeVC/blob/master/Images/Combine_three_animators_top.gif" width="200">
+</p>
+
+<p>
 <img src="https://github.com/Panevnyk/SwipeVC/blob/master/Images/Combine_three_animators2.gif" width="200">
 <img src="https://github.com/Panevnyk/SwipeVC/blob/master/Images/Combine_three_animators2_top.gif" width="200">
 </p>
@@ -38,16 +41,18 @@ final class ExampleSwipeViewController: SVCSwipeViewController {
 
     private func addViewControllers() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let firstViewController = storyboard!.instantiateViewController(withIdentifier: "FirstViewController") as! FirstViewController
-        let secondViewController = storyboard!.instantiateViewController(withIdentifier: "SecondViewController") as! SecondViewController
-
-        viewControllers = [firstViewController, secondViewController]
+        let firstViewController = storyboard.instantiateViewController(withIdentifier: "FirstViewController") as! FirstViewController
+        let secondViewController = storyboard.instantiateViewController(withIdentifier: "SecondViewController") as! SecondViewController
+        let thirdViewController = storyboard.instantiateViewController(withIdentifier: "ThirdViewController") as! ThirdViewController
+        
+        viewControllers = [firstViewController, secondViewController, thirdViewController]
     }
 }
 ```
+
 For use tabBar, you should inject tabBar property. You can use SVCDefaultTabBar or SVCDefaultCollectionTabBar or your custom realization.
 
-#### SVCDefaultTabBar example:
+#### SVCTabBar example:
 ```swift
 final class ExampleSwipeViewController: SVCSwipeViewController {
     override func viewDidLoad() {
@@ -56,83 +61,85 @@ final class ExampleSwipeViewController: SVCSwipeViewController {
     }
 
     private func tabBarInjection() {
-        let defaultTabBar = SVCDefaultTabBar()
-        defaultTabBar.backgroundColor = UIColor.orange
-
-        /// Init first item
-        let firstItem = SVCTabItem(title: "First Item",
-        image: UIImage(named: "icFirstItem"))
-        firstItem.titleLabel?.font = UIFont.systemFont(ofSize: 15)
-        /// Init second item
-        let secondItem = SVCTabItem(title: "Second Item",
-        image: UIImage(named: "icSecondItem"))
-        secondItem.titleLabel?.font = UIFont.systemFont(ofSize: 15)
-
-        defaultTabBar?.items = [firstItem, secondItem]
-
-        /// inject tab bar
+        tabBarType = .top
+        
+        let defaultTabBar = SVCTabBar()
+        
+        // Init first item
+        let firstItem = SVCTabItem(type: .system)
+        firstItem.imageViewAnimators = [SVCTransitionAnimator(transitionOptions: .transitionFlipFromTop)]
+        firstItem.setImage(UIImage(named: "ic_location_menu_normal")?.withRenderingMode(.alwaysOriginal), for: .normal)
+        firstItem.setImage(UIImage(named: "ic_location_menu_selected")?.withRenderingMode(.alwaysOriginal), for: .selected)
+        
+        // Init second item
+        let secondItem = SVCTabItem(type: .system)
+        secondItem.imageViewAnimators = [SVCTransitionAnimator(transitionOptions: .transitionFlipFromRight)]
+        secondItem.setImage(UIImage(named: "ic_users_menu_normal")?.withRenderingMode(.alwaysOriginal), for: .normal)
+        secondItem.setImage(UIImage(named: "ic_users_menu_selected")?.withRenderingMode(.alwaysOriginal), for: .selected)
+        
+        // Init third item
+        let thirdItem = SVCTabItem(type: .system)
+        thirdItem.imageViewAnimators = [SVCTransitionAnimator(transitionOptions: .transitionFlipFromBottom)]
+        thirdItem.setImage(UIImage(named: "ic_media_menu_normal")?.withRenderingMode(.alwaysOriginal), for: .normal)
+        thirdItem.setImage(UIImage(named: "ic_media_menu_selected")?.withRenderingMode(.alwaysOriginal), for: .selected)
+        
+        defaultTabBar.items = [firstItem, secondItem, thirdItem]
+        
+        // inject tab bar
         tabBar = defaultTabBar
     }
 }
 ```
 
-#### SVCDefaultCollectionTabBar example:
+You can you use different Animators for SVCTabItem. SwipeVC has SVCBounceAnimator(), SVCRotationAnimator(), SVCImagesAnimator(), SVCTransitionAnimator() ...
+Or create your own Animator simply realized SVCAnimator protocol.
+
+#### SVCAnimator example:
+
 ```swift
-final class ExampleSwipeViewController: SVCSwipeViewController {
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        tabBarInjection()
-    }
-
-    private func tabBarInjection() {
-        let defaultCollectionTabBar = SVCDefaultCollectionTabBar()
-        defaultCollectionTabBar.backgroundColor = UIColor.orange
-        defaultCollectionTabBar.textFont = UIFont.systemFont(ofSize: 15)
-        defaultCollectionTabBar.textColor = UIColor.black
-        defaultCollectionTabBar.texts = ["First", "Second", "Third", "Fourth"]
-
-        /// inject tab bar
-        tabBar = defaultCollectionTabBar
-    }
-}
+let tabBarItem = SVCTabItem(type: .system)
+tabBarItem.imageViewAnimators = [SVCBounceAnimator()]
+tabBarItem.titleLabelAnimators = [SVCTransitionAnimator(transitionOptions: .transitionFlipFromBottom)]
 ```
-For use NavigationBar, you should inject navigationBar property,  and you should realize SVCNavigationBarDelegate in you child view controller. You can use SVCDefaultNavigationBar or your custom realization for navigationBar injection.
 
-#### SVCDefaultNavigationBar example:
 ```swift
-final class ExampleSwipeViewController: SVCSwipeViewController {
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        tabBarInjection()
-        navigationBarInjection()
+open class SomeCustomAnimator: SVCAnimator {
+    open func select(onView view: UIView) {
+        // Some select animation
     }
 
-    private func navigationBarInjection() {
-        let defaultNavigationBar = SVCDefaultNavigationBar()
-        defaultNavigationBar.backgroundColor = UIColor.blue
-        defaultNavigationBar.titleTextColor = UIColor.white
-        navigationBar = defaultNavigationBar
+    open func deselect(onView view: UIView) {
+        // Some deselect animation
     }
 }
 
-final class FirstViewController: UIViewController, SVCNavigationBarDelegate {
-    func navigationBarRightGroupItems() -> [NavigationItem]? {
-        return[NavigationItem(image: UIImage(named: "icUser"),
-        target: self,
-        action: #selector(buttonAction()))]
-    }
+// And simple set animator to your item(image or title)
+tabBarItem.imageViewAnimators = [SomeCustomAnimator()]
+tabBarItem.titleViewAnimators = [SomeCustomAnimator()]
+```
 
-    func navigationBarBottomView() -> UIView? {
-        let bottomView = BottomNavBarView(frame: CGRect(x: 0,
-        y: 0,
-        width: UIScreen.main.bounds.size.width,
-        height: 40))
-        return bottomView
-    }
+You can you movable line view in your tabBar.
 
-    func navigationBarTitle() -> String? {
-        return "First View Controller"
-    }
+#### SVCMovableView example:
+
+```swift
+func tabBarInjection() {
+    let defaultTabBar = SVCTabBar()
+    showMovableView(onDefaultTabBar: defaultTabBar)
+
+    // Add some items ...
+
+    // inject tab bar
+    tabBar = defaultTabBar
+}
+
+func showMovableView(onDefaultTabBar defaultTabBar: SVCTabBar) {
+    defaultTabBar.movableView.isHidden = false
+    defaultTabBar.movableView.backgroundColor = ExampleSwipeViewController.defaultStyleColor
+    defaultTabBar.movableView.bouncing = 0.5
+    defaultTabBar.movableView.width = 64
+    defaultTabBar.movableView.height = 1
+    defaultTabBar.movableView.attach = .bottom
 }
 ```
 

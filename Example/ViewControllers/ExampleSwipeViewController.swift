@@ -33,8 +33,7 @@ private extension ExampleSwipeViewController {
         
         viewControllers = [firstViewController, secondViewController, thirdViewController]
     }
-    /**
-     first video
+    
     func tabBarInjection() {
         tabBarType = .bottom
         
@@ -55,36 +54,6 @@ private extension ExampleSwipeViewController {
         // Init third item
         let thirdItem = SVCTabItem(type: .system)
         thirdItem.imageViewAnimators = [SVCTransitionAnimator(transitionOptions: .transitionFlipFromLeft)]
-        thirdItem.setImage(UIImage(named: "ic_media_menu_normal")?.withRenderingMode(.alwaysOriginal), for: .normal)
-        thirdItem.setImage(UIImage(named: "ic_media_menu_selected")?.withRenderingMode(.alwaysOriginal), for: .selected)
-        
-        defaultTabBar.items = [firstItem, secondItem, thirdItem]
-        
-        // inject tab bar
-        tabBar = defaultTabBar
-    }
- */
-    func tabBarInjection() {
-        tabBarType = .top
-        
-        let defaultTabBar = SVCTabBar()
-        showMovableView(onDefaultTabBar: defaultTabBar)
-        
-        // Init first item
-        let firstItem = SVCTabItem(type: .system)
-        firstItem.imageViewAnimators = [SVCTransitionAnimator(transitionOptions: .transitionFlipFromTop)]
-        firstItem.setImage(UIImage(named: "ic_location_menu_normal")?.withRenderingMode(.alwaysOriginal), for: .normal)
-        firstItem.setImage(UIImage(named: "ic_location_menu_selected")?.withRenderingMode(.alwaysOriginal), for: .selected)
-        
-        // Init second item
-        let secondItem = SVCTabItem(type: .system)
-        secondItem.imageViewAnimators = [SVCTransitionAnimator(transitionOptions: .transitionFlipFromRight)]
-        secondItem.setImage(UIImage(named: "ic_users_menu_normal")?.withRenderingMode(.alwaysOriginal), for: .normal)
-        secondItem.setImage(UIImage(named: "ic_users_menu_selected")?.withRenderingMode(.alwaysOriginal), for: .selected)
-        
-        // Init third item
-        let thirdItem = SVCTabItem(type: .system)
-        thirdItem.imageViewAnimators = [SVCTransitionAnimator(transitionOptions: .transitionFlipFromBottom)]
         thirdItem.setImage(UIImage(named: "ic_media_menu_normal")?.withRenderingMode(.alwaysOriginal), for: .normal)
         thirdItem.setImage(UIImage(named: "ic_media_menu_selected")?.withRenderingMode(.alwaysOriginal), for: .selected)
         
