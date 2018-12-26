@@ -39,6 +39,9 @@ open class SVCSwipeViewController: UIViewController {
     /// tabBarBottomView
     open var tabBarBottomView: UIView?
     
+    /// tabBarTopView
+    open var tabBarTopView: UIView?
+    
     /// ViewControllers that will be manage
     open var viewControllers: [UIViewController] = [] {
         didSet {
@@ -56,7 +59,13 @@ open class SVCSwipeViewController: UIViewController {
             switch tabBarType {
             case .top:
                 tabBarBottomView?.removeFromSuperview()
+                tabBarBottomView = nil
+                
+                addTabBarTopView()
             case .bottom:
+                tabBarTopView?.removeFromSuperview()
+                tabBarTopView = nil
+                
                 addTabBarBottomView()
             }
         }
@@ -128,6 +137,15 @@ open class SVCSwipeViewController: UIViewController {
         didSet {
             if isViewLoaded {
                 addTabBarBottomView()
+            }
+        }
+    }
+    
+    /// isTabBarBottomViewShow
+    open var isTabBarTopViewShow = true {
+        didSet {
+            if isViewLoaded {
+                addTabBarTopView()
             }
         }
     }

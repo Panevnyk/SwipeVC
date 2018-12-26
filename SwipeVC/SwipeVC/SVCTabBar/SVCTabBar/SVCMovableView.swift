@@ -31,7 +31,7 @@ open class SVCMovableView: UIView {
     open var width: CGFloat = 0
     
     /// Attaching of move view
-    open var attach: SVCMoveViewAttach = .bottom
+    open var attach: SVCMoveViewAttach = .top
     
     /// tabBarSideInnerSpace
     var tabBarSideInnerSpace: CGFloat = 0

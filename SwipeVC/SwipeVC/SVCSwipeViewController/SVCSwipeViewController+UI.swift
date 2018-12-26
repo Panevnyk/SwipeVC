@@ -130,6 +130,9 @@ extension SVCSwipeViewController {
         
         // addTabBarBottomView
         addTabBarBottomView()
+        
+        // addTabBarTopView
+        addTabBarTopView()
     }
     
     /// updateSwitchBarTopOrBottomAnchor
@@ -184,6 +187,38 @@ extension SVCSwipeViewController {
                     view.trailingAnchor.constraint(equalTo: tabBarBottomView.trailingAnchor),
                     view.bottomAnchor.constraint(equalTo: tabBarBottomView.bottomAnchor),
                     tabBarBottomView.topAnchor.constraint(equalTo: tabBar.bottomAnchor)
+                    ])
+            }
+        }
+    }
+    
+    /// addTabBarTopView
+    func addTabBarTopView() {
+        guard isTabBarTopViewShow else {
+            return
+        }
+        guard tabBarTopView == nil else {
+            return
+        }
+        guard let tabBar = tabBar else {
+            return
+        }
+        guard tabBarType == .top else {
+            return
+        }
+        
+        if #available(iOS 11.0, *) {
+            tabBarTopView = UIView()
+            tabBarTopView?.translatesAutoresizingMaskIntoConstraints = false
+            tabBarTopView?.backgroundColor = tabBar.backgroundColor
+            
+            if let tabBarTopView = tabBarTopView {
+                view.addSubview(tabBarTopView)
+                NSLayoutConstraint.activate([
+                    tabBarTopView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+                    view.trailingAnchor.constraint(equalTo: tabBarTopView.trailingAnchor),
+                    view.topAnchor.constraint(equalTo: tabBarTopView.topAnchor),
+                    tabBarTopView.bottomAnchor.constraint(equalTo: tabBar.topAnchor)
                     ])
             }
         }

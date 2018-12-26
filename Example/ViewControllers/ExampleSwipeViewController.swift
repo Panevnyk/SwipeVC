@@ -65,26 +65,26 @@ private extension ExampleSwipeViewController {
     }
  */
     func tabBarInjection() {
-        tabBarType = .bottom
+        tabBarType = .top
         
         let defaultTabBar = SVCTabBar()
-//        showMovableView(onDefaultTabBar: defaultTabBar)
+        showMovableView(onDefaultTabBar: defaultTabBar)
         
         // Init first item
         let firstItem = SVCTabItem(type: .system)
-        firstItem.imageViewAnimators = [SVCRotationAnimator()]
+        firstItem.imageViewAnimators = [SVCTransitionAnimator(transitionOptions: .transitionFlipFromTop)]
         firstItem.setImage(UIImage(named: "ic_location_menu_normal")?.withRenderingMode(.alwaysOriginal), for: .normal)
         firstItem.setImage(UIImage(named: "ic_location_menu_selected")?.withRenderingMode(.alwaysOriginal), for: .selected)
         
         // Init second item
         let secondItem = SVCTabItem(type: .system)
-        secondItem.imageViewAnimators = [SVCRotationAnimator()]
+        secondItem.imageViewAnimators = [SVCTransitionAnimator(transitionOptions: .transitionFlipFromRight)]
         secondItem.setImage(UIImage(named: "ic_users_menu_normal")?.withRenderingMode(.alwaysOriginal), for: .normal)
         secondItem.setImage(UIImage(named: "ic_users_menu_selected")?.withRenderingMode(.alwaysOriginal), for: .selected)
         
         // Init third item
         let thirdItem = SVCTabItem(type: .system)
-        thirdItem.imageViewAnimators = [SVCRotationAnimator()]
+        thirdItem.imageViewAnimators = [SVCTransitionAnimator(transitionOptions: .transitionFlipFromBottom)]
         thirdItem.setImage(UIImage(named: "ic_media_menu_normal")?.withRenderingMode(.alwaysOriginal), for: .normal)
         thirdItem.setImage(UIImage(named: "ic_media_menu_selected")?.withRenderingMode(.alwaysOriginal), for: .selected)
         
@@ -98,6 +98,7 @@ private extension ExampleSwipeViewController {
         defaultTabBar.movableView.isHidden = false
         defaultTabBar.movableView.backgroundColor = ExampleSwipeViewController.defaultStyleColor
         defaultTabBar.movableView.bouncing = 0.5
-        defaultTabBar.movableView.attach = .top
+        defaultTabBar.movableView.width = 64
+        defaultTabBar.movableView.attach = .bottom
     }
 }
