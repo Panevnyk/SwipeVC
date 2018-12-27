@@ -1,12 +1,8 @@
 # SwipeVC
 
 <p align="center">  
-<img src="https://github.com/Panevnyk/SwipeVC/blob/master/Images/Combine_three_animators.gif" width="200"> 
-<img src="https://github.com/Panevnyk/SwipeVC/blob/master/Images/Combine_three_animators_top.gif" width="200">
-</p>
-
-<p align="center">  
-<img src="https://github.com/Panevnyk/SwipeVC/blob/master/Images/Combine_three_animators2.gif" width="200">
+<img src="https://github.com/Panevnyk/SwipeVC/blob/master/Images/Combine_three_animators.gif" width="200">
+</br>
 <img src="https://github.com/Panevnyk/SwipeVC/blob/master/Images/Combine_three_animators2_top.gif" width="200">
 </p>
 
