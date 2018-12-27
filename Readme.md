@@ -1,9 +1,9 @@
 # SwipeVC
 
 <p align="center">  
-<img src="https://github.com/Panevnyk/SwipeVC/blob/master/Images/Combine_three_animators.gif" width="200">
+<img src="https://github.com/Panevnyk/SwipeVC/blob/master/Images/Top_tabBar.gif" width="200">
 &nbsp;&nbsp;&nbsp;&nbsp;
-<img src="https://github.com/Panevnyk/SwipeVC/blob/master/Images/Combine_three_animators2_top.gif" width="200">
+<img src="https://github.com/Panevnyk/SwipeVC/blob/master/Images/Bottom_tabBar.gif" width="200">
 </p>
 
 SwipeVC lib created for helping you manage view controllers simply sliding left and right.
@@ -47,8 +47,9 @@ final class ExampleSwipeViewController: SVCSwipeViewController {
 ```
 
 For use tabBar, you should inject tabBar property. You can use SVCTabBar or your custom realization.
+You can set tabBarType property (.top or . bottom) for change tab bar position in SVCSwipeViewController.
+SVCSwipeViewController have contentInsets, tabBarInsets, viewControllersInsets properties for customize some spaces in different way if you needed.
 
-#### SVCTabBar example:
 ```swift
 final class ExampleSwipeViewController: SVCSwipeViewController {
     override func viewDidLoad() {
@@ -87,16 +88,17 @@ final class ExampleSwipeViewController: SVCSwipeViewController {
 }
 ```
 
-You can you use different Animators for SVCTabItem. SwipeVC has SVCBounceAnimator(), SVCRotationAnimator(), SVCImagesAnimator(), SVCTransitionAnimator() ...
-Or create your own Animator simply realized SVCAnimator protocol.
+#### Item animations:
 
-#### SVCAnimator example:
+You can use different Animators for SVCTabItem. SwipeVC has SVCBounceAnimator(), SVCRotationAnimator(), SVCImagesAnimator(), SVCTransitionAnimator() ...
 
 ```swift
 let tabBarItem = SVCTabItem(type: .system)
 tabBarItem.imageViewAnimators = [SVCBounceAnimator()]
 tabBarItem.titleLabelAnimators = [SVCTransitionAnimator(transitionOptions: .transitionFlipFromBottom)]
 ```
+
+Or create your own Animator simply realized SVCAnimator protocol.
 
 ```swift
 open class SomeCustomAnimator: SVCAnimator {
@@ -114,9 +116,8 @@ tabBarItem.imageViewAnimators = [SomeCustomAnimator()]
 tabBarItem.titleViewAnimators = [SomeCustomAnimator()]
 ```
 
-You can you movable line view in your tabBar.
-
-#### SVCMovableView example:
+For use movable line view you should set "defaultTabBar.movableView.isHidden = false".
+You can customize your  movableView (width, height, bouncing, attach).
 
 ```swift
 func tabBarInjection() {
@@ -139,22 +140,9 @@ func showMovableView(onDefaultTabBar defaultTabBar: SVCTabBar) {
 }
 ```
 
-## Contributing
+## Example target
 
-Hey! Do you like SwipeVC? Awesome! We could actually really use your help!
-
-Open source isn't just writing code. SwipeVC could use your help with any of the
-following:
-
-- Finding (and reporting!) bugs.
-- New feature suggestions.
-- Answering questions on issues.
-- Documentation improvements.
-- Reviewing pull requests.
-- Helping to manage issue priorities.
-- Fixing bugs/new features.
-
-If any of that sounds cool to you, send a pull request!
+You can check more functionality of SwipeVC in [Example](Example) target.
 
 ## License
 
