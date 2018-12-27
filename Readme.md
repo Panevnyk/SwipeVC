@@ -2,7 +2,7 @@
 
 <p align="center">  
 <img src="https://github.com/Panevnyk/SwipeVC/blob/master/Images/Combine_three_animators.gif" width="200">
-</br>
+&nbsp;&nbsp;&nbsp;&nbsp;
 <img src="https://github.com/Panevnyk/SwipeVC/blob/master/Images/Combine_three_animators2_top.gif" width="200">
 </p>
 
