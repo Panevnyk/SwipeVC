@@ -1,9 +1,9 @@
 # SwipeVC
 
 <p align="center">  
-<img src="https://github.com/Panevnyk/SwipeVC/blob/master/Images/Top_tabBar.gif" width="200">
-&nbsp;&nbsp;&nbsp;&nbsp;
 <img src="https://github.com/Panevnyk/SwipeVC/blob/master/Images/Bottom_tabBar.gif" width="200">
+&nbsp;&nbsp;&nbsp;&nbsp;
+<img src="https://github.com/Panevnyk/SwipeVC/blob/master/Images/Top_tabBar.gif" width="200">
 </p>
 
 SwipeVC lib created for helping you manage view controllers simply sliding left and right.
