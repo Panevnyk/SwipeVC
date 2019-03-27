@@ -37,6 +37,8 @@ public final class SVCInterpolateHelper {
             return (cos((xPoint + 1) * CGFloat(Double.pi)) / 2.0) + 0.5
         case .linear:
             return xPoint
+        @unknown default:
+            return xPoint
         }
     }
 }
