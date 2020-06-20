@@ -6,10 +6,11 @@
 <img src="https://github.com/Panevnyk/SwipeVC/blob/master/Images/Top_tabBar.gif" width="200">
 </p>
 
-SwipeVC lib created for helping you manage view controllers simply sliding left and right.
-You can inject tabBar for manage this screens by tap on item ( like UITabBar ).
-NavigationBar give for you possible for cool animation of change tab bar items and titles, that can be simply customize.For added NavigationBar you should simply inject it.
-We added different type of insets for give possible of customizing design as you need(contentInsets, tabBarInsets, viewControllersInsets).
+SwipeVC framework created as a cool animated analog to UITabBarController. SwipeVC gives you the possibility to manage screen not only using TabBar controls but simply sliding left and right.
+
+You can add SVCTabBar with different animations to manage those screens. Also, you have the possibility to customize TabBar a lot. 
+Adjust TabBar to top or bottom. Predefine insets by specific rules. Setup different Animators to image and title of the TabBarItem.
+Also, you can inject your own custom TabBar, TabBarItem, or specific Animator depends on what level of customization you need.
 
 ## CocoaPods
 
